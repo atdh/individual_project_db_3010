@@ -1,12 +1,15 @@
-#include "db.h"
+#include "DB.h"
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <map>
+
 namespace fs = std::filesystem;
 
-Database::Database(std::string name, std::string path) {
+Database::Database(std::string name, std::string path, OurStore* store) {
     this->name = name;
     this->path = path; 
+    this->store = store;
 }
 
 Database Database::CreateEmpty(std::string name) {
@@ -21,9 +24,23 @@ Database Database::CreateEmpty(std::string name) {
         fs::create_directory(db_folder);
     }
 
-    return Database(name, db_folder);
+    OurStore* new_store = new OurStore();
+
+    return Database(name, db_folder, new_store);
 }
 
-std::string Database::get_dir() {
-    return "some directory";
+std::string Database::GetDir() {
+    return this->path;
+}
+
+void Database::SetKV(std::string key, std::string val){
+    this->store->SetKeyValue(key, val);
+}
+
+std::string Database::GetKV(std::string key) {
+    return this->store->GetKeyValue(key);
+}
+
+void Database::PrintStoreCnts() {
+    this->store->PrintContents();
 }

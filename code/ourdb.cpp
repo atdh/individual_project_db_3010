@@ -1,4 +1,4 @@
-#include "ourdb.h"
+#include "OurDB.h"
 #include <iostream>
 
 OurDB::OurDB() {

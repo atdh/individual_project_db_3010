@@ -7,13 +7,14 @@
 class OurStore
 {
 public:
-    void setKeyValue(std::string key, std::string value);
-    std::string getKeyValue(std::string key);
+    void SetKeyValue(std::string key, std::string value);
+    std::string GetKeyValue(std::string key);
+    void PrintContents();
 
 private:
     std::string key;
     std::string value;
-    std::map<std::string, int> hash_map;
+    std::map<std::string, std::string> hash_map;
 };
 
-#endif
+#endif // OURSTORE_H
