@@ -46,36 +46,28 @@ class BTreeNode {
     friend class BTree;
 };
 
-class BTree {
-    private:
-        BTreeNode *root; // pointer to the root node
-        int t; // min degree
-    public:
-        BTree(int _t) {
-            this->root = NULL;
-            t = _t;
-        }
+// A BTree 
+class BTree 
+{ 
+	BTreeNode *root; // Pointer to root node 
+	int t; // Minimum degree 
+public: 
+	// Constructor (Initializes tree as empty) 
+	BTree(int _t) 
+	{ root = NULL; t = _t; } 
 
-        // this method calls on the root's traverse method
-        // to start the traversing process
-        void traverse() {
-            if (root != NULL) {
-                root->traverse();
-            }
-        }
+	// function to traverse the tree 
+	void traverse() 
+	{ if (root != NULL) root->traverse(); } 
 
-        // this method calls on the root's search method
-        // to start the seraching process
-        BTreeNode *search(int k) {
-            if (root != NULL) {
-               return root->search(k);
-            } else {
-                return NULL;
-            }
-        }
+	// function to search a key in this tree 
+	BTreeNode* search(int k) 
+	{ return (root == NULL)? NULL : root->search(k); } 
 
-        void insert(int k);
-};
+	// The main function that inserts a new key in this B-Tree 
+	void insert(int k); 
+}; 
+
 
 // constructor for the BTreeNode
 BTreeNode::BTreeNode(int _t, bool _leaf) {
@@ -97,8 +89,8 @@ void BTreeNode::traverse() {
     for(i = 0; i < n; i++) {
         if (leaf == false) {
             C[i]->traverse();
-            std::cout << " " << keys[i];
         }
+        std::cout << " " << keys[i];
     }
 
     // then, we need to make sure that traverse through the children as well
@@ -281,6 +273,8 @@ int main() {
   
     k = 15; 
     (t.search(k) != NULL)? std::cout << "\nPresent" : std::cout << "\nNot Present"; 
+
+    std::cout << "\n";
   
     return 0; 
 }

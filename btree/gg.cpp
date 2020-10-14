@@ -262,5 +262,6 @@ int main()
 	k = 15; 
 	(t.search(k) != NULL)? cout << "\nPresent" : cout << "\nNot Present"; 
 
+	cout << "\n";
 	return 0; 
 } 
