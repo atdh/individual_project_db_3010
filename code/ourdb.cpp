@@ -8,3 +8,4 @@ OurDB::OurDB() {
 Database OurDB::CreateDB(std::string name) {
     return Database::CreateEmpty(name);
 }
+
