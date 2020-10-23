@@ -2,8 +2,20 @@
 #include "BTreeNode.h"
 #include <string>
 #include <memory>
+#include <fstream>
 
-void BTree::insert(int k) {
+void BTree::CreateFile() {
+
+    std::string filename= "index_file_0.txt";
+    std::ofstream fout(filename);
+    fout.fill (' ');
+    fout.width (500);
+    fout << " ";
+
+    return;
+}
+
+void BTree::insert(unsigned long k) {
 
     // case where we still need to make our first insertion 
     // in other words, when root = NULL
@@ -13,8 +25,26 @@ void BTree::insert(int k) {
         root = move(new_root);
         root->set_key(0, k);
         root->set_curr_num_keys(1);
+
+        this->CreateFile();
+        std::ofstream outfile;
+        outfile << k;
+        this->location_root_file = "index_file_0.txt";
+        outfile.open(this->location_root_file, std::ios::app);
+        std::string data_loc = "testFile.txt";
+
+        std::array<char, 32> data_loc_arr = {0};
+        
+        for (int i = 0; i < (int)data_loc.size(); i++) {
+            data_loc_arr[i] = data_loc[i];
+        }
+
+        for (int i = 0; i < 32; i++) {
+            outfile << data_loc_arr[i];
+        }
+
+        outfile.close();
     } else {
-        root->print_keys();
 
         // the case where the root is full, then the tree must grow in height
         // note: the b-tree grows bottom up
@@ -49,5 +79,7 @@ void BTree::insert(int k) {
             root->insertNonFull(k);
         }
     }
+
+    root->print_keys();
 }
 

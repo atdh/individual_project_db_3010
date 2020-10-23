@@ -41,6 +41,3 @@ std::string Database::GetKV(std::string key) {
     return this->store->GetKeyValue(key);
 }
 
-void Database::PrintStoreCnts() {
-    this->store->PrintContents();
-}

@@ -20,7 +20,7 @@ void BTreeNode::print_keys() {
     }
 }
 
-void BTreeNode::set_key(int idx, int value) {
+void BTreeNode::set_key(int idx, unsigned long value) {
     this->keys[idx] = value;
 }
 
@@ -96,6 +96,8 @@ void BTreeNode::insertNonFull(unsigned long k) {
     // initialize index as the index of the rightmost element
     // it will EVENTUALLY be the index where we insert the new key
     int i = this->get_curr_num_keys()-1;
+
+    int file_idx = (this->get_curr_num_keys()*73)-73;
 
     if (this->get_is_leaf() == true) {
         // finds the location of new key to be inserted

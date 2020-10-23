@@ -15,7 +15,7 @@ struct UserInfo {
 class BTreeNode {
     public:
         BTreeNode(int _t, bool _leaf);
-        void set_key(int idx, int value);
+        void set_key(int idx, unsigned long value);
         int get_key(int idx);
         void set_child(int idx, std::unique_ptr<BTreeNode> C);
         void set_curr_num_keys(int n);
@@ -34,8 +34,8 @@ class BTreeNode {
 
     private:
         int curr_num_keys;
-        std::array<unsigned long, 14> keys; // the keys are hashes of the keys
-        std::array<std::unique_ptr<BTreeNode>, 15> C; 
+        std::array<unsigned long, 13> keys; // the keys are hashes of the keys
+        std::array<std::unique_ptr<BTreeNode>, 14> C; 
         UserInfo ui;
         int t;
         bool is_leaf = false;

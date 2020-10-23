@@ -13,7 +13,6 @@ class OurStore
         void SetKeyValue(std::string key, std::string value);
         std::string GetKeyValue(std::string key);
         void CreateFile();
-        void PrintContents();
         int get_total_entries();
         void incr_total_entries();
         unsigned long CreateHash(std::string s);
