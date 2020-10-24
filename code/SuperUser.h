@@ -5,7 +5,6 @@ RemoveUser(std::string name)
 Description: removes a User
 DeleteDB()
 Description: deletes the database
-
 */
 #ifndef SUPERUSER_H
 #define SUPERUSER_H
