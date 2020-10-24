@@ -7,7 +7,7 @@ When HW4 is due, we will have a working user and superuser class.<br />
 When HW5 is due, we will have a checkpoint/integration for the above 3 done.<br />  
 GUI and finished product will be done by the final.<br />  
 
-***OUR GOAL WAS TO HAVE A WORKING DATABASE CLASS BY THIS DUE DATE***<br />  
+***OUR GOAL WAS TO HAVE A WORKING DATABASE CLASS BY THIS DUE DATE. Initially, we wanted to use b-tree datastructure for our project for optimal time complexity and the fact that it is used in industry such as SQL and Oracle. However, we ended up using BST instead because it was a data structure we were already familiar with instead of b-tree. ***<br />  
 
 2) What you actually accomplished for this deadline. <br />  
 a) Note any differences and explain why they occurred. Prefer honesty over excuses.<br />  
