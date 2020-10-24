@@ -1,6 +1,5 @@
-1) What you planned on doing for this homework deadline. (Copy + pasted from your
-previous document)
-This is copied and pasted from previous document:
+1) What you planned on doing for this homework deadline. (Copy + pasted from your previous document)
+This is copied and pasted from previous document:\
 
 When HW2 is due, we will have a detailed class structure.
 When HW3 is due, we will have a working database class.
