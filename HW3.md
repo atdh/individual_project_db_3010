@@ -27,6 +27,8 @@ BEFORE INSERTION:<br />
 
 
 AFTER INSERTION:<br />  
+![afterinsertion](https://user-images.githubusercontent.com/37274998/97068918-0dbb1780-1589-11eb-965a-0853663e1809.PNG)
+
 
 BEFORE SEARCH:<br />  
 
