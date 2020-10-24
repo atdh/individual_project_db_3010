@@ -41,6 +41,8 @@ BEFORE DELETING A ROW:<br />
 
 
 AFTER DELETING A ROW:<br />  
+![afterdelete](https://user-images.githubusercontent.com/37274998/97069053-650db780-158a-11eb-865f-be677aafc3f1.PNG)
+
 
 
 
