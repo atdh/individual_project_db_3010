@@ -34,7 +34,17 @@ class Database {
                 free_spots[i] = true;
             }
 
+            root = NULL;
+
             CreateDataFile();
+        }
+
+        void set_root(Node *node) {
+            root = node;
+        }
+
+        Node* get_root() {
+            return root;
         }
 
         void CreateDataFile() {
@@ -83,9 +93,9 @@ class Database {
 
         struct Node* Insert(struct Node* node, unsigned long hash, std::array<char, 32> key, std::array<char, 32> value, int starting) {
              if (node == NULL) {
-                Node *new_root = new Node(hash, key , value, NULL, NULL, starting);
+                Node *new_node = new Node(hash, key , value, NULL, NULL, starting);
                 InsertDataFile(hash, key, value, starting);
-                return new_root;
+                return new_node;
              }
 
              if (hash < node->hash) {
@@ -149,7 +159,7 @@ int main() {
         hash = CreateHash(user_input_key);
 
         int spot_idx = db->FindFreeSpace();
-        db->Insert(root, hash, key_arr, value_arr, spot_idx*72);
+        db->set_root(db->Insert(db->get_root(), hash, key_arr, value_arr, spot_idx*72));
     }
 
 
