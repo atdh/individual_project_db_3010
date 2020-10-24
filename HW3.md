@@ -36,6 +36,8 @@ SEARCH:<br />
 
 
 BEFORE DELETING A ROW:<br /> 
+![beforedelete](https://user-images.githubusercontent.com/37274998/97069022-35f74600-158a-11eb-91d5-d3c0b616ce57.PNG)
+
 
 
 AFTER DELETING A ROW:<br />  
