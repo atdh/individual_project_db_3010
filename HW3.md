@@ -22,6 +22,7 @@ reasoning behind each change.<br />
 
 4) Screenshots/gifs of where your app/program/etc is currently at. They don’t have to be exhaustive but they should adequately depict the current state of your project. Embed these for the relevant sections in your .md files. <br />  
 BEFORE INSERTION:<br />  
+![beforeiinsertion](https://user-images.githubusercontent.com/37274998/97068794-0cd5b600-1588-11eb-8eea-126566373f66.PNG)
 
 
 
