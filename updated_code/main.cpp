@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <array>
-#include <unordered_map>
+#include <map>
 
 struct Node
 {
@@ -53,14 +53,13 @@ public:
     {
         for (int i = 0; i < 20; i++)
         {
-            free_spots[i + total_spots] = true;
+            free_spots.insert(std::pair<int, bool>(i, false));
         }
 
         total_spots += 20;
     }
     void set_root(Node *node)
     {
-        //db->FindFreeSpace()->value[0]
         root = node;
     }
     Node *get_root()
@@ -90,7 +89,16 @@ public:
         std::ofstream myfile;
         myfile.open("data.txt", std::ios::app);
         myfile.seekp(starting);
-        myfile << hash; // 8
+
+        std::string hash_str = std::to_string(hash);
+        std::array<char, 16> hash_arr;
+        for (int i = 0; i < hash_str.length(); i++) {
+            hash_arr[i] = (char)hash_str[i];
+        }
+
+        for (int i = 0; i < 16; i++) {
+            myfile << hash_arr[i];
+        }
 
         for (int i = 0; i < 32; i++)
         {
@@ -106,13 +114,21 @@ public:
     }
 
     void DeleteDataFile(int offset) {
-        std::ofstream myfile("data.txt", std::ios::out);
-        myfile.seekp(offset);
+        std::fstream myfile("data.txt", std::ios::in | std::ios::out);
+        myfile.seekg(offset, std::ios::beg);
+
         for (int i = 0; i < 80; i++) {
             myfile << ' ';
         }
+        // char A[15];
+        // myfile.read(A, 14);
+        // A[14] = 0;
+        // std::cout << A << std::endl;
+
         myfile.close();
-        this->free_spots[offset/80] = true;
+        std::map<int, bool>::iterator it = free_spots.find(offset/80);
+        if (it != free_spots.end())
+            it->second = true;
     }
 
     /*
@@ -150,7 +166,9 @@ public:
         {
             Node *new_root = new Node(hash, key, value, NULL, NULL, starting);
             InsertDataFile(hash, key, value, starting);
-            this->free_spots[starting/80] = false;
+            std::map<int, bool>::iterator it = free_spots.find(starting/80);
+            if (it != free_spots.end())
+                it->second = false;
             return new_root;
         }
 
@@ -179,9 +197,9 @@ public:
             return root;
         }
 
-        if (root->hash < hash) {
+        if (hash < root->hash) {
             root->left = Delete(root->left, hash);
-        } else if (root->hash > hash) {
+        } else if (hash > root->hash) {
             root->right = Delete(root->right, hash);
         } else {
             // this is the case where we found the node with the target hash
@@ -236,7 +254,7 @@ private:
 
     // the key is an int to represent the index
     // the value is a bool to represent whether that spot in the vector is free
-    std::unordered_map<int, bool> free_spots;
+    std::map<int, bool> free_spots;
     int total_spots;
 };
 
