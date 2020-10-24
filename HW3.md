@@ -23,6 +23,8 @@ reasoning behind each change.<br />
 4) Screenshots/gifs of where your app/program/etc is currently at. They don’t have to be exhaustive but they should adequately depict the current state of your project. Embed these for the relevant sections in your .md files. <br />  
 BEFORE INSERTION:<br />  
 
+
+
 AFTER INSERTION:<br />  
 
 BEFORE SEARCH:<br />  
