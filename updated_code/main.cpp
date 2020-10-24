@@ -17,8 +17,8 @@ struct Node
         this->starting = starting;
     }
 
-    // total 72
-    unsigned long hash;         // 8
+    // total 80
+    unsigned long hash;         // 16
     std::array<char, 32> key;   // 32
     std::array<char, 32> value; // 32
     Node *left;
@@ -104,6 +104,17 @@ public:
 
         myfile.close();
     }
+
+    void DeleteDataFile(int offset) {
+        std::ofstream myfile("data.txt", std::ios::out);
+        myfile.seekp(offset);
+        for (int i = 0; i < 80; i++) {
+            myfile << ' ';
+        }
+        myfile.close();
+        this->free_spots[offset/80] = true;
+    }
+
     /*
     node we are currently in
     
@@ -114,7 +125,7 @@ public:
         if (root == NULL)
         {
 
-            std::cout << "No info in database" << std::endl;
+            std::cout << "Didn't find in database" << std::endl;
             return root;
         }
         if (root->hash == hash)
@@ -135,11 +146,11 @@ public:
 
     struct Node *Insert(struct Node *node, unsigned long hash, std::array<char, 32> key, std::array<char, 32> value, int starting)
     {
-        std::cout << "yuh" << std::endl;
         if (node == NULL)
         {
             Node *new_root = new Node(hash, key, value, NULL, NULL, starting);
             InsertDataFile(hash, key, value, starting);
+            this->free_spots[starting/80] = false;
             return new_root;
         }
 
@@ -151,6 +162,52 @@ public:
         {
             node->right = Insert(node->right, hash, key, value, starting);
         }
+        return node;
+    }
+
+    struct Node* FindInOrdSucc(struct Node* curr_node) {
+        while (curr_node && curr_node->left != NULL) {
+            curr_node = curr_node->left;
+        }
+
+        // by this point, we must be at the left most leaf
+        return curr_node;
+    }
+
+    struct Node* Delete(struct Node* root, unsigned long hash) {
+        if (!root) {
+            return root;
+        }
+
+        if (root->hash < hash) {
+            root->left = Delete(root->left, hash);
+        } else if (root->hash > hash) {
+            root->right = Delete(root->right, hash);
+        } else {
+            // this is the case where we found the node with the target hash
+
+            // check if the left child is null
+            if (root->left == NULL) {
+                struct Node *tmp = root->right;
+                unsigned long the_offset = root->starting;
+                DeleteDataFile(the_offset);
+                free(root);
+                return tmp;
+            } else if (root->right == NULL) {
+                struct Node *tmp = root->left;
+                unsigned long the_offset = root->starting;
+                DeleteDataFile(the_offset);
+                free(root);
+                return tmp;
+            } 
+
+            // by here, it means that the node has two children
+            struct Node* tmp = FindInOrdSucc(root->right);
+
+            root->hash = tmp->hash;
+            root->right = Delete(root->right, tmp->hash);
+        }
+
         return root;
     }
 
@@ -195,11 +252,20 @@ unsigned long CreateHash(std::string s)
     return hash;
 }
 
+void checkFileSize() { 
+   std::ifstream in_file("data.txt");
+   in_file.seekg(0, std::ios::end);
+   int file_size = in_file.tellg();
+   std::cout<<"Size of the file is"<<" "<< file_size<<" "<<"bytes\n";
+
+   std::cout << "The size of an unsigned long is " << std::to_string(sizeof(unsigned long)) << std::endl;
+   std::cout << "The size of a char is " << std::to_string(sizeof(char)) << std::endl;
+}
+
 int main()
 {
 
     Database *db = new Database();
-    struct Node *root = NULL;
 
     std::string data_file = "data.txt";
     std::fstream streamer(data_file, std::ios::in | std::ios::out);
@@ -216,7 +282,7 @@ int main()
 
         int option = 0;
         std::cout << "Choose your option" << std::endl;
-        std::cout << "Option 1: Insert (1)" << std::endl;
+        std::cout << "Option 1: Insert(1)" << std::endl;
         std::cout << "Option 2: Search(2)" << std::endl;
         std::cout << "Option 3: Delete(3)" << std::endl;
         std::cin >> option;
@@ -242,21 +308,19 @@ int main()
             std::cout << hash << std::endl;
 
             int spot_idx = db->FindFreeSpace();
-            db->set_root(db->Insert(db->get_root(), hash, key_arr, value_arr, spot_idx * 72));
+            db->set_root(db->Insert(db->get_root(), hash, key_arr, value_arr, spot_idx * 80));
+
+            checkFileSize();
         }
 
         if (option == 2)
         {
-            db->Inorder(db->get_root());
-            std::cout << "input a key" << std::endl;
+            // db->Inorder(db->get_root());
+            std::cout << "input a key to search for" << std::endl;
             std::cin >> user_input_key;
             hash = CreateHash(user_input_key);
-            std::cout << hash << std::endl;
-            //std::cout << db->get_root()->value[0] << std::endl;
+            // std::cout << hash << std::endl;
             Node *temp_root = db->get_root();
-            std::cout << "root keeps printing" << std::endl;
-
-            std::cout << temp_root->hash << std::endl;
             Node *tempNode = db->SearchNode(temp_root, hash);
             std::string value = "";
 
@@ -264,5 +328,16 @@ int main()
             value = db->convertToStr(tempNode, size);
             std::cout << value << std::endl;
         }
+
+        if (option == 3) {
+            Node *temp_root = db->get_root();
+            db->Inorder(db->get_root());
+            std::cout << "input a key to delete" << std::endl;
+            std::cin >> user_input_key;
+            hash = CreateHash(user_input_key);
+            db->set_root(db->Delete(temp_root, hash));
+        }
+
+
     }
 }
