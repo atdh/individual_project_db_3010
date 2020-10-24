@@ -1,17 +1,16 @@
 1) What you planned on doing for this homework deadline. (Copy + pasted from your previous document)<br />  
-This is copied and pasted from previous document:
+This is copied and pasted from previous document: <br />  
 
-When HW2 is due, we will have a detailed class structure.
-When HW3 is due, we will have a working database class.
-When HW4 is due, we will have a working user and superuser class.
-When HW5 is due, we will have a checkpoint/integration for the above 3 done.
-GUI and finished product will be done by the final.
+When HW2 is due, we will have a detailed class structure.<br />  
+When HW3 is due, we will have a working database class.<br />  
+When HW4 is due, we will have a working user and superuser class.<br />  
+When HW5 is due, we will have a checkpoint/integration for the above 3 done.<br />  
+GUI and finished product will be done by the final.<br />  
 
-OUR GOAL WAS TO HAVE A WORKING DATABASE CLASS BY THIS DUE DATE
+***OUR GOAL WAS TO HAVE A WORKING DATABASE CLASS BY THIS DUE DATE***<br />  
 
-2) What you actually accomplished for this deadline.
-a) Note any differences and explain why they occurred. Prefer honesty over
-excuses.
+2) What you actually accomplished for this deadline. <br />  
+a) Note any differences and explain why they occurred. Prefer honesty over excuses.<br />  
 We have the minimum viable database working. It is able to INSERT values, SEARCH for values, and DELETE values. (In Qt, we will need to integrate these functions to somehow call insert function when hitting the POST button, search function when hitting the GET function, and delete when hitting the DELETE ROW button. *Just keeping in mind for future reference.*) 
 
 3) What you had planned to do for the next deadline.
