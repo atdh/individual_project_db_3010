@@ -35,7 +35,8 @@ SEARCH:<br />
 ![searching](https://user-images.githubusercontent.com/37274998/97068991-e6187f00-1589-11eb-8e36-45ee5bffd01f.PNG)
 
 
-BEFORE DELETING A ROW:<br />  
+BEFORE DELETING A ROW:<br /> ![searching](https://user-images.githubusercontent.com/37274998/97068991-e6187f00-1589-11eb-8e36-45ee5bffd01f.PNG)
+
 
 AFTER DELETING A ROW:<br />  
 
