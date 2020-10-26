@@ -478,7 +478,7 @@ int main()
 
             std::cout << "Saving data to the storage file." << std::endl;
             db->Serialize(db->get_root(), fp);
-            std::cout << "All done. Closing off."
+            std::cout << "All done. Closing off.";
             fclose(fp);
 
             return 0;
