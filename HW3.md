@@ -7,7 +7,7 @@ When HW4 is due, we will have a working user and superuser class.<br />
 When HW5 is due, we will have a checkpoint/integration for the above 3 done.<br />  
 GUI and finished product will be done by the final.<br />  
 
-***OUR GOAL WAS TO HAVE A WORKING DATABASE CLASS BY THIS DUE DATE***<br />  
+***OUR GOAL WAS TO HAVE A WORKING DATABASE CLASS BY THIS DUE DATE. Initially, we wanted to use b-tree datastructure for our project for optimal time complexity and the fact that it is used in industry such as SQL and Oracle. However, we ended up using BST instead because it was a data structure we were already familiar with instead of b-tree. ***<br />  
 
 2) What you actually accomplished for this deadline. <br />  
 a) Note any differences and explain why they occurred. Prefer honesty over excuses.<br />  
@@ -22,16 +22,27 @@ reasoning behind each change.<br />
 
 4) Screenshots/gifs of where your app/program/etc is currently at. They don’t have to be exhaustive but they should adequately depict the current state of your project. Embed these for the relevant sections in your .md files. <br />  
 BEFORE INSERTION:<br />  
+![beforeiinsertion](https://user-images.githubusercontent.com/37274998/97068794-0cd5b600-1588-11eb-8eea-126566373f66.PNG)
+
+
 
 AFTER INSERTION:<br />  
+![afterinsertion](https://user-images.githubusercontent.com/37274998/97068918-0dbb1780-1589-11eb-965a-0853663e1809.PNG)
 
-BEFORE SEARCH:<br />  
 
-AFTER SEARCH:<br />  
 
-BEFORE DELETING A ROW:<br />  
+SEARCH:<br />
+![searching](https://user-images.githubusercontent.com/37274998/97068991-e6187f00-1589-11eb-8e36-45ee5bffd01f.PNG)
+
+
+BEFORE DELETING A ROW:<br /> 
+![beforedelete](https://user-images.githubusercontent.com/37274998/97069022-35f74600-158a-11eb-91d5-d3c0b616ce57.PNG)
+
+
 
 AFTER DELETING A ROW:<br />  
+![afterdelete](https://user-images.githubusercontent.com/37274998/97069053-650db780-158a-11eb-865f-be677aafc3f1.PNG)
+
 
 
 
