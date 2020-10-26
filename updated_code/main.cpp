@@ -4,6 +4,8 @@
 #include <array>
 #include <map>
 #include <sstream>
+#include <algorithm>
+#include <string>
 
 int GetFileSize(std::string file_name) { 
     std::ifstream in_file(file_name);
@@ -80,24 +82,24 @@ class Database
 
             std::array<char, 16> hash_arr = ConvHashToStr(root->hash);
             for (auto i : hash_arr) {
-                if (i == ' ' || i == NULL) {
-                    storage_input += " ";
+                if (i == '$') {
+                    storage_input += "$";
                 } else {
                     storage_input += std::string(1, i);
                 }
             }
 
             for (auto i : root->key) {
-                if (i == ' ' || i == NULL) {
-                    storage_input += " ";
+                if (i == '$') {
+                    storage_input += "$";
                 } else {
                     storage_input += std::string(1, i);
                 }
             }
 
             for (auto i : root->value) {
-                if (i == ' ' || i == NULL) {
-                    storage_input += " ";
+                if (i == '$') {
+                    storage_input += "$";
                 } else {
                     storage_input += std::string(1, i);
                 }
@@ -118,7 +120,7 @@ class Database
             if ( !fscanf(fp, "%s ", val) || std::string(val) == "#") 
                 return; 
 
-            std::cout << val << std::endl;
+            // std::cout << val << std::endl;
 
             unsigned long hash = 0;
             std::array<char, 16> hash_arr;
@@ -143,7 +145,7 @@ class Database
             ss >> hash_int;
             hash = (unsigned long)hash_int;
             int spot_idx = FindFreeSpace();
-            std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
+            // std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
 
             curr_node = Insert(get_root(), hash, key, value, spot_idx * 80);
             Deserialize(curr_node->left, fp, file_size); 
@@ -174,14 +176,16 @@ class Database
 
             // if we get to this point, that means that we ran out of free spots
             // and we need to expand
+            int old_total_spots = total_spots;
             ExpandFreeSpace();
+            return old_total_spots;
         }
 
         std::array<char, 16> ConvHashToStr(unsigned long hash) {
             std::string hash_str = std::to_string(hash);
             std::array<char, 16> hash_arr;
             hash_arr.fill('$');
-            for (int i = 0; i < hash_str.length(); i++) {
+            for (int i = 0; i < (int)hash_str.length(); i++) {
                 hash_arr[i] = (char)hash_str[i];
             }
 
@@ -325,6 +329,9 @@ class Database
             {
                 s += tempNode->value[i];
             }
+
+            s.erase(remove(s.begin(), s.end(), '$'), s.end());
+
             return s;
         }
 
@@ -382,6 +389,7 @@ int main()
     int size_storage = GetFileSize("storage.txt");
 
     if (size_storage) {
+        std::cout << "Rebuilding the BST" << std::endl;
         db->Deserialize(tmp_root, fp, GetFileSize("storage.txt"));
         db->set_root(tmp_root);
     }
