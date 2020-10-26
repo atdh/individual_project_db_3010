@@ -36,7 +36,7 @@ Further Info:
   - If it does find it, it will return the corresponding value; otherwise, it will notify the user that the database doesn't have it.
 
 **Option 3** is to delete a key value pair
-  - It will recursively try to find the key .
+  - It will recursively try to find the key.
   - Once it finds the key, it will delete it from the data file and from the BST.
 
 **Option 4** will allow the user to exit the program and save the database in a storage file, which will allow the user to **use the saved database and its current data for future use.**  
