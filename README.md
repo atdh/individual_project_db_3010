@@ -25,15 +25,15 @@ Further Info:
 - So, in total, each entry will take up a total of 80 bytes
 - Since each entry will be **consistently** 80 bytes, we use it as an offset to figure out where to place and locate specific entries
 
-Option 1 is to insert a key
+**Option 1** is to insert a key
   - It generates a hash value from the key; the hash value is used as the *"key"* when doing BST operations since it should be unique to each entry of data
   - After performing the BST operation to find where to put the new entry/node, it will determine the first open spot to 
   
-Option 2 is to search/find a value after inputting key
+**Option 2** is to search/find a value after inputting key
 
-Option 3 is to delete a node
+**Option 3** is to delete a node
 
-Option 4 will allow the user to exit the program and save the database in a storage file, which will allow the user to **use the saved database and its current data for future use.**
+**Option 4** will allow the user to exit the program and save the database in a storage file, which will allow the user to **use the saved database and its current data for future use.**
     - This is accomplished by first serializing the data, which is essentially a clever way to sequentially store the data so that it can be used in the future to rebuild the BST; leaf nodes are represented as #, and regular nodes are represented as a 80 char containing the hash, key, and value; all of this info is stored in the storage.txt file.
     - When the user runs the program again, it will deserialize the storage.txt file by sequentially reading the data and recursively rebuild the BST; when building the BST, it will do two things:
       - if the next chunk of data is a # or we've reached the end of the file, then it will return NULL and do nothing
