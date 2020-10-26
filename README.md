@@ -26,6 +26,7 @@ Further Info:
 - Since each entry will be **consistently** 80 bytes, we use it as an offset to figure out where to place and locate specific entries within the data file.
 
 **Option 1** is to insert a key value pair
+  - **Note**: the user cannot input a key or value containing "#" or "$" because they are used as markers when trying to serialize and deserialize the BST
   - It generates a hash value from the key; the hash value is used as the *"key"* when doing BST operations since it should be unique to each entry of data
   - It will determine the first open spot/index to place the new entry of data in the data file (**remember**, we are treating the data file like an array) 
   - Then it will perform the BST operation to insert it into the array and put the entry in the data file 
