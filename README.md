@@ -14,7 +14,27 @@ UPDATE: 10/23/2020
 
 SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
-We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon runinng the program, the user is given 3 option. Option 1 is to Insert a key, Option 2 is to Search/find a value after inputting key, and Option 3 is to delete a node. Insert will put username and password to the database. Search will find the proper information. Option 3 will delete a node aka a row which contains information of username and password from the database.  
+We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
+
+Further Info:
+- We are using a file (called "data.txt") as a way to store and manipulate the files; we are essentially using the data file as an array to store the entries of data 
+- Whenever we put in a new entry it will contain three fields in this order:
+  - the hash value, which is generated from the key value and will be 16 chars long
+  - the key, which will be 32 chars long
+  - the value, which will be 32 chars long
+- So, in total, each entry will take up a total of 80 bytes
+- Since each entry will be **consistently** 80 bytes, we use it as an offset to figure out where to place and locate specific entries
+
+Option 1 is to insert a key
+  - It generates a hash value from the key; the hash value is used as the *"key"* when doing BST operations since it should be unique to each entry of data
+  - After performing the BST operation to find where to put the new entry/node, it will determine the first open spot to 
+Option 2 is to search/find a value after inputting key
+Option 3 is to delete a node
+Option 4 will allow the user to exit the program and save the database in a storage file, which will allow the user to **use the saved database and its current data for future use.**
+    - This is accomplished by first serializing the data, which is essentially a clever way to sequentially store the data so that it can be used in the future to rebuild the BST; leaf nodes are represented as #, and regular nodes are represented as a 80 char containing the hash, key, and value; all of this info is stored in the storage.txt file.
+    - When the user runs the program again, it will deserialize the storage.txt file by sequentially reading the data and recursively rebuild the BST; when building the BST, it will do two things:
+      - if the next chunk of data is a # or we've reached the end of the file, then it will return NULL and do nothing
+      - else if the next chunk of data is the 80 char entry, then it will create and insert a new node to the BST
 
 
 
