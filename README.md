@@ -43,7 +43,7 @@ Further Info:
 **Option 4** will allow the user to exit the program and save the database in a storage file, which will allow the user to **use the saved database and its current data for future use.**  
     * This is accomplished by first serializing the data, which is essentially a clever way to sequentially store the data so that it can be used in the future to rebuild the BST; leaf nodes are represented as #, and regular nodes are represented as a 80 char containing the hash, key, and value; all of this info is stored in the storage.txt file.  
     * When the user runs the program again, it will deserialize the storage.txt file by sequentially reading the data and recursively rebuild the BST; when building the BST, it will do two things:  
-      - if the next chunk of data is a # or we've reached the end of the file, then it will return NULL and do nothing.
+      - if the next chunk of data is a # or we've reached the end of the file, then it will return NULL and do nothing.  
       - else if the next chunk of data is an 80 char entry, then it will create and insert a new node to the BST.  
 
 
