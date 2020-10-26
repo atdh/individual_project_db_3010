@@ -17,13 +17,13 @@ SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
 Further Info:
-- We are using a file (called "data.txt") as a way to store and manipulate the files; we are essentially using the data file as an array to store the entries of data 
+- We are using a data file (called "data.txt") as a way to store and manipulate the files; we are essentially using the data file as an array to store the entries of data 
 - Whenever we put in a new entry it will contain three fields in this order:
   - the hash value, which is generated from the key value and will be 16 chars long
   - the key, which will be 32 chars long
   - the value, which will be 32 chars long
 - So, in total, each entry will take up a total of 80 bytes.
-- Since each entry will be **consistently** 80 bytes, we use it as an offset to figure out where to place and locate specific entries.
+- Since each entry will be **consistently** 80 bytes, we use it as an offset to figure out where to place and locate specific entries within the data file.
 
 **Option 1** is to insert a key value pair
   - It generates a hash value from the key; the hash value is used as the *"key"* when doing BST operations since it should be unique to each entry of data
