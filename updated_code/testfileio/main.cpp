@@ -32,7 +32,6 @@ int main()
 }
 
 /*
-/*
         map.find(input username) == input password.
         if (userAttempt == userName)
         {
@@ -87,4 +86,4 @@ int main()
             {
                 exit;
             }
-        }*/
+}*/

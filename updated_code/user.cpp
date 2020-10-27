@@ -3,7 +3,8 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-
+#include <stdio.h>
+#include <stdlib.h>
 class user
 {
 public:
@@ -65,31 +66,33 @@ public:
         }
         fileName.close();
     }
-
-    std::string writeFile(const char *fileName)
-    {
-        std::ofstream myfile;
-        myfile.open("authentication.txt");
-        myfile << "Writing to a file" << std::endl;
-        myfile.close();
-    }
-
     void signUp()
     {
-        std::string username = "";
-        std::string password = "";
+        std::string writeUser = "";
+        std::string writePassword = "";
         std::cout << "Signup Form" << std::endl;
         std::cout << "Enter new Username" << std::endl;
-        std::cin >> username;
+        std::cin >> writeUser;
         std::cout << "Enter new password" << std::endl;
-        std::cin >> password;
+        std::cin >> writePassword;
+        writeFile(writeUser, writePassword);
+        std::cout << "Signed up succesfully." << std::endl;
+        std::cout << "Taking you to login page" << std::endl;
+        login();
+    }
+
+    void writeFile(std::string writeUser, std::string writePassword)
+    {
+        std::fstream myfile;
+        myfile.open("authentication.txt", std::fstream::app);
+        myfile << '\n' + writeUser << " " << writePassword;
     }
 
 private:
     std::string userAttempt;
     std::string passwordAttempt;
-    std::string passWord;
-    std::string userName;
+    std::string writePassword;
+    std::string writeUser;
     std::map<std::string, std::string> table;
     bool accessGranted = false;
 };
@@ -98,4 +101,5 @@ int main()
 {
     user logObj;
     logObj.login();
+    logObj.signUp();
 }
