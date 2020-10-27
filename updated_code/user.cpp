@@ -18,8 +18,7 @@ public:
         std::cin >> userAttempt;
         std::cout << "Enter Password: " << std::endl;
         std::cin >> passwordAttempt;
-        readFile(userAttempt, passwordAttempt);
-
+        readFile();
         //std::cout << it->first << it->second << std::endl;
         if (table[userAttempt] == passwordAttempt)
         {
@@ -49,7 +48,7 @@ public:
             }
         }
     }
-    void readFile(std::string userAttempt, std::string passwordAttempt)
+    void readFile()
     {
 
         std::ifstream fileName;
@@ -68,17 +67,30 @@ public:
     }
     void signUp()
     {
+
         std::string writeUser = "";
         std::string writePassword = "";
+
         std::cout << "Signup Form" << std::endl;
         std::cout << "Enter new Username" << std::endl;
         std::cin >> writeUser;
+        std::cout << "************" << std::endl;
+        for (std::map<std::string, std::string>::iterator it = table.begin(); it != table.end(); it++)
+        {
+            if (it->first == writeUser)
+            {
+                std::cout << "User exists. Come up with new name" << std::endl;
+                signUp();
+            }
+        }
+
         std::cout << "Enter new password" << std::endl;
         std::cin >> writePassword;
+
         writeFile(writeUser, writePassword);
         std::cout << "Signed up succesfully." << std::endl;
-        std::cout << "Taking you to login page" << std::endl;
-        login();
+        std::cout << "Run the program again" << std::endl;
+        exit;
     }
 
     void writeFile(std::string writeUser, std::string writePassword)
@@ -101,5 +113,4 @@ int main()
 {
     user logObj;
     logObj.login();
-    logObj.signUp();
 }
