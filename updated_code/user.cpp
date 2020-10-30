@@ -11,6 +11,7 @@ public:
     user()
     {
         accessGranted = false;
+        isAdmin = false;
     }
     void login()
     {
@@ -24,6 +25,11 @@ public:
         {
             accessGranted = true;
             std::cout << "authenticated succesfully";
+            if (userAttempt == "donald" && passwordAttempt == "trump")
+            {
+                std::cout << "\nHas admin access" << std::endl;
+                isAdmin = true;
+            }
         }
         else
         {
@@ -99,13 +105,19 @@ public:
         myfile.open("authentication.txt", std::fstream::app);
         myfile << '\n' + writeUser << " " << writePassword;
     }
+    //make an api call, which will in turn call the
+    //corresponding Microsoft cpp REST SDK method void
+    void makeAPIRequest();
+
+protected:
+    bool isAdmin = false;
+    std::map<std::string, std::string> table;
 
 private:
     std::string userAttempt;
     std::string passwordAttempt;
     std::string writePassword;
     std::string writeUser;
-    std::map<std::string, std::string> table;
     bool accessGranted = false;
 };
 
