@@ -260,12 +260,10 @@ public:
     {
         if (root == NULL)
         {
-            std::cout << "Didn't find in database" << std::endl;
             return root;
         }
         if (root->hash == hash)
         {
-            std::cout << "Info found in database" << std::endl;
             return root;
         }
         if (root->hash < hash)
@@ -461,6 +459,7 @@ int main()
 
         if (option == 1)
         {
+            bool existsAlready = false;
             std::cout << "Input a key" << std::endl;
             std::cin >> user_input_key;
 
@@ -477,13 +476,18 @@ int main()
             }
 
             hash = CreateHash(user_input_key);
-            std::cout << hash << std::endl;
+            // std::cout << hash << std::endl;
 
-            int spot_idx = db->FindFreeSpace();
-            std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
-            db->set_root(db->Insert(db->get_root(), hash, key_arr, value_arr, spot_idx * 80));
+            struct Node* temp = db->SearchNode(db->get_root(), hash);
+            if (temp == NULL) {
+                int spot_idx = db->FindFreeSpace();
+                std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
+                db->set_root(db->Insert(db->get_root(), hash, key_arr, value_arr, spot_idx * 80));
 
-            std::cout << "Size of the file is " << std::to_string(GetFileSize("data.txt")) << " bytes\n";
+                std::cout << "Size of the file is " << std::to_string(GetFileSize("data.txt")) << " bytes\n";
+            } else {
+                std::cout << "Sorry, but the key is already in the database. Please enter a unique key" << std::endl;
+            }
         }
 
         if (option == 2)
@@ -500,9 +504,12 @@ int main()
 
             if (tempNode != NULL)
             {
+                std::cout << "The key was found in the database" << std::endl;
                 int size = (sizeof(tempNode->value) / sizeof(char));
                 value = db->convertToStr(tempNode, size);
                 std::cout << "The corresponding value is " + value << std::endl;
+            } else {
+                std::cout << "The key doesn't exist in the database" << std::endl;
             }
         }
 
