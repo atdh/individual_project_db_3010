@@ -19,7 +19,7 @@ int GetFileSize(std::string file_name)
 struct Node
 {
 
-    Node(unsigned long hash, std::array<char, 32> key, std::array<char, 32> value, Node *left, Node *right, int starting)
+    Node(unsigned long hash, std::vector<char> key, std::vector<char> value, Node *left, Node *right, int starting)
     {
         this->hash = hash;
         this->key = key;
@@ -31,8 +31,8 @@ struct Node
 
     // total 80
     unsigned long hash;         // 16
-    std::array<char, 32> key;   // 32
-    std::array<char, 32> value; // 32
+    std::vector<char> key;   // 32
+    std::vector<char> value; // 32
     Node *left;
     Node *right;
     int starting;
@@ -54,6 +54,18 @@ public:
         marker = "#";
 
         CreateDataFile();
+    }
+
+    ~Database() {
+        DestroyBST(this->root);
+    }
+
+    void DestroyBST(struct Node* node) {
+        if (node) {
+            DestroyBST(node->left);
+            DestroyBST(node->right);
+            delete node;
+        }
     }
 
     void CreateDataFile()
@@ -127,10 +139,8 @@ public:
     void Deserialize(Node *&curr_node, FILE *fp, int file_size)
     {
         char val[80];
-        std::array<char, 32> key;
-        std::array<char, 32> value;
-        key.fill('$');
-        value.fill('$');
+        std::vector<char> key(32, '$');
+        std::vector<char> value(32, '$');
 
         if (!fscanf(fp, "%s ", val) || std::string(val) == "#")
             return;
@@ -138,15 +148,14 @@ public:
         // std::cout << val << std::endl;
 
         unsigned long hash = 0;
-        std::array<char, 16> hash_arr;
-        hash_arr.fill('$');
+        std::vector<char> hash_vec(16, '$');
         int key_idx = 0;
         int value_idx = 0;
         for (int i = 0; i < 80; i++)
         {
             if (i >= 0 && i < 16)
             {
-                hash_arr[i] = val[i];
+                hash_vec[i] = val[i];
             }
             else if (i >= 16 && i < 48)
             {
@@ -160,7 +169,7 @@ public:
             }
         }
 
-        std::string hash_str = std::string(std::begin(hash_arr), std::end(hash_arr));
+        std::string hash_str = std::string(std::begin(hash_vec), std::end(hash_vec));
         std::stringstream ss(hash_str);
         int hash_int = 0;
         ss >> hash_int;
@@ -215,7 +224,7 @@ public:
         return hash_arr;
     }
 
-    void InsertDataFile(unsigned long hash, std::array<char, 32> key, std::array<char, 32> value, int starting)
+    void InsertDataFile(unsigned long hash, std::vector<char> key, std::vector<char> value, int starting)
     {
         std::fstream myfile("data.txt", std::ios::in | std::ios::out);
         myfile.seekg(starting, std::ios::beg);
@@ -256,12 +265,15 @@ public:
             it->second = true;
     }
 
-    void Update(struct Node *node, std::array<char, 32> new_value) {
-        node->value = new_value;
+    void Update(struct Node *node, std::vector<char> new_value) {
+        node->value.clear();
+        for (char i : new_value) {
+            node->value.push_back(i);
+        }
         UpdateDataFile(node->starting, new_value);
     }
 
-    void UpdateDataFile(int offset, std::array<char, 32> new_value)
+    void UpdateDataFile(int offset, std::vector<char> new_value)
     {
         std::fstream myfile("data.txt", std::ios::in | std::ios::out);
         // we need to add an extra 48 since we want to skip the hash (which is 16 bytes) and the
@@ -297,16 +309,16 @@ public:
         }
     }
 
-    struct Node *Insert(struct Node *node, unsigned long hash, std::array<char, 32> key, std::array<char, 32> value, int starting)
+    struct Node *Insert(struct Node *node, unsigned long hash, std::vector<char> key, std::vector<char> value, int starting)
     {
         if (node == NULL)
         {
-            Node new_root(hash, key, value, NULL, NULL, starting);
+            Node* new_root= new Node(hash, key, value, NULL, NULL, starting);
             InsertDataFile(hash, key, value, starting);
             std::map<int, bool>::iterator it = free_spots.find(starting / 80);
             if (it != free_spots.end())
                 it->second = false;
-            return &new_root;
+            return new_root;
         }
 
         if (hash < node->hash)
@@ -456,11 +468,10 @@ int main()
     std::string data_file = "data.txt";
     std::fstream streamer(data_file, std::ios::in | std::ios::out);
 
-    std::array<char, 32> key_arr;
-    std::array<char, 32> value_arr;
-
-    key_arr.fill('$');
-    value_arr.fill('$');
+    // using vector so that we can clear it
+    // we can't clear the contents of an std::array
+    std::vector<char> key_vec(32, '$');
+    std::vector<char> value_vec(32, '$');
 
     std::string user_input_key;
     std::string user_input_value;
@@ -468,9 +479,13 @@ int main()
 
     while (true)
     {
+        key_vec.clear();
+        value_vec.clear();
 
-        key_arr.empty();
-        value_arr.empty();
+        for (int i = 0; i < 32; i++) {
+            key_vec.push_back('$');
+            value_vec.push_back('$');
+        }
 
         std::string option;
         std::cout << "Choose your option" << std::endl;
@@ -491,21 +506,21 @@ int main()
 
             for (int i = 0; i < (int)user_input_key.size(); i++)
             {
-                key_arr[i] = user_input_key[i];
+                key_vec[i] = user_input_key[i];
             }
             for (int i = 0; i < (int)user_input_value.size(); i++)
             {
-                value_arr[i] = user_input_value[i];
+                value_vec[i] = user_input_value[i];
             }
 
             hash = CreateHash(user_input_key);
-            // std::cout << hash << std::endl;
+            std::cout << hash << std::endl;
 
             struct Node* temp = db->SearchNode(db->get_root(), hash);
             if (temp == NULL) {
                 int spot_idx = db->FindFreeSpace();
                 std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
-                db->set_root(db->Insert(db->get_root(), hash, key_arr, value_arr, spot_idx * 80));
+                db->set_root(db->Insert(db->get_root(), hash, key_vec, value_vec, spot_idx * 80));
 
                 std::cout << "Size of the file is " << std::to_string(GetFileSize("data.txt")) << " bytes\n";
             } else {
@@ -519,7 +534,7 @@ int main()
             std::cout << "Input a key to search for" << std::endl;
             std::cin >> user_input_key;
             hash = CreateHash(user_input_key);
-            // std::cout << hash << std::endl;
+            std::cout << hash << std::endl;
             Node *temp_root = db->get_root();
             Node *tempNode = db->SearchNode(temp_root, hash);
             std::string value = "";
@@ -558,11 +573,11 @@ int main()
 
             for (int i = 0; i < (int)user_input_key.size(); i++)
             {
-                key_arr[i] = user_input_key[i];
+                key_vec[i] = user_input_key[i];
             }
             for (int i = 0; i < (int)user_input_value.size(); i++)
             {
-                value_arr[i] = user_input_value[i];
+                value_vec[i] = user_input_value[i];
             }
 
             Node *temp_root = db->get_root();
@@ -572,9 +587,9 @@ int main()
                 std::cout << "The key doesn't exit in the database. Will add it" << std::endl;
                 int spot_idx = db->FindFreeSpace();
                 std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
-                db->set_root(db->Insert(db->get_root(), hash, key_arr, value_arr, spot_idx * 80));
+                db->set_root(db->Insert(db->get_root(), hash, key_vec, value_vec, spot_idx * 80));
             } else {
-                db->Update(tmp_node, value_arr);
+                db->Update(tmp_node, value_vec);
             }
         }
 
