@@ -55,7 +55,7 @@ public:
                 table.erase(it);
             }
 
-                        for (std::map<std::string, std::string>::iterator it = table.begin(); it != table.end(); it++)
+            for (std::map<std::string, std::string>::iterator it = table.begin(); it != table.end(); it++)
             {
                 std::cout << it->first << it->second << std::endl;
             }
