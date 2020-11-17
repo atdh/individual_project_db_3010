@@ -39,3 +39,6 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     dialog.ui
+
+RESOURCE += \
+    authentication.txt

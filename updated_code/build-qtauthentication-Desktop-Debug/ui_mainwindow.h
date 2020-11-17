@@ -36,6 +36,7 @@ public:
     QLineEdit *lineEdit_username;
     QLineEdit *lineEdit_2_password;
     QPushButton *pushButton_login;
+    QPushButton *pushButton_signup;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -64,7 +65,10 @@ public:
         lineEdit_2_password->setGeometry(QRect(100, 60, 113, 25));
         pushButton_login = new QPushButton(groupBox);
         pushButton_login->setObjectName(QStringLiteral("pushButton_login"));
-        pushButton_login->setGeometry(QRect(18, 114, 201, 21));
+        pushButton_login->setGeometry(QRect(10, 90, 201, 21));
+        pushButton_signup = new QPushButton(groupBox);
+        pushButton_signup->setObjectName(QStringLiteral("pushButton_signup"));
+        pushButton_signup->setGeometry(QRect(10, 120, 201, 20));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -89,6 +93,7 @@ public:
         label_username->setText(QApplication::translate("MainWindow", "Username", Q_NULLPTR));
         label_2password->setText(QApplication::translate("MainWindow", "Password", Q_NULLPTR));
         pushButton_login->setText(QApplication::translate("MainWindow", "Login", Q_NULLPTR));
+        pushButton_signup->setText(QApplication::translate("MainWindow", "Signup", Q_NULLPTR));
     } // retranslateUi
 
 };
