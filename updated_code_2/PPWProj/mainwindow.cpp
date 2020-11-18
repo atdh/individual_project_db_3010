@@ -7,6 +7,10 @@
 #include <QFileDialog>
 #include <filesystem>
 #include <vector>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cstdio>
 
 DatabaseBST* MyDialog::db = new DatabaseBST();
 
@@ -79,6 +83,21 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    std::ofstream myfile;
+    myfile.open(MyDialog::db->get_file_path("data.txt").c_str(), std::ofstream::out | std::ofstream::trunc);
+    myfile.close();
+
+    FILE *fp = fopen(MyDialog::db->get_file_path("storage.txt").c_str(), "w");
+    if (fp == NULL)
+    {
+        puts("Could not open the file");
+    }
+
+    std::cout << "Saving data to the storage file." << std::endl;
+    MyDialog::db->Serialize(MyDialog::db->get_root(), fp);
+    std::cout << "All done. Closing off." << std::endl;
+    fclose(fp);
+
     delete ui;
 }
 
@@ -120,10 +139,18 @@ void MainWindow::Handle_AddKeyVal(std::string key, std::string value, Response r
 
 void MainWindow::on_pushButton_3_clicked()
 {
-
+    qDebug() << "In the put dialog";
+    REST_TYPE type = PUT;
+    QDialog* pd = DialogFactory::Create(type);
+    pd->setModal(true);
+    pd->exec();
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
-
+    qDebug() << "In the delete dialog";
+    REST_TYPE type = DELETE;
+    QDialog* dd = DialogFactory::Create(type);
+    dd->setModal(true);
+    dd->exec();
 }
