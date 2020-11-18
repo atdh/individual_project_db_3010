@@ -1,8 +1,7 @@
 # individual_project_db_3010
 
-Creating a key-value stored based database in C++. Currently, it allows the user to put in key value pairs in a hash map.
+This project, our goal was to have a working user and superuser class which we accomplished. Since they have not all been fully integrated yet, we just want to show user and super user class working. Futhermore, we started integrating the last checkpoint codes to GUI. Our post request is fully functional in GUI. We will have fully integrated all our code to GUI by next checkpoint. 
 
-For demonstration purposes, upon running the program, the user is asked to put in two key value pairs. Obviously, the hash map can hold significantly more key values pairs, but because we just want a short demonstration of it working, I'm only asking the user for two key value pair inputs. After putting in the two key value pairs, the program displays the contents of the database to verify that it is working.
 
 UPDATE: 11/17/2020
 **How to run it**
@@ -14,7 +13,9 @@ SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with
 
 
 *********************************
+Creating a key-value stored based database in C++. Currently, it allows the user to put in key value pairs in a hash map.
 
+For demonstration purposes, upon running the program, the user is asked to put in two key value pairs. Obviously, the hash map can hold significantly more key values pairs, but because we just want a short demonstration of it working, I'm only asking the user for two key value pair inputs. After putting in the two key value pairs, the program displays the contents of the database to verify that it is working.
 UPDATE: 10/23/2020
 **How to run it**
 - `cd updated_code` after opening individual_project_db_3010
