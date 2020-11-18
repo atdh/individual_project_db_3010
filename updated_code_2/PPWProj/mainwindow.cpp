@@ -12,8 +12,11 @@
 #include <sstream>
 #include <cstdio>
 
+// since the database is a static variable, we instantiate it here
+// made the database static so that it can be accessed more easily (through the class itself)
 DatabaseBST* MyDialog::db = new DatabaseBST();
 
+// this is a helper function to get the indices
 std::vector<int> get_inds(std::string file_name) {
     std::vector<int> inds;
 
@@ -27,6 +30,8 @@ std::vector<int> get_inds(std::string file_name) {
     return inds;
 }
 
+// we need to use the QCoreApplication::applicationDirPath() method in order to help us
+// get the full path of where the data and storage files are
 std::string MainWindow::GetFilePath(std::string file_name)
 {
     QString fullpath = QCoreApplication::applicationDirPath();
@@ -43,6 +48,7 @@ std::string MainWindow::GetFilePath(std::string file_name)
     return str_file_path;
 }
 
+// this is the main dialog upon starting up the application
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , key_vec(32, '$')
@@ -60,10 +66,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     Node *tmp_root = MyDialog::db->get_root();
 
+    // first, we check if there is any bytes in the storage file
     QFile fi(QString::fromStdString(MyDialog::db->get_file_path("storage.txt")));
 
     int size_storage = fi.size();
 
+    // if there is information in the storage file, then we recreate the bst
+    // using the information of the file
+    // NOTE: the file contains the entries, with each entry representing
+    // the hash value (16 bytes), the key (32 bytes), and value (32 bytes); each entry is
+    // 16+32+32 = 80 bytes
     if (size_storage > 0)
     {
         std::cout << "Rebuilding the BST" << std::endl;
@@ -81,6 +93,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pushButton_4->setText("DELETE");
 }
 
+// after we close the application, we need to make sure that we save the information
+// in the data file into the storage file so that we can persistently save the
+// entries upon future use
 MainWindow::~MainWindow()
 {
     std::ofstream myfile;
@@ -101,6 +116,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// this launches the GET request dialog
 void MainWindow::on_pushButton_clicked()
 {
     REST_TYPE type = GET;
@@ -110,6 +126,7 @@ void MainWindow::on_pushButton_clicked()
     gd->exec();
 }
 
+// this launches the POST request dialog
 void MainWindow::on_pushButton_2_clicked()
 {
     REST_TYPE type = POST;
@@ -120,6 +137,7 @@ void MainWindow::on_pushButton_2_clicked()
     pd->exec();
 }
 
+// this is the callback function of when the user submits the post request
 void MainWindow::Handle_AddKeyVal(std::string key, std::string value, Response res)
 {
     if (res.successful) {
@@ -137,6 +155,7 @@ void MainWindow::Handle_AddKeyVal(std::string key, std::string value, Response r
     }
 }
 
+// this launches the PUT request dialog
 void MainWindow::on_pushButton_3_clicked()
 {
     qDebug() << "In the put dialog";
@@ -146,6 +165,7 @@ void MainWindow::on_pushButton_3_clicked()
     pd->exec();
 }
 
+// this launches the DELETE request dialog
 void MainWindow::on_pushButton_4_clicked()
 {
     qDebug() << "In the delete dialog";

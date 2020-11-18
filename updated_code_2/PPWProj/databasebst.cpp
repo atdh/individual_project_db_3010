@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 #include <QtDebug>
 
+// constructor
 DatabaseBST::DatabaseBST()
 {
     total_spots = 20;
@@ -47,6 +48,7 @@ void DatabaseBST::CreateDataFiles() {
     my_storage_file.close();
 }
 
+// setters and getters for the files
 void DatabaseBST::set_file_path(std::string file_name, std::string file_path) {
     if (file_name == "storage.txt") {
         storage_file_path = file_path;
@@ -72,6 +74,7 @@ void DatabaseBST::ExpandFreeSpace() {
     total_spots += 20;
 }
 
+// serializing the data into the storage file
 void DatabaseBST::Serialize(Node *root, FILE *fp) {
     if (root == NULL)
     {
@@ -123,6 +126,7 @@ void DatabaseBST::Serialize(Node *root, FILE *fp) {
     Serialize(root->right, fp);
 }
 
+// recreating the BST from the storage file
 void DatabaseBST::Deserialize(Node *&curr_node, FILE *fp) {
     char val[80];
     std::vector<char> key(32, '$');
@@ -208,6 +212,7 @@ std::array<char, 16> DatabaseBST::ConvHashToStr(unsigned long hash)
     return hash_arr;
 }
 
+// inserting the entry into the data file
 void DatabaseBST::InsertDataFile(unsigned long hash, std::vector<char> key, std::vector<char> value, int starting)
 {
     std::fstream myfile(data_file_path, std::ios::in | std::ios::out);
@@ -232,6 +237,7 @@ void DatabaseBST::InsertDataFile(unsigned long hash, std::vector<char> key, std:
     myfile.close();
 }
 
+// deleting the entry from the data file using the offset
 void DatabaseBST::DeleteDataFile(int offset)
 {
     std::fstream myfile(data_file_path, std::ios::in | std::ios::out);
@@ -398,6 +404,7 @@ void DatabaseBST::Inorder(Node *root)
     Inorder(root->right);
 }
 
+// some helper functions
 void DatabaseBST::IncrTotalSpots()
 {
     total_spots += 1;

@@ -9,23 +9,33 @@
 class user
 {
 public:
+    //user constructor that initializes the boolean accessgranted and isadmin to false. accessgranted will be true if succefully
+    //logged in. isAdmin will be true if a proper credential for an admin is identified. isadmin will be superuser class
+    //if isadmin then they can delete tables
     user()
     {
         accessGranted = false;
         isAdmin = false;
     }
+    //logs in.if not succesful then gives option to try again or sign up
     void login()
     {
         std::cout << "Enter username" << std::endl;
         std::cin >> userAttempt;
         std::cout << "Enter Password: " << std::endl;
         std::cin >> passwordAttempt;
+
+        //reads file and puts things in hash table as it does so
         readFile();
         //std::cout << it->first << it->second << std::endl;
+
+        //if it finds correct user name and password user logged in succesfully
         if (table[userAttempt] == passwordAttempt)
         {
             accessGranted = true;
             std::cout << "authenticated succesfully";
+
+            //if its an admin then I will print options that the admin has
             if (userAttempt == "donald" && passwordAttempt == "trump")
             {
                 std::cout << "\nHas admin access" << std::endl;
@@ -49,10 +59,10 @@ public:
             {
                 signUp();
             }
-            if (choice == 3)
+            /*if (choice == 3)
             {
                 exit;
-            }
+            }*/
         }
     }
     void readFile()
@@ -97,7 +107,7 @@ public:
         writeFile(writeUser, writePassword);
         std::cout << "Signed up succesfully." << std::endl;
         std::cout << "Run the program again" << std::endl;
-        exit;
+        //exit;
     }
 
     void writeFile(std::string writeUser, std::string writePassword)
@@ -110,20 +120,14 @@ public:
     //corresponding Microsoft cpp REST SDK method void
     void makeAPIRequest();
 
-protected:
+    //protected:
     bool isAdmin = false;
     std::map<std::string, std::string> table;
 
-private:
+    //private:
     std::string userAttempt;
     std::string passwordAttempt;
     std::string writePassword;
     std::string writeUser;
     bool accessGranted = false;
 };
-
-// int main()
-// {
-//     user logObj;
-//     logObj.login();
-// }

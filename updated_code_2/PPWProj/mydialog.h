@@ -5,6 +5,10 @@
 #include <QDialog>
 #include "databasebst.h"
 
+// this class is the base class of the get, post, put, and delete dialog classes
+// I decided to use inheritance since it saved on having to repeatedly create the
+// members, such as key and value, and the methods, such as set_key() and set_value()
+// for every single dialog class
 class MyDialog {
 private:
     std::string api_type;

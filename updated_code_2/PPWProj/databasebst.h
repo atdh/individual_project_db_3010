@@ -41,6 +41,10 @@ struct Node
     int starting;
 };
 
+// this is where the logic of querying in the database occurs
+// we use a BST data structure to handle all of the necessary requests
+// that would call its corresponding BST operation (i.e. a GET request
+// would call the Search() method of the BST)
 class DatabaseBST
 {
 public:
