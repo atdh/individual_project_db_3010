@@ -27,21 +27,11 @@ For next deadline, we are planning to finish integrate user and superuser class 
 
 NOTE: We are thinking that if we have time, we could show the difference in performance with btree we found online vs binary search tree we have in interacting with our data. 
 
-Screenshots/gifs of where your app/program/etc is currently at. They don’t have to be exhaustive but they should adequately depict the current state of your project. Embed these for the relevant sections in your .md files.
+In this video/gifs, make sure to:
+1) describe what is happening and 
+2) point out the specific pieces that in your code that correspond to what you are narrating
 
-BEFORE INSERTION:
+Here is a link to our video demonstration of what we have done so far:
+https://www.youtube.com/watch?v=JLt7IPtgVbA&feature=youtu.be&ab_channel=BrianNguyen
 
-beforeiinsertion
-AFTER INSERTION:
 
-afterinsertion
-
-SEARCH:
-searching
-
-BEFORE DELETING A ROW:
-beforedelete
-
-AFTER DELETING A ROW:
-
-afterdelete
