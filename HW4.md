@@ -13,7 +13,7 @@ GUI and finished product will be done by the final.
 
 ***OUR GOAL WAS TO HAVE A WORKING USER AND SUPERUSER FOR THIS CLASS and to start merging database to GUI***
 
-2. What you actually accomplished for this deadline.
+2. What you actually accomplished for this deadline.  
 ***We have the minimum viable user and superuser working. Superuser inherits from user class and is able to do everything user can do in addition to delete users.We also finished integrating get request,post request, and put request buttons on GUI. We managed to integrate the database we created last checkpoint to GUI. In essence, we managed to stay on track to our deadline.***  
 
   a) Note any differences and explain why they occurred. Prefer honesty over excuses.  
