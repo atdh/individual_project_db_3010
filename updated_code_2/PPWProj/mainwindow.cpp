@@ -59,9 +59,9 @@ MainWindow::MainWindow(QWidget *parent)
         MyDialog::db->set_root(tmp_root);
 
         // getting all of the nodes from the storage file into an array
-        MyDialog::db->InOrderTravRebuild(tmp_root);
+        MyDialog::db->PreOrderTravRebuild(tmp_root);
 
-        std::vector<struct Node*> all_nodes_storage = MyDialog::db->get_inorder_trav_rebuild();
+        std::vector<struct Node*> all_nodes_storage = MyDialog::db->get_preorder_trav_rebuild();
         for (auto n : all_nodes_storage) {
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
             std::string key_str = MyDialog::db->ConvertToStr(n->key);
@@ -117,14 +117,15 @@ void MainWindow::on_pushButton_clicked()
 // this is the callback function of when the user submits a get request
 void MainWindow::HandleGetRes(Response res)
 {
+    ui->response_message_2->setText("");
     if (res.successful) {
         ui->response_stat->setText("GOOD");
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
-        ui->response_message->setText(res.body_info);
+        ui->response_message_1->setText(res.body_info);
     } else {
         ui->response_stat->setText("BAD");
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(180, 0, 0);}"));
-        ui->response_message->setText(res.body_info);
+        ui->response_message_1->setText(res.body_info);
     }
 }
 
@@ -142,10 +143,11 @@ void MainWindow::on_pushButton_2_clicked()
 // this is the callback function of when the user submits a post request
 void MainWindow::HandlePostRes(std::string key, std::string value, Response res)
 {
+    ui->response_message_2->setText("");
     if (res.successful) {
         ui->response_stat->setText("GOOD");
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
-        ui->response_message->setText(res.body_info);
+        ui->response_message_1->setText(res.body_info);
 
         ui->tableWidget->insertRow(ui->tableWidget->rowCount());
         ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(key)));
@@ -153,18 +155,52 @@ void MainWindow::HandlePostRes(std::string key, std::string value, Response res)
     } else {
         ui->response_stat->setText("BAD");
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(180, 0, 0);}"));
-        ui->response_message->setText(res.body_info);
+        ui->response_message_1->setText(res.body_info);
     }
 }
 
 // this launches the PUT request dialog
 void MainWindow::on_pushButton_3_clicked()
 {
-    qDebug() << "In the put dialog";
     REST_TYPE type = PUT;
     QDialog* pd = DialogFactory::Create(type);
+    connect(pd, SIGNAL(SendPutRes(std::string, std::string, Response)), this, SLOT(HandlePutRes(std::string, std::string, Response)));
+
     pd->setModal(true);
     pd->exec();
+}
+
+// this is the callback function of when the user submits a post request
+void MainWindow::HandlePutRes(std::string key, std::string value, Response res)
+{
+    std::string res_str = res.body_info.toLocal8Bit().constData();
+    std::vector<std::string> vec_res_str;
+
+    std::stringstream ss(res_str);
+
+    while(ss.good()) {
+        std::string substr;
+        getline(ss, substr, '$');
+        vec_res_str.push_back(substr);
+    }
+
+    if (!res.successful) {
+        ui->response_stat->setText("GOOD");
+        ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
+        ui->response_message_1->setText(res.body_info);
+        ui->response_message_2->setText("");
+
+        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+        ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(key)));
+        ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(value)));
+    } else {
+        ui->response_stat->setText("GOOD");
+        ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
+        ui->response_message_1->setText(QString::fromStdString(vec_res_str[0]));
+        ui->response_message_2->setText(QString::fromStdString(vec_res_str[1]));
+
+        ui->tableWidget->item(res.put_update_row, 1)->setText(res.put_update_value);
+    }
 }
 
 // this launches the DELETE request dialog

@@ -19,11 +19,13 @@ PutDialog::~PutDialog()
 
 void PutDialog::on_pushButton_clicked()
 {
-    qDebug() << "Within put";
     std::string key_str = ui->textEdit->toPlainText().toLocal8Bit().constData();
     set_key(key_str);
     std::string value_str = ui->textEdit_2->toPlainText().toLocal8Bit().constData();
     set_value(value_str);
+
+    Response r = DoRequest();
+    emit SendPutRes(key_str, value_str, r);
 }
 
 Response PutDialog::DoRequest()
@@ -35,21 +37,20 @@ Response PutDialog::DoRequest()
     reset_key_value_vecs();
     fill_key_value_vecs();
 
-    if (temp_node == nullptr) {
+    if (temp_node == NULL) {
         int spot_idx = db->FindFreeSpace();
         std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
         db->set_root(db->Insert(db->get_root(), hash, get_key_vec(), get_value_vec(), spot_idx * 80));
 
-        return Response(true, "The key doesn't exist in the database. Will add it");
+        return Response(false, "Key doesn't exist. Adding it");
     } else {
-        std::cout << "Sorry, but the key is already in the database. Please enter a unique key" << std::endl;
+        std::string res_str = "Key exists already. Updating value from$" + db->ConvertToStr(temp_node->value);
+        res_str += " to " + get_value();
+        db->Update(temp_node, get_value_vec());
 
-        std::string val_str = "";
-        for (int i = 0; i < (int)temp_node->value.size(); i++) {
-            val_str += temp_node->value[i];
-        }
-
-        std::string res_str = "The key already exists. Will change the value from " + val_str + " to " + get_value();
-        return Response(true, QString::fromStdString(res_str));
+        Response r(true, QString::fromStdString(res_str));
+        r.put_update_row = temp_node->starting/80;
+        r.put_update_value = QString::fromStdString(get_value());
+        return r;
     }
 }

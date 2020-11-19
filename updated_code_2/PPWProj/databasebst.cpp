@@ -44,21 +44,24 @@ void DatabaseBST::DestroyBST(struct Node* node) {
     }
 }
 
-// after we rebuilding the BST, we do an inorder traversal so that we can append
-// the nodes into the inorder_trav_rebuild arr
-// the inorder_trav_rebuild_arr gets used in order to rebuild the table in the UI
-void DatabaseBST::InOrderTravRebuild(struct Node *node) {
+// after we rebuilding the BST, we do an pre order traversal so that we can append
+// the nodes into the preorder_trav_rebuild arr
+// the preorder_trav_rebuild_arr gets used in order to rebuild the table in the UI
+// the reason why we do a pre order traversal in order to rebuild the BST is because
+// the serialization process does it in a pre order fashion
+// and we want the two processes to be consistent
+void DatabaseBST::PreOrderTravRebuild(struct Node *node) {
     if (node == nullptr) {
         return;
     }
 
-    InOrderTravRebuild(node->left);
-    inorder_trav_rebuild.push_back(node);
-    InOrderTravRebuild(node->right);
+    preorder_trav_rebuild.push_back(node);
+    PreOrderTravRebuild(node->left);
+    PreOrderTravRebuild(node->right);
 }
 
-std::vector<struct Node*> DatabaseBST::get_inorder_trav_rebuild() {
-    return inorder_trav_rebuild;
+std::vector<struct Node*> DatabaseBST::get_preorder_trav_rebuild() {
+    return preorder_trav_rebuild;
 }
 
 void DatabaseBST::CreateDataFiles() {

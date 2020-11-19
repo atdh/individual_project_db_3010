@@ -34,8 +34,9 @@ public:
     QLabel *response_stat_title;
     QLabel *response_stat;
     QLabel *response_message_title;
-    QLabel *response_message;
+    QLabel *response_message_1;
     QTableWidget *tableWidget_2;
+    QLabel *response_message_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -67,20 +68,20 @@ public:
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         tableWidget->setEnabled(true);
-        tableWidget->setGeometry(QRect(560, 180, 211, 271));
+        tableWidget->setGeometry(QRect(560, 170, 211, 271));
         tableWidget->setRowCount(0);
         response_stat_title = new QLabel(centralwidget);
         response_stat_title->setObjectName(QString::fromUtf8("response_stat_title"));
-        response_stat_title->setGeometry(QRect(20, 180, 121, 17));
+        response_stat_title->setGeometry(QRect(20, 170, 121, 17));
         response_stat = new QLabel(centralwidget);
         response_stat->setObjectName(QString::fromUtf8("response_stat"));
-        response_stat->setGeometry(QRect(20, 200, 111, 17));
+        response_stat->setGeometry(QRect(20, 190, 111, 21));
         response_message_title = new QLabel(centralwidget);
         response_message_title->setObjectName(QString::fromUtf8("response_message_title"));
-        response_message_title->setGeometry(QRect(20, 250, 141, 17));
-        response_message = new QLabel(centralwidget);
-        response_message->setObjectName(QString::fromUtf8("response_message"));
-        response_message->setGeometry(QRect(20, 270, 301, 21));
+        response_message_title->setGeometry(QRect(20, 230, 141, 17));
+        response_message_1 = new QLabel(centralwidget);
+        response_message_1->setObjectName(QString::fromUtf8("response_message_1"));
+        response_message_1->setGeometry(QRect(20, 250, 291, 21));
         tableWidget_2 = new QTableWidget(centralwidget);
         if (tableWidget_2->columnCount() < 2)
             tableWidget_2->setColumnCount(2);
@@ -90,8 +91,11 @@ public:
         tableWidget_2->setHorizontalHeaderItem(1, __qtablewidgetitem3);
         tableWidget_2->setObjectName(QString::fromUtf8("tableWidget_2"));
         tableWidget_2->setEnabled(true);
-        tableWidget_2->setGeometry(QRect(340, 180, 211, 271));
+        tableWidget_2->setGeometry(QRect(330, 170, 211, 271));
         tableWidget_2->setRowCount(0);
+        response_message_2 = new QLabel(centralwidget);
+        response_message_2->setObjectName(QString::fromUtf8("response_message_2"));
+        response_message_2->setGeometry(QRect(20, 270, 291, 21));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -117,14 +121,15 @@ public:
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Key", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Value", nullptr));
-        response_stat_title->setText(QCoreApplication::translate("MainWindow", "Response Status:", nullptr));
+        response_stat_title->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Response Status:</span></p></body></html>", nullptr));
         response_stat->setText(QString());
-        response_message_title->setText(QCoreApplication::translate("MainWindow", "Response Message:", nullptr));
-        response_message->setText(QString());
+        response_message_title->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Response Message:</span></p></body></html>", nullptr));
+        response_message_1->setText(QString());
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "User", nullptr));
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Key", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Password", nullptr));
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Value", nullptr));
+        response_message_2->setText(QString());
     } // retranslateUi
 
 };

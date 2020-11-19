@@ -13,6 +13,8 @@
 struct Response {
     bool successful;
     QString body_info;
+    int put_update_row;
+    QString put_update_value;
     Response() {}
     Response(bool successful, QString body_info):
         successful(successful),
@@ -53,8 +55,8 @@ public:
     DatabaseBST();
     ~DatabaseBST();
     void DestroyBST(struct Node* node);
-    void InOrderTravRebuild(struct Node* node);
-    std::vector<struct Node*> get_inorder_trav_rebuild();
+    void PreOrderTravRebuild(struct Node* node);
+    std::vector<struct Node*> get_preorder_trav_rebuild();
     unsigned long CreateHash(std::string s);
     void CreateDataFiles();
     void set_file_path(std::string file_name, std::string file_path);
@@ -87,7 +89,7 @@ private:
     std::string data_file_path;
     std::string storage_file_path;
 
-    std::vector<struct Node*> inorder_trav_rebuild;
+    std::vector<struct Node*> preorder_trav_rebuild;
 
     std::string marker; // this is a marker for the serialization of the binary tree; it indicates if the node is NULL
 };

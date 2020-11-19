@@ -29,6 +29,7 @@ private slots:
 
     void HandleGetRes(Response res);
     void HandlePostRes(std::string key, std::string value, Response res);
+    void HandlePutRes(std::string key, std::string value, Response res);
 
 private:
     Ui::MainWindow *ui;

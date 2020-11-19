@@ -20,6 +20,9 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+signals:
+    void SendPutRes(std::string key, std::string value, Response res);
+
 private:
     Ui::PutDialog *ui;
 };
