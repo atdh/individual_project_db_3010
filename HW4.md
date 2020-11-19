@@ -20,7 +20,7 @@ GUI and finished product will be done by the final.
 ***There were no differences.***  
 
 3. What you had planned to do for the next deadline.  
-***For next deadline, we are planning to finish integrate user and superuser class to GUI as well as start integrating the entire code. User can sign up or log in and after doing so, based on the priviledge the user has, they will be able to make get,post,put,and delete requests. Admins will be able to delete users. This will all happen in GUI.***    
+***For next deadline, we are planning to finish integrate user and superuser class to GUI as well as finish integrating the the database code into the GUI. User can sign up or log in and after doing so, based on the priviledge the user has, they will be able to make get,post,put,and delete requests. Admins will be able to delete users. This will all happen in GUI.***    
 
   a) Any changes you would like to make to this plan for the next deadline and the reasoning behind each change.  
 NOTE: We are thinking that if we have time, we could show the difference in performance with btree we found online vs binary search tree we have in interacting with our data. 
