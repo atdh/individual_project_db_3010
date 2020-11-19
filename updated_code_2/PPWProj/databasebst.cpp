@@ -175,7 +175,7 @@ void DatabaseBST::Deserialize(Node *&curr_node, FILE *fp) {
             key[key_idx] = val[i];
             key_idx += 1;
         }
-        else
+        else if (i >= 48)
         {
             value[value_idx] = val[i];
             value_idx += 1;

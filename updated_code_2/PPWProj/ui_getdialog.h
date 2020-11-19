@@ -43,7 +43,7 @@ public:
 
     void retranslateUi(QDialog *GetDialog)
     {
-        GetDialog->setWindowTitle(QCoreApplication::translate("GetDialog", "Dialog", nullptr));
+        GetDialog->setWindowTitle(QCoreApplication::translate("GetDialog", "GetDialog", nullptr));
         pushButton->setText(QCoreApplication::translate("GetDialog", "PushButton", nullptr));
     } // retranslateUi
 

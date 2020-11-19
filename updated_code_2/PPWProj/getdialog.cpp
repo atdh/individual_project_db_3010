@@ -36,7 +36,7 @@ Response GetDialog::DoRequest()
     if (temp_node != NULL)
     {
         std::string value = db->ConvertToStr(temp_node->value);
-        std::string res_str =  "Found key the database. Value is " + value;
+        std::string res_str =  "Found key in database. Value is " + value;
 
         return Response(true, QString::fromStdString(res_str));
     } else {
