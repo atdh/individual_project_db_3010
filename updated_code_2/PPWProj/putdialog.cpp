@@ -49,7 +49,7 @@ Response PutDialog::DoRequest()
         db->Update(temp_node, get_value_vec());
 
         Response r(true, QString::fromStdString(res_str));
-        r.put_update_row = temp_node->starting/80;
+        r.put_update_key = QString::fromStdString(get_key());
         r.put_update_value = QString::fromStdString(get_value());
         return r;
     }

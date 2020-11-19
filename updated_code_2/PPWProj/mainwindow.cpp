@@ -32,6 +32,23 @@ int GetFileSize(std::string file_name) {
     return file_size;
 }
 
+int MainWindow::GetRowEntry(QString key) {
+    // return a list of all matching results
+    // it looks at column 0 (which is the Key column) of the table
+    // and looks at each row and creates a list of QModelIndex
+    // object that match the given value
+    QModelIndexList results = ui->tableWidget->model()->match(
+        ui->tableWidget->model()->index(0, 0),
+        Qt::DisplayRole,
+        key,
+        -1,
+        Qt::MatchContains
+    );
+    // results should only have one item, which is the QModelIndex
+    // that contains the key
+    return results[0].row();
+}
+
 // this is the main dialog upon starting up the application
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -178,7 +195,7 @@ void MainWindow::on_pushButton_3_clicked()
     pd->exec();
 }
 
-// this is the callback function of when the user submits a post request
+// this is the callback function of when the user submits a put request
 void MainWindow::HandlePutRes(std::string key, std::string value, Response res)
 {
     qDebug() << GetFileSize("data.txt");
@@ -208,7 +225,9 @@ void MainWindow::HandlePutRes(std::string key, std::string value, Response res)
         ui->response_message_1->setText(QString::fromStdString(vec_res_str[0]));
         ui->response_message_2->setText(QString::fromStdString(vec_res_str[1]));
 
-        ui->tableWidget->item(res.put_update_row, 1)->setText(res.put_update_value);
+        int row_key = GetRowEntry(res.put_update_key);
+
+        ui->tableWidget->item(row_key, 1)->setText(res.put_update_value);
     }
 }
 
@@ -218,9 +237,28 @@ void MainWindow::on_pushButton_4_clicked()
     qDebug() << "In the delete dialog";
     REST_TYPE type = DELETE;
     QDialog* dd = DialogFactory::Create(type);
-    ui->tableWidget->insertRow(0);
-    ui->tableWidget->setItem (0, 0, new QTableWidgetItem(QString::fromStdString("foo")));
-    ui->tableWidget->setItem (0, 1, new QTableWidgetItem(QString::fromStdString("bar")));
+    connect(dd, SIGNAL(SendDelRes(Response)), this, SLOT(HandleDelRes(Response)));
+
     dd->setModal(true);
     dd->exec();
+}
+
+// this is the callback function of when the user submits a delete request
+void MainWindow::HandleDelRes(Response res)
+{
+    qDebug() << GetFileSize("data.txt");
+    ui->response_message_2->setText("");
+    if (res.successful) {
+        ui->response_stat->setText("GOOD");
+        ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
+        ui->response_message_1->setText(res.body_info);
+
+        int row_key = GetRowEntry(res.delete_key);
+
+        ui->tableWidget->removeRow(row_key);
+    } else {
+        ui->response_stat->setText("BAD");
+        ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(180, 0, 0);}"));
+        ui->response_message_1->setText(res.body_info);
+    }
 }

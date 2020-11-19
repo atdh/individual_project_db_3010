@@ -13,8 +13,11 @@
 struct Response {
     bool successful;
     QString body_info;
-    int put_update_row;
+
+    QString put_update_key;
     QString put_update_value;
+
+    QString delete_key;
     Response() {}
     Response(bool successful, QString body_info):
         successful(successful),
