@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextEdit>
 
 QT_BEGIN_NAMESPACE
 
@@ -20,6 +21,7 @@ class Ui_DeleteDialog
 {
 public:
     QPushButton *pushButton;
+    QTextEdit *textEdit;
 
     void setupUi(QDialog *DeleteDialog)
     {
@@ -28,7 +30,10 @@ public:
         DeleteDialog->resize(400, 124);
         pushButton = new QPushButton(DeleteDialog);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(150, 60, 89, 25));
+        pushButton->setGeometry(QRect(150, 80, 89, 25));
+        textEdit = new QTextEdit(DeleteDialog);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setGeometry(QRect(20, 30, 360, 30));
 
         retranslateUi(DeleteDialog);
         QObject::connect(pushButton, SIGNAL(clicked()), DeleteDialog, SLOT(close()));

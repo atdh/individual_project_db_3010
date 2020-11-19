@@ -14,7 +14,14 @@ class DeleteDialog : public QDialog, public MyDialog
 
 public:
     explicit DeleteDialog(std::string input_type, QWidget *parent = nullptr);
+    Response DoRequest();
     ~DeleteDialog();
+
+private slots:
+    void on_pushButton_clicked();
+
+signals:
+    void SendDelRes(Response res);
 
 private:
     Ui::DeleteDialog *ui;

@@ -27,9 +27,12 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    int GetRowEntry(QString key);
+
     void HandleGetRes(Response res);
     void HandlePostRes(std::string key, std::string value, Response res);
     void HandlePutRes(std::string key, std::string value, Response res);
+    void HandleDelRes(Response res);
 
 private:
     Ui::MainWindow *ui;
