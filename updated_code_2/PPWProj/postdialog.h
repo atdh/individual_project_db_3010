@@ -21,7 +21,7 @@ private slots:
     void on_pushButton_clicked();
 
 signals:
-    void AddKeyVal(std::string key, std::string value, Response res);
+    void SendPostRes(std::string key, std::string value, Response res);
 
 private:
     Ui::PostDialog *ui;

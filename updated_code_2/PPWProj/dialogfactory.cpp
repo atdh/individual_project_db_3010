@@ -9,6 +9,7 @@ DialogFactory::DialogFactory()
 
 }
 
+// creates the corresponding REST api dialog based on what the input REST_TYPE
 QDialog* DialogFactory::Create(REST_TYPE input_type) {
     if (input_type == REST_TYPE::GET) {
         return new GetDialog("GET");

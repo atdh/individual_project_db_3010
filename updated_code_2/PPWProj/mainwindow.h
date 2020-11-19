@@ -15,10 +15,6 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    std::vector<char> key_vec;
-    std::vector<char> value_vec;
-    unsigned long hash;
-
     std::string GetFilePath(std::string file_name);
     ~MainWindow();
 
@@ -31,7 +27,7 @@ private slots:
 
     void on_pushButton_4_clicked();
 
-    void Handle_AddKeyVal(std::string key, std::string value, Response res);
+    void HandlePostRes(std::string key, std::string value, Response res);
 
 private:
     Ui::MainWindow *ui;

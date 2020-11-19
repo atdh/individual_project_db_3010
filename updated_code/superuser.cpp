@@ -33,7 +33,6 @@ public:
         std::cout << "Option 5: Delete key(5)" << std::endl;
 
         //add = post request
-        //get shit get request
         std::cin >> choice;
         if (choice == "1")
         {

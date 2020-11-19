@@ -29,6 +29,8 @@ std::vector<char> MyDialog::get_value_vec() {
     return value_vec;
 }
 
+// we reset the key and value vecs because it gives us a clean slate
+// to work with in order to handle the next REST api request
 void MyDialog::reset_key_value_vecs() {
     key_vec.clear();
     value_vec.clear();

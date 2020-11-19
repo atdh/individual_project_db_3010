@@ -16,34 +16,12 @@
 // made the database static so that it can be accessed more easily (through the class itself)
 DatabaseBST* MyDialog::db = new DatabaseBST();
 
-// this is a helper function to get the indices
-std::vector<int> get_inds(std::string file_name) {
-    std::vector<int> inds;
-
-    for (int i = 0; i < (int)file_name.length(); i++) {
-        char c = file_name[i];
-        if (c == (char)'/') {
-            inds.push_back(i);
-        }
-    }
-
-    return inds;
-}
-
 // we need to use the QCoreApplication::applicationDirPath() method in order to help us
 // get the full path of where the data and storage files are
 std::string MainWindow::GetFilePath(std::string file_name)
 {
-    QString fullpath = QCoreApplication::applicationDirPath();
-    std::string str_file_path = fullpath.toLocal8Bit().constData();
-
-    std::vector<int> inds = get_inds(str_file_path);
-
-    if (inds.size() > 2) {
-        str_file_path = str_file_path.substr(0, inds[inds.size()-2]);
-    }
-
-    str_file_path += "/PPWProj/" + file_name;
+    std::string str_file_path = QDir::currentPath().toLocal8Bit().constData();
+    str_file_path += "/" + file_name;
     qDebug() << QString::fromStdString(str_file_path);
     return str_file_path;
 }
@@ -51,8 +29,6 @@ std::string MainWindow::GetFilePath(std::string file_name)
 // this is the main dialog upon starting up the application
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , key_vec(32, '$')
-    , value_vec(32, '$')
     , ui(new Ui::MainWindow)
 {
 
@@ -131,14 +107,14 @@ void MainWindow::on_pushButton_2_clicked()
 {
     REST_TYPE type = POST;
     QDialog* pd = DialogFactory::Create(type);
-    connect(pd, SIGNAL(AddKeyVal(std::string, std::string, Response)), this, SLOT(Handle_AddKeyVal(std::string, std::string, Response)));
+    connect(pd, SIGNAL(SendPostRes(std::string, std::string, Response)), this, SLOT(HandlePostRes(std::string, std::string, Response)));
 
     pd->setModal(true);
     pd->exec();
 }
 
 // this is the callback function of when the user submits the post request
-void MainWindow::Handle_AddKeyVal(std::string key, std::string value, Response res)
+void MainWindow::HandlePostRes(std::string key, std::string value, Response res)
 {
     if (res.successful) {
         ui->response_stat->setText("GOOD");

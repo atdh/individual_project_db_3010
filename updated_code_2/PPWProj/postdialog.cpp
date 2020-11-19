@@ -27,7 +27,7 @@ void PostDialog::on_pushButton_clicked()
 
     Response r = DoRequest();
     qDebug() << r.body_info;
-    emit AddKeyVal(key_str, value_str, r);
+    emit SendPostRes(key_str, value_str, r);
 }
 
 Response PostDialog::DoRequest()

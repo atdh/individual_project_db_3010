@@ -22,6 +22,7 @@ DatabaseBST::~DatabaseBST() {
     DestroyBST(this->root);
 }
 
+// we need to create a hash value in order to uniquely identify each entry
 unsigned long DatabaseBST::CreateHash(std::string s) {
     unsigned long hash = 5381;
 
@@ -33,6 +34,7 @@ unsigned long DatabaseBST::CreateHash(std::string s) {
     return hash;
 }
 
+// recursively destroying the bst in order to avoid any memory issues
 void DatabaseBST::DestroyBST(struct Node* node) {
     if (node) {
         DestroyBST(node->left);
@@ -172,6 +174,7 @@ void DatabaseBST::Deserialize(Node *&curr_node, FILE *fp) {
     Deserialize(curr_node->right, fp);
 }
 
+// setter ang getter for the root node of the BST
 void DatabaseBST::set_root(Node *node) {
     root = node;
 }
@@ -255,6 +258,8 @@ void DatabaseBST::DeleteDataFile(int offset)
         it->second = true;
 }
 
+// updating the value char array of the node; this was called from doing a
+// post request
 void DatabaseBST::Update(struct Node *node, std::vector<char> new_value) {
     node->value.clear();
     for (char i : new_value) {
@@ -263,6 +268,7 @@ void DatabaseBST::Update(struct Node *node, std::vector<char> new_value) {
     UpdateDataFile(node->starting, new_value);
 }
 
+// updates how the node is represented in the file
 void DatabaseBST::UpdateDataFile(int offset, std::vector<char> new_value)
 {
     std::fstream myfile(data_file_path, std::ios::in | std::ios::out);
@@ -322,6 +328,7 @@ struct Node* DatabaseBST::Insert(struct Node *node, unsigned long hash, std::vec
     return node;
 }
 
+// this method gets called whenever we delete a node with two children nodes
 struct Node* DatabaseBST::FindInOrdSucc(struct Node *curr_node)
 {
     while (curr_node && curr_node->left != NULL)
@@ -330,6 +337,7 @@ struct Node* DatabaseBST::FindInOrdSucc(struct Node *curr_node)
     }
 
     // by this point, we must be at the left most leaf
+    // which should be the inorder successor
     return curr_node;
 }
 
