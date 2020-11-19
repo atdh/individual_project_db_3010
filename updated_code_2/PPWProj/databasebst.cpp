@@ -31,6 +31,7 @@ unsigned long DatabaseBST::CreateHash(std::string s) {
         hash = ((hash << 5) + hash) + (unsigned long)s[i];
     }
 
+    qDebug() << hash;
     return hash;
 }
 
@@ -41,6 +42,23 @@ void DatabaseBST::DestroyBST(struct Node* node) {
         DestroyBST(node->right);
         delete node;
     }
+}
+
+// after we rebuilding the BST, we do an inorder traversal so that we can append
+// the nodes into the inorder_trav_rebuild arr
+// the inorder_trav_rebuild_arr gets used in order to rebuild the table in the UI
+void DatabaseBST::InOrderTravRebuild(struct Node *node) {
+    if (node == nullptr) {
+        return;
+    }
+
+    InOrderTravRebuild(node->left);
+    inorder_trav_rebuild.push_back(node);
+    InOrderTravRebuild(node->right);
+}
+
+std::vector<struct Node*> DatabaseBST::get_inorder_trav_rebuild() {
+    return inorder_trav_rebuild;
 }
 
 void DatabaseBST::CreateDataFiles() {
@@ -140,14 +158,14 @@ void DatabaseBST::Deserialize(Node *&curr_node, FILE *fp) {
     // std::cout << val << std::endl;
 
     unsigned long hash = 0;
-    std::vector<char> hash_vec(16, '$');
+    std::vector<char> hash_vec;
     int key_idx = 0;
     int value_idx = 0;
     for (int i = 0; i < 80; i++)
     {
-        if (i >= 0 && i < 16)
+        if (i >= 0 && i < 16 && val[i] != '$')
         {
-            hash_vec[i] = val[i];
+            hash_vec.push_back(val[i]);
         }
         else if (i >= 16 && i < 48)
         {
@@ -162,10 +180,7 @@ void DatabaseBST::Deserialize(Node *&curr_node, FILE *fp) {
     }
 
     std::string hash_str = std::string(std::begin(hash_vec), std::end(hash_vec));
-    std::stringstream ss(hash_str);
-    int hash_int = 0;
-    ss >> hash_int;
-    hash = (unsigned long)hash_int;
+    hash = stoul(hash_str);
     int spot_idx = FindFreeSpace();
     // std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
 
@@ -259,7 +274,7 @@ void DatabaseBST::DeleteDataFile(int offset)
 }
 
 // updating the value char array of the node; this was called from doing a
-// post request
+// put request
 void DatabaseBST::Update(struct Node *node, std::vector<char> new_value) {
     node->value.clear();
     for (char i : new_value) {
@@ -388,15 +403,15 @@ struct Node* DatabaseBST::Delete(struct Node *root, unsigned long hash)
     return root;
 }
 
-std::string DatabaseBST::convertToStr(Node *tempNode, int size)
+std::string DatabaseBST::ConvertToStr(std::vector<char> data)
 {
     std::string s = "";
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < (int)data.size(); i++)
     {
-        s += tempNode->value[i];
+        if (data[i] != '$') {
+            s += data[i];
+        }
     }
-
-    s.erase(remove(s.begin(), s.end(), '$'), s.end());
 
     return s;
 }

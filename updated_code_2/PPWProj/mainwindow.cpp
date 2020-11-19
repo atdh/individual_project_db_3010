@@ -16,7 +16,7 @@
 // made the database static so that it can be accessed more easily (through the class itself)
 DatabaseBST* MyDialog::db = new DatabaseBST();
 
-// we need to use the QCoreApplication::applicationDirPath() method in order to help us
+// we need to use the QDir::currentPath() method in order to help us
 // get the full path of where the data and storage files are
 std::string MainWindow::GetFilePath(std::string file_name)
 {
@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-
+    ui->setupUi(this);
     std::string storage_fp = GetFilePath("storage.txt");
     std::string data_fp = GetFilePath("data.txt");
 
@@ -57,12 +57,23 @@ MainWindow::MainWindow(QWidget *parent)
         std::cout << "Rebuilding the BST" << std::endl;
         MyDialog::db->Deserialize(tmp_root, fp);
         MyDialog::db->set_root(tmp_root);
+
+        // getting all of the nodes from the storage file into an array
+        MyDialog::db->InOrderTravRebuild(tmp_root);
+
+        std::vector<struct Node*> all_nodes_storage = MyDialog::db->get_inorder_trav_rebuild();
+        for (auto n : all_nodes_storage) {
+            ui->tableWidget->insertRow(ui->tableWidget->rowCount());
+            std::string key_str = MyDialog::db->ConvertToStr(n->key);
+            std::string value_str = MyDialog::db->ConvertToStr(n->value);
+            ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(key_str)));
+            ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(value_str)));
+        }
     }
 
     std::string data_file = "data.txt";
     std::fstream streamer(data_file, std::ios::in | std::ios::out);
 
-    ui->setupUi(this);
     ui->pushButton->setText("GET");
     ui->pushButton_2->setText("POST");
     ui->pushButton_3->setText("PUT");
@@ -97,9 +108,24 @@ void MainWindow::on_pushButton_clicked()
 {
     REST_TYPE type = GET;
     QDialog* gd = DialogFactory::Create(type);
+    connect(gd, SIGNAL(SendGetRes(Response)), this, SLOT(HandleGetRes(Response)));
 
     gd->setModal(true);
     gd->exec();
+}
+
+// this is the callback function of when the user submits a get request
+void MainWindow::HandleGetRes(Response res)
+{
+    if (res.successful) {
+        ui->response_stat->setText("GOOD");
+        ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
+        ui->response_message->setText(res.body_info);
+    } else {
+        ui->response_stat->setText("BAD");
+        ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(180, 0, 0);}"));
+        ui->response_message->setText(res.body_info);
+    }
 }
 
 // this launches the POST request dialog
@@ -113,7 +139,7 @@ void MainWindow::on_pushButton_2_clicked()
     pd->exec();
 }
 
-// this is the callback function of when the user submits the post request
+// this is the callback function of when the user submits a post request
 void MainWindow::HandlePostRes(std::string key, std::string value, Response res)
 {
     if (res.successful) {

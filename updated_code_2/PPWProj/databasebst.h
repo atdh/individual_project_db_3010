@@ -53,6 +53,8 @@ public:
     DatabaseBST();
     ~DatabaseBST();
     void DestroyBST(struct Node* node);
+    void InOrderTravRebuild(struct Node* node);
+    std::vector<struct Node*> get_inorder_trav_rebuild();
     unsigned long CreateHash(std::string s);
     void CreateDataFiles();
     void set_file_path(std::string file_name, std::string file_path);
@@ -72,7 +74,7 @@ public:
     struct Node *Insert(struct Node *node, unsigned long hash, std::vector<char> key, std::vector<char> value, int starting);
     struct Node *FindInOrdSucc(struct Node *curr_node);
     struct Node *Delete(struct Node *root, unsigned long hash);
-    std::string convertToStr(Node *tempNode, int size);
+    std::string ConvertToStr(std::vector<char> data);
     void Inorder(Node *root);
     void IncrTotalSpots();
     void DecrTotalSpots();
@@ -84,6 +86,8 @@ private:
 
     std::string data_file_path;
     std::string storage_file_path;
+
+    std::vector<struct Node*> inorder_trav_rebuild;
 
     std::string marker; // this is a marker for the serialization of the binary tree; it indicates if the node is NULL
 };

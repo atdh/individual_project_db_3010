@@ -26,7 +26,6 @@ void PostDialog::on_pushButton_clicked()
     set_value(value_str);
 
     Response r = DoRequest();
-    qDebug() << r.body_info;
     emit SendPostRes(key_str, value_str, r);
 }
 
@@ -44,9 +43,8 @@ Response PostDialog::DoRequest()
         std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
         db->set_root(db->Insert(db->get_root(), hash, get_key_vec(), get_value_vec(), spot_idx * 80));
 
-        return Response(true, "Successfully added a new key/value to the database");
+        return Response(true, "Added new key/value to database");
     } else {
-        std::cout << "Sorry, but the key is already in the database. Please enter a unique key" << std::endl;
-        return Response(false, "Please enter a new key to the database");
+        return Response(false, "Error. Please enter a new key");
     }
 }

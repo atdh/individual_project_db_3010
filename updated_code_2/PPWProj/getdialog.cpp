@@ -22,8 +22,9 @@ void GetDialog::on_pushButton_clicked()
 {
     std::string key_str = ui->textEdit->toPlainText().toLocal8Bit().constData();
     set_key(key_str);
+
     Response r = DoRequest();
-    qDebug() << r.body_info;
+    emit SendGetRes(r);
 }
 
 Response GetDialog::DoRequest()
@@ -34,15 +35,11 @@ Response GetDialog::DoRequest()
 
     if (temp_node != NULL)
     {
-        std::cout << "The key was found in the database" << std::endl;
-        int size = (sizeof(temp_node->value) / sizeof(char));
-        std::string value = db->convertToStr(temp_node, size);
-        std::cout << "The corresponding value is " + value << std::endl;
+        std::string value = db->ConvertToStr(temp_node->value);
+        std::string res_str =  "Found key the database. Value is " + value;
 
-        return Response(true, "The get request was successful");
+        return Response(true, QString::fromStdString(res_str));
     } else {
-        std::cout << "The key doesn't exist in the database" << std::endl;
-
-        return Response(false, "The get request wasn't successful");
+        return Response(false, "Error. Key doesn't exist");
     }
 }
