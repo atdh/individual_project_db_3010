@@ -35,6 +35,7 @@ public:
     QLabel *response_stat;
     QLabel *response_message_title;
     QLabel *response_message;
+    QTableWidget *tableWidget_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -65,20 +66,32 @@ public:
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(570, 170, 201, 271));
+        tableWidget->setEnabled(true);
+        tableWidget->setGeometry(QRect(560, 180, 211, 271));
         tableWidget->setRowCount(0);
         response_stat_title = new QLabel(centralwidget);
         response_stat_title->setObjectName(QString::fromUtf8("response_stat_title"));
-        response_stat_title->setGeometry(QRect(20, 170, 121, 17));
+        response_stat_title->setGeometry(QRect(20, 180, 121, 17));
         response_stat = new QLabel(centralwidget);
         response_stat->setObjectName(QString::fromUtf8("response_stat"));
         response_stat->setGeometry(QRect(20, 200, 111, 17));
         response_message_title = new QLabel(centralwidget);
         response_message_title->setObjectName(QString::fromUtf8("response_message_title"));
-        response_message_title->setGeometry(QRect(20, 280, 141, 17));
+        response_message_title->setGeometry(QRect(20, 250, 141, 17));
         response_message = new QLabel(centralwidget);
         response_message->setObjectName(QString::fromUtf8("response_message"));
-        response_message->setGeometry(QRect(20, 310, 471, 17));
+        response_message->setGeometry(QRect(20, 270, 301, 21));
+        tableWidget_2 = new QTableWidget(centralwidget);
+        if (tableWidget_2->columnCount() < 2)
+            tableWidget_2->setColumnCount(2);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        tableWidget_2->setHorizontalHeaderItem(0, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tableWidget_2->setHorizontalHeaderItem(1, __qtablewidgetitem3);
+        tableWidget_2->setObjectName(QString::fromUtf8("tableWidget_2"));
+        tableWidget_2->setEnabled(true);
+        tableWidget_2->setGeometry(QRect(340, 180, 211, 271));
+        tableWidget_2->setRowCount(0);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -108,6 +121,10 @@ public:
         response_stat->setText(QString());
         response_message_title->setText(QCoreApplication::translate("MainWindow", "Response Message:", nullptr));
         response_message->setText(QString());
+        QTableWidgetItem *___qtablewidgetitem2 = tableWidget_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "User", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = tableWidget_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Password", nullptr));
     } // retranslateUi
 
 };

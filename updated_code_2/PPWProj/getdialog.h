@@ -20,6 +20,9 @@ private slots:
 
     void on_pushButton_clicked();
 
+signals:
+    void SendGetRes(Response res);
+
 private:
     Ui::GetDialog *ui;
 };

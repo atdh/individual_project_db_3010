@@ -27,6 +27,7 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void HandleGetRes(Response res);
     void HandlePostRes(std::string key, std::string value, Response res);
 
 private:
