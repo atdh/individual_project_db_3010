@@ -26,6 +26,12 @@ std::string MainWindow::GetFilePath(std::string file_name)
     return str_file_path;
 }
 
+int GetFileSize(std::string file_name) {
+    QFile fi(QString::fromStdString(MyDialog::db->get_file_path(file_name)));
+    int file_size = fi.size();
+    return file_size;
+}
+
 // this is the main dialog upon starting up the application
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -43,9 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
     Node *tmp_root = MyDialog::db->get_root();
 
     // first, we check if there is any bytes in the storage file
-    QFile fi(QString::fromStdString(MyDialog::db->get_file_path("storage.txt")));
-
-    int size_storage = fi.size();
+    int size_storage = GetFileSize("storage.txt");
 
     // if there is information in the storage file, then we recreate the bst
     // using the information of the file
@@ -70,6 +74,8 @@ MainWindow::MainWindow(QWidget *parent)
             ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(value_str)));
         }
     }
+
+    qDebug() << "Initial data file size " + QString::fromStdString(std::to_string(GetFileSize("data.txt")));
 
     std::string data_file = "data.txt";
     std::fstream streamer(data_file, std::ios::in | std::ios::out);
@@ -117,6 +123,7 @@ void MainWindow::on_pushButton_clicked()
 // this is the callback function of when the user submits a get request
 void MainWindow::HandleGetRes(Response res)
 {
+    qDebug() << GetFileSize("data.txt");
     ui->response_message_2->setText("");
     if (res.successful) {
         ui->response_stat->setText("GOOD");
@@ -143,6 +150,7 @@ void MainWindow::on_pushButton_2_clicked()
 // this is the callback function of when the user submits a post request
 void MainWindow::HandlePostRes(std::string key, std::string value, Response res)
 {
+    qDebug() << GetFileSize("data.txt");
     ui->response_message_2->setText("");
     if (res.successful) {
         ui->response_stat->setText("GOOD");
@@ -173,6 +181,7 @@ void MainWindow::on_pushButton_3_clicked()
 // this is the callback function of when the user submits a post request
 void MainWindow::HandlePutRes(std::string key, std::string value, Response res)
 {
+    qDebug() << GetFileSize("data.txt");
     std::string res_str = res.body_info.toLocal8Bit().constData();
     std::vector<std::string> vec_res_str;
 
@@ -209,6 +218,9 @@ void MainWindow::on_pushButton_4_clicked()
     qDebug() << "In the delete dialog";
     REST_TYPE type = DELETE;
     QDialog* dd = DialogFactory::Create(type);
+    ui->tableWidget->insertRow(0);
+    ui->tableWidget->setItem (0, 0, new QTableWidgetItem(QString::fromStdString("foo")));
+    ui->tableWidget->setItem (0, 1, new QTableWidgetItem(QString::fromStdString("bar")));
     dd->setModal(true);
     dd->exec();
 }

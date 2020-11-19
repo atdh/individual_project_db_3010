@@ -49,7 +49,7 @@ public:
 
     void retranslateUi(QDialog *PostDialog)
     {
-        PostDialog->setWindowTitle(QCoreApplication::translate("PostDialog", "Dialog", nullptr));
+        PostDialog->setWindowTitle(QCoreApplication::translate("PostDialog", "PostDialog", nullptr));
         pushButton->setText(QCoreApplication::translate("PostDialog", "PushButton", nullptr));
     } // retranslateUi
 
