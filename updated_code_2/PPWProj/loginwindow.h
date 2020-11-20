@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-class MainWindow;
+class DBWindow;
 
 namespace Ui {
 class LoginWindow;
@@ -15,7 +15,7 @@ class LoginWindow : public QMainWindow
 
 public:
     explicit LoginWindow(QWidget *parent = nullptr);
-    void set_partner(MainWindow* partner);
+    void set_partner(DBWindow* partner);
     ~LoginWindow();
 
 private slots:
@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
-    MainWindow* mw_partner;
+    DBWindow* dbw_partner;
 };
 
 #endif // LOGINWINDOW_H
