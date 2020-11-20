@@ -43,7 +43,7 @@ public:
 
     void retranslateUi(QDialog *DeleteDialog)
     {
-        DeleteDialog->setWindowTitle(QCoreApplication::translate("DeleteDialog", "Dialog", nullptr));
+        DeleteDialog->setWindowTitle(QCoreApplication::translate("DeleteDialog", "DeleteDialog", nullptr));
         pushButton->setText(QCoreApplication::translate("DeleteDialog", "PushButton", nullptr));
     } // retranslateUi
 

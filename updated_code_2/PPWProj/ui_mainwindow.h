@@ -37,6 +37,7 @@ public:
     QLabel *response_message_1;
     QTableWidget *tableWidget_2;
     QLabel *response_message_2;
+    QPushButton *pushButton_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -44,21 +45,21 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(790, 500);
+        MainWindow->resize(810, 500);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(20, 40, 181, 111));
+        pushButton->setGeometry(QRect(30, 40, 181, 111));
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(210, 40, 181, 111));
+        pushButton_2->setGeometry(QRect(220, 40, 181, 111));
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(400, 40, 181, 111));
+        pushButton_3->setGeometry(QRect(410, 40, 181, 111));
         pushButton_4 = new QPushButton(centralwidget);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setGeometry(QRect(590, 40, 181, 111));
+        pushButton_4->setGeometry(QRect(600, 40, 181, 111));
         tableWidget = new QTableWidget(centralwidget);
         if (tableWidget->columnCount() < 2)
             tableWidget->setColumnCount(2);
@@ -68,7 +69,7 @@ public:
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
         tableWidget->setEnabled(true);
-        tableWidget->setGeometry(QRect(560, 180, 211, 271));
+        tableWidget->setGeometry(QRect(570, 180, 220, 271));
         tableWidget->setRowCount(0);
         response_stat_title = new QLabel(centralwidget);
         response_stat_title->setObjectName(QString::fromUtf8("response_stat_title"));
@@ -91,15 +92,18 @@ public:
         tableWidget_2->setHorizontalHeaderItem(1, __qtablewidgetitem3);
         tableWidget_2->setObjectName(QString::fromUtf8("tableWidget_2"));
         tableWidget_2->setEnabled(true);
-        tableWidget_2->setGeometry(QRect(330, 180, 211, 271));
+        tableWidget_2->setGeometry(QRect(330, 180, 221, 271));
         tableWidget_2->setRowCount(0);
         response_message_2 = new QLabel(centralwidget);
         response_message_2->setObjectName(QString::fromUtf8("response_message_2"));
         response_message_2->setGeometry(QRect(20, 280, 291, 21));
+        pushButton_5 = new QPushButton(centralwidget);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setGeometry(QRect(100, 390, 89, 25));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 790, 22));
+        menubar->setGeometry(QRect(0, 0, 810, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -130,6 +134,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget_2->horizontalHeaderItem(1);
         ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         response_message_2->setText(QString());
+        pushButton_5->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

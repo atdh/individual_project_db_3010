@@ -12,6 +12,8 @@
 #include <sstream>
 #include <cstdio>
 
+#include "loginwindow.h"
+
 // since the database is a static variable, we instantiate it here
 // made the database static so that it can be accessed more easily (through the class itself)
 DatabaseBST* MyDialog::db = new DatabaseBST();
@@ -53,6 +55,7 @@ int MainWindow::GetRowEntry(QString key) {
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , lw_partner(0)
 {
     ui->setupUi(this);
     std::string storage_fp = GetFilePath("storage.txt");
@@ -101,6 +104,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pushButton_2->setText("POST");
     ui->pushButton_3->setText("PUT");
     ui->pushButton_4->setText("DELETE");
+
+    ui->tableWidget->setColumnWidth(1, 100);
+    ui->tableWidget_2->setColumnWidth(1, 100);
 }
 
 // after we close the application, we need to make sure that we save the information
@@ -124,6 +130,24 @@ MainWindow::~MainWindow()
     fclose(fp);
 
     delete ui;
+}
+
+void MainWindow::set_partner(LoginWindow *partner) {
+    if (partner == 0) {
+        return;
+    }
+
+    if (lw_partner != partner) {
+        if (lw_partner != 0) {
+            disconnect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(hide()));
+            disconnect(ui->pushButton_5, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
+        }
+
+        lw_partner = partner;
+
+        connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(hide()));
+        connect(ui->pushButton_5, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
+    }
 }
 
 // this launches the GET request dialog
@@ -261,4 +285,9 @@ void MainWindow::HandleDelRes(Response res)
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(180, 0, 0);}"));
         ui->response_message_1->setText(res.body_info);
     }
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+
 }
