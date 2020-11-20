@@ -10,32 +10,32 @@ CONFIG += c++11
 
 SOURCES += \
     databasebst.cpp \
+    dbwindow.cpp \
     deletedialog.cpp \
     dialogfactory.cpp \
     getdialog.cpp \
     loginwindow.cpp \
     main.cpp \
-    mainwindow.cpp \
     mydialog.cpp \
     postdialog.cpp \
     putdialog.cpp
 
 HEADERS += \
     databasebst.h \
+    dbwindow.h \
     deletedialog.h \
     dialogfactory.h \
     getdialog.h \
     loginwindow.h \
-    mainwindow.h \
     mydialog.h \
     postdialog.h \
     putdialog.h
 
 FORMS += \
+    dbwindow.ui \
     deletedialog.ui \
     getdialog.ui \
     loginwindow.ui \
-    mainwindow.ui \
     postdialog.ui \
     putdialog.ui
 

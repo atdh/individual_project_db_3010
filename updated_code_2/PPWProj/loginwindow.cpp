@@ -5,7 +5,7 @@
 LoginWindow::LoginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginWindow),
-    mw_partner(0)
+    dbw_partner(0)
 {
     ui->setupUi(this);
 }
@@ -20,21 +20,21 @@ void LoginWindow::on_pushButton_clicked()
 
 }
 
-void LoginWindow::set_partner(MainWindow *partner) {
+void LoginWindow::set_partner(DBWindow *partner) {
     if (partner == 0) {
         return;
     }
 
-    if (mw_partner != partner) {
-        if (mw_partner != 0) {
+    if (dbw_partner != partner) {
+        if (dbw_partner != 0) {
             disconnect(ui->pushButton, SIGNAL(clicked()), this, SLOT(hide()));
-            disconnect(ui->pushButton, SIGNAL(clicked()), (QObject*)mw_partner, SLOT(show()));
+            disconnect(ui->pushButton, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
         }
 
-        mw_partner = partner;
+        dbw_partner = partner;
 
         connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(hide()));
-        connect(ui->pushButton, SIGNAL(clicked()), (QObject*)mw_partner, SLOT(show()));
+        connect(ui->pushButton, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
     }
 
 }

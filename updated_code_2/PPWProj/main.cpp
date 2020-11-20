@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "dbwindow.h"
 #include "loginwindow.h"
 #include <QApplication>
 #include <QtGui>
@@ -9,13 +9,13 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    LoginWindow l;
+    DBWindow dbw;
+    LoginWindow lw;
 
-    w.set_partner(&l);
-    l.set_partner(&w);
+    dbw.set_partner(&lw);
+    lw.set_partner(&dbw);
 
-    w.setWindowTitle("My Database");
+    dbw.setWindowTitle("My Database");
 
     QDesktopWidget *desktop = QApplication::desktop();
     int screenWidth = desktop->width();
@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
     int x = (screenWidth - 810) / 2;
     int y = (screenHeight - 500) / 2;
 
-    w.move(x,y);
-    l.move(x,y);
+    dbw.move(x,y);
+    lw.move(x,y);
 
-    w.show();
+    dbw.show();
     return a.exec();
 }
