@@ -13,6 +13,7 @@ SOURCES += \
     deletedialog.cpp \
     dialogfactory.cpp \
     getdialog.cpp \
+    loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     mydialog.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     deletedialog.h \
     dialogfactory.h \
     getdialog.h \
+    loginwindow.h \
     mainwindow.h \
     mydialog.h \
     postdialog.h \
@@ -32,6 +34,7 @@ HEADERS += \
 FORMS += \
     deletedialog.ui \
     getdialog.ui \
+    loginwindow.ui \
     mainwindow.ui \
     postdialog.ui \
     putdialog.ui
