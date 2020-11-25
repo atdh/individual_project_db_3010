@@ -13,6 +13,5 @@ ClickableLabel::~ClickableLabel()
 
 void ClickableLabel::mousePressEvent(QMouseEvent* event)
 {
-    qDebug() << "hi";
     emit clicked();
 }

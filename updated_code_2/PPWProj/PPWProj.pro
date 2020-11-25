@@ -15,6 +15,7 @@ SOURCES += \
     deletedialog.cpp \
     dialogfactory.cpp \
     getdialog.cpp \
+    logininterface.cpp \
     loginwindow.cpp \
     main.cpp \
     mydialog.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     deletedialog.h \
     dialogfactory.h \
     getdialog.h \
+    logininterface.h \
     loginwindow.h \
     mydialog.h \
     postdialog.h \
@@ -44,8 +46,9 @@ FORMS += \
 RESOURCES += \
     storage.txt \
     data.txt \
-    person.jpg \
-    home.png
+    person.png \
+    home.png \
+    authentication.txt
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
