@@ -7,6 +7,7 @@
 #include <QDesktopWidget>
 #include "logininterface.h"
 
+//this allowed us to help change the window. It's a helper function.
 void open_lw(LoginWindow* lw_input) {
     lw_input->show();
 }
@@ -14,25 +15,27 @@ void open_lw(LoginWindow* lw_input) {
 void open_dbw(DBWindow* dbw_input) {
     dbw_input->show();
 }
-
+//keeps track of all users
 std::map<std::string, std::string> LoginInterface::table;
+//keeps track of which users are admins and which ones are not
 std::unordered_set<std::string> LoginInterface::admin_set;
 bool LoginInterface::user_is_admin = false;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    //making objects
     DBWindow dbw;
     LoginWindow lw;
 
     LoginInterface::ReadFile();
-
+    //setting partner ie: login/signupwindow and databasewindow
     dbw.set_partner(&lw);
     lw.set_partner(&dbw);
     lw.set_function_2(open_dbw);
 
+    //setting our ui dimension
     dbw.setWindowTitle("My Database");
-
     QDesktopWidget *desktop = QApplication::desktop();
     int screenWidth = desktop->width();
     int screenHeight = desktop->height();

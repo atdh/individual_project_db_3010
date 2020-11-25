@@ -3,6 +3,7 @@
 #include <QtDebug>
 #include "mydialog.h"
 
+//just setting up ui
 GetDialog::GetDialog(std::string input_type, QWidget *parent) :
     QDialog(parent),
     MyDialog(input_type),
@@ -18,15 +19,18 @@ GetDialog::~GetDialog()
     delete ui;
 }
 
+
 void GetDialog::on_pushButton_clicked()
 {
+    //converts it to string properly without throwing us weird errors
     std::string key_str = ui->textEdit->toPlainText().toLocal8Bit().constData();
     set_key(key_str);
 
+    //the function gets the appropriate request. Does search operation
     Response r = DoRequest();
     emit SendGetRes(r);
 }
-
+//finds key in a database after traversing accordingly.
 Response GetDialog::DoRequest()
 {
     Node* temp_root = db->get_root();

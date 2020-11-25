@@ -2,6 +2,7 @@
 #include "ui_loginwindow.h"
 #include <QtDebug>
 
+//setting up ui
 LoginWindow::LoginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginWindow),
@@ -16,6 +17,8 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+//This is a helper funciton. Based on whether the user is logging in or trying to go back to the loggin page window, this function helps us do that.
+//It allows us to switch to the proper windows
 void LoginWindow::set_partner(DBWindow *partner) {
     if (partner == 0) {
         return;
@@ -34,6 +37,7 @@ void LoginWindow::set_partner(DBWindow *partner) {
     }
 }
 
+//Hides window or shows window accordignly for a smooth ui experience.
 void LoginWindow::window_switcher(LoginResp login_resp) {
     qDebug() << "entered the window switcher";
 
@@ -45,6 +49,7 @@ void LoginWindow::window_switcher(LoginResp login_resp) {
     }
 }
 
+//ui for login button
 void LoginWindow::on_pushButton_login_clicked()
 {
     std::string username = ui->lineEdit_username->text().toLocal8Bit().constData();
@@ -54,6 +59,7 @@ void LoginWindow::on_pushButton_login_clicked()
     emit SendLoginResp(lr);
 }
 
+//ui for signup button
 void LoginWindow::on_pushButton_signup_clicked()
 {
     std::string username = ui->lineEdit_username->text().toLocal8Bit().constData();

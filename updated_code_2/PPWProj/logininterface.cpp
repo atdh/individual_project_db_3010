@@ -6,7 +6,8 @@ LoginInterface::LoginInterface()
 {
 
 }
-
+//FIrst we check to see if  the username exixts. If the username exists and the password matches, then we login accordingly.
+//We make sure to keep track of whether the user is admin or not as well
 LoginResp LoginInterface::Login(std::string user_attempt, std::string password_attempt) {
     LoginResp login_resp;
     //if it finds correct user name and password user logged in succesfully
@@ -55,6 +56,7 @@ std::string GetFilePath(std::string file_name)
     return str_file_path;
 }
 
+//We are reading the file line by line and adding the data from the file into the table hash map as well for O(1) seach time
 void LoginInterface::ReadFile() {
     std::ifstream fileName;
     //reading do in
@@ -74,7 +76,9 @@ void LoginInterface::ReadFile() {
     }
     fileName.close();
 }
-
+//First we check to see if user exists in the table. If the user exists then we show error message
+//and ask to come up with a difft username. If it's a unique user, we append to the end of the file
+//andupdate our table map accordingly
 LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_password)
 {
     std::fstream myfile;
@@ -109,7 +113,7 @@ LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_pa
 
     return login_resp;
 }
-
+//deleting users from file. We check if the username that the admin wants to delete exists first and then delete accordingly.
 void LoginInterface::DeleteUserFromFile(std::string user_name) {
     std::string deleteline;
     std::string line;

@@ -2,6 +2,7 @@
 #include "ui_postdialog.h"
 #include <QtDebug>
 
+//ui for post button
 PostDialog::PostDialog(std::string input_type, QWidget *parent) :
     QDialog(parent),
     MyDialog(input_type),
@@ -24,11 +25,12 @@ void PostDialog::on_pushButton_clicked()
     set_key(key_str);
     std::string value_str = ui->textEdit_2->toPlainText().toLocal8Bit().constData();
     set_value(value_str);
-
+    //calls appropriate function for writing to the database
     Response r = DoRequest();
     emit SendPostRes(key_str, value_str, r);
 }
 
+//writes to the database. It finds the proper place to put the node in on our bst.
 Response PostDialog::DoRequest()
 {
     Node* temp_root = db->get_root();

@@ -40,7 +40,7 @@ void MyDialog::reset_key_value_vecs() {
         value_vec.push_back('$');
     }
 }
-
+//set key and value
 void MyDialog::set_key(std::string input_key) {
     this->key = input_key;
 }
@@ -56,6 +56,7 @@ void MyDialog::set_value(std::string input_value) {
 std::string MyDialog::get_value() {
     return this->value;
 }
+//fatory design for difft api types ie: post,get,put,delete
 
 std::string MyDialog::get_api_type() {
     return this->api_type;
