@@ -1,6 +1,7 @@
 #include "deletedialog.h"
 #include "ui_deletedialog.h"
 
+//delete button on database ui
 DeleteDialog::DeleteDialog(std::string input_type, QWidget *parent) :
     QDialog(parent),
     MyDialog(input_type),
@@ -17,13 +18,16 @@ DeleteDialog::~DeleteDialog()
 
 void DeleteDialog::on_pushButton_clicked()
 {
+    //this is so the placholder for the button can be read without errors. We are getting th etexts in the textedit
+    //ui componenet and converting it to a string
     std::string key_str = ui->textEdit->toPlainText().toLocal8Bit().constData();
     set_key(key_str);
 
     Response r = DoRequest();
+    //sends the signal to delete
     emit SendDelRes(r);
 }
-
+//this gets called so that it actually does the delete operation
 Response DeleteDialog::DoRequest()
 {
     Node* temp_root = db->get_root();

@@ -132,6 +132,7 @@ DBWindow::~DBWindow()
     delete ui;
 }
 
+//the purpose of this is that it allows us to switch between the windows ie the login window and databasewindow
 void DBWindow::set_partner(LoginWindow *partner) {
     if (partner == 0) {
         return;
@@ -166,6 +167,7 @@ void DBWindow::HandleGetRes(Response res)
 {
     qDebug() << GetFileSize("data.txt");
     ui->response_message_2->setText("");
+    //if signal is recieved prints good messages. Else error messages
     if (res.successful) {
         ui->response_stat->setText("GOOD");
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
@@ -227,13 +229,14 @@ void DBWindow::HandlePutRes(std::string key, std::string value, Response res)
     std::vector<std::string> vec_res_str;
 
     std::stringstream ss(res_str);
-
+    //this is a way to put a string into a vector without including the dollar signs
     while(ss.good()) {
         std::string substr;
         getline(ss, substr, '$');
         vec_res_str.push_back(substr);
     }
 
+    //positive messageif succesful
     if (!res.successful) {
         ui->response_stat->setText("GOOD");
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
@@ -259,6 +262,7 @@ void DBWindow::HandlePutRes(std::string key, std::string value, Response res)
 void DBWindow::on_pushButton_4_clicked()
 {
     qDebug() << "In the delete dialog";
+    //factory design pattern
     REST_TYPE type = DELETE;
     QDialog* dd = DialogFactory::Create(type);
     connect(dd, SIGNAL(SendDelRes(Response)), this, SLOT(HandleDelRes(Response)));
@@ -287,7 +291,7 @@ void DBWindow::HandleDelRes(Response res)
     }
 }
 
-
+//ui for delete user button in database window ui
 void DBWindow::on_pushButton_5_clicked()
 {
     DeleteUserDialog* dud = new DeleteUserDialog();

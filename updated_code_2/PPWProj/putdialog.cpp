@@ -1,6 +1,7 @@
 #include "putdialog.h"
 #include "ui_putdialog.h"
 
+//ui for put request button
 PutDialog::PutDialog(std::string input_type, QWidget *parent) :
     QDialog(parent),
     MyDialog(input_type),
@@ -23,11 +24,11 @@ void PutDialog::on_pushButton_clicked()
     set_key(key_str);
     std::string value_str = ui->textEdit_2->toPlainText().toLocal8Bit().constData();
     set_value(value_str);
-
+    //calls appropriate function for updating the database
     Response r = DoRequest();
     emit SendPutRes(key_str, value_str, r);
 }
-
+//finds the appropriate key  and updates value.
 Response PutDialog::DoRequest()
 {
     Node* temp_root = db->get_root();
