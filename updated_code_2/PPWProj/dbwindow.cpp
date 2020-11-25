@@ -139,14 +139,14 @@ void DBWindow::set_partner(LoginWindow *partner) {
 
     if (lw_partner != partner) {
         if (lw_partner != 0) {
-            disconnect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(hide()));
-            disconnect(ui->pushButton_5, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
+            disconnect(ui->home_label, SIGNAL(clicked()), this, SLOT(hide()));
+            disconnect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
         }
 
         lw_partner = partner;
 
-        connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(hide()));
-        connect(ui->pushButton_5, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
+        connect(ui->home_label, SIGNAL(clicked()), this, SLOT(hide()));
+        connect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
     }
 }
 

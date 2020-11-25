@@ -18,9 +18,6 @@ public:
     void set_partner(DBWindow* partner);
     ~LoginWindow();
 
-private slots:
-    void on_pushButton_clicked();
-
 private:
     Ui::LoginWindow *ui;
     DBWindow* dbw_partner;

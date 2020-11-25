@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    clickablelabel.cpp \
     databasebst.cpp \
     dbwindow.cpp \
     deletedialog.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
     putdialog.cpp
 
 HEADERS += \
+    clickablelabel.h \
     databasebst.h \
     dbwindow.h \
     deletedialog.h \
@@ -41,7 +43,9 @@ FORMS += \
 
 RESOURCES += \
     storage.txt \
-    data.txt
+    data.txt \
+    person.jpg \
+    home.png
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

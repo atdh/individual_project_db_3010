@@ -27,6 +27,6 @@ int main(int argc, char *argv[])
     dbw.move(x,y);
     lw.move(x,y);
 
-    dbw.show();
+    lw.show();
     return a.exec();
 }
