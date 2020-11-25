@@ -15,11 +15,6 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
-void LoginWindow::on_pushButton_clicked()
-{
-
-}
-
 void LoginWindow::set_partner(DBWindow *partner) {
     if (partner == 0) {
         return;
@@ -27,14 +22,14 @@ void LoginWindow::set_partner(DBWindow *partner) {
 
     if (dbw_partner != partner) {
         if (dbw_partner != 0) {
-            disconnect(ui->pushButton, SIGNAL(clicked()), this, SLOT(hide()));
-            disconnect(ui->pushButton, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
+            disconnect(ui->pushButton_login, SIGNAL(clicked()), this, SLOT(hide()));
+            disconnect(ui->pushButton_login, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
         }
 
         dbw_partner = partner;
 
-        connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(hide()));
-        connect(ui->pushButton, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
+        connect(ui->pushButton_login, SIGNAL(clicked()), this, SLOT(hide()));
+        connect(ui->pushButton_login, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
     }
 
 }

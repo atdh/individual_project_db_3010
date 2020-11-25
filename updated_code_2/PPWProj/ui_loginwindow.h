@@ -11,11 +11,13 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,8 +26,13 @@ class Ui_LoginWindow
 {
 public:
     QWidget *centralwidget;
-    QTextEdit *textEdit;
-    QPushButton *pushButton;
+    QGroupBox *groupBox;
+    QLabel *label_username;
+    QLabel *label_password;
+    QLineEdit *lineEdit_username;
+    QPushButton *pushButton_login;
+    QLineEdit *lineEdit_password;
+    QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -36,12 +43,27 @@ public:
         LoginWindow->resize(810, 510);
         centralwidget = new QWidget(LoginWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        textEdit = new QTextEdit(centralwidget);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(170, 50, 431, 161));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(340, 340, 89, 25));
+        groupBox = new QGroupBox(centralwidget);
+        groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setGeometry(QRect(410, 80, 300, 300));
+        label_username = new QLabel(groupBox);
+        label_username->setObjectName(QString::fromUtf8("label_username"));
+        label_username->setGeometry(QRect(40, 40, 81, 17));
+        label_password = new QLabel(groupBox);
+        label_password->setObjectName(QString::fromUtf8("label_password"));
+        label_password->setGeometry(QRect(40, 130, 67, 17));
+        lineEdit_username = new QLineEdit(groupBox);
+        lineEdit_username->setObjectName(QString::fromUtf8("lineEdit_username"));
+        lineEdit_username->setGeometry(QRect(40, 70, 221, 25));
+        pushButton_login = new QPushButton(groupBox);
+        pushButton_login->setObjectName(QString::fromUtf8("pushButton_login"));
+        pushButton_login->setGeometry(QRect(90, 230, 120, 21));
+        lineEdit_password = new QLineEdit(groupBox);
+        lineEdit_password->setObjectName(QString::fromUtf8("lineEdit_password"));
+        lineEdit_password->setGeometry(QRect(40, 160, 221, 25));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(100, 110, 231, 241));
         LoginWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(LoginWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -59,12 +81,11 @@ public:
     void retranslateUi(QMainWindow *LoginWindow)
     {
         LoginWindow->setWindowTitle(QCoreApplication::translate("LoginWindow", "MainWindow", nullptr));
-        textEdit->setHtml(QCoreApplication::translate("LoginWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Login page</p></body></html>", nullptr));
-        pushButton->setText(QCoreApplication::translate("LoginWindow", "PushButton", nullptr));
+        groupBox->setTitle(QString());
+        label_username->setText(QCoreApplication::translate("LoginWindow", "Username", nullptr));
+        label_password->setText(QCoreApplication::translate("LoginWindow", "Password", nullptr));
+        pushButton_login->setText(QCoreApplication::translate("LoginWindow", "Login", nullptr));
+        label->setText(QCoreApplication::translate("LoginWindow", "<html><head/><body><p><img src=\":/person.jpg\"/></p></body></html>", nullptr));
     } // retranslateUi
 
 };

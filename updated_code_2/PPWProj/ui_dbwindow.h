@@ -19,6 +19,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
+#include <clickablelabel.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -38,6 +39,7 @@ public:
     QTableWidget *tableWidget_2;
     QLabel *response_message_2;
     QPushButton *pushButton_5;
+    ClickableLabel *home_label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -45,7 +47,7 @@ public:
     {
         if (DBWindow->objectName().isEmpty())
             DBWindow->setObjectName(QString::fromUtf8("DBWindow"));
-        DBWindow->resize(810, 500);
+        DBWindow->resize(810, 505);
         centralwidget = new QWidget(DBWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         pushButton = new QPushButton(centralwidget);
@@ -100,6 +102,9 @@ public:
         pushButton_5 = new QPushButton(centralwidget);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
         pushButton_5->setGeometry(QRect(100, 390, 89, 25));
+        home_label = new ClickableLabel(centralwidget);
+        home_label->setObjectName(QString::fromUtf8("home_label"));
+        home_label->setGeometry(QRect(763, 3, 31, 31));
         DBWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(DBWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -135,6 +140,7 @@ public:
         ___qtablewidgetitem3->setText(QCoreApplication::translate("DBWindow", "Password", nullptr));
         response_message_2->setText(QString());
         pushButton_5->setText(QCoreApplication::translate("DBWindow", "PushButton", nullptr));
+        home_label->setText(QCoreApplication::translate("DBWindow", "<html><head/><body><p><img src=\":/home.png\"/></p></body></html>", nullptr));
     } // retranslateUi
 
 };
