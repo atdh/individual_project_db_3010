@@ -80,12 +80,12 @@ public:
 
     void retranslateUi(QMainWindow *LoginWindow)
     {
-        LoginWindow->setWindowTitle(QCoreApplication::translate("LoginWindow", "MainWindow", nullptr));
+        LoginWindow->setWindowTitle(QCoreApplication::translate("LoginWindow", "LoginWindow", nullptr));
         groupBox->setTitle(QString());
         label_username->setText(QCoreApplication::translate("LoginWindow", "Username", nullptr));
         label_password->setText(QCoreApplication::translate("LoginWindow", "Password", nullptr));
         pushButton_login->setText(QCoreApplication::translate("LoginWindow", "Login", nullptr));
-        label->setText(QCoreApplication::translate("LoginWindow", "<html><head/><body><p><img src=\":/person.jpg\"/></p></body></html>", nullptr));
+        label->setText(QCoreApplication::translate("LoginWindow", "<html><head/><body><p><img src=\":/person.png\"/></p></body></html>", nullptr));
     } // retranslateUi
 
 };

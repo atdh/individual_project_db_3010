@@ -5,7 +5,7 @@
 #include "postdialog.h"
 #include <QtDebug>
 #include <QFileDialog>
-#include <filesystem>
+//#include <filesystem>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -287,7 +287,3 @@ void DBWindow::HandleDelRes(Response res)
     }
 }
 
-void DBWindow::on_pushButton_5_clicked()
-{
-
-}

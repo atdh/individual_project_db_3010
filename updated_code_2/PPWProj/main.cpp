@@ -6,6 +6,14 @@
 #include <QGridLayout>
 #include <QDesktopWidget>
 
+void open_lw(LoginWindow* lw_input) {
+    lw_input->show();
+}
+
+void open_dbw(DBWindow* dbw_input) {
+    dbw_input->show();
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -14,6 +22,7 @@ int main(int argc, char *argv[])
 
     dbw.set_partner(&lw);
     lw.set_partner(&dbw);
+    lw.set_function_2(open_dbw);
 
     dbw.setWindowTitle("My Database");
 
@@ -21,12 +30,15 @@ int main(int argc, char *argv[])
     int screenWidth = desktop->width();
     int screenHeight = desktop->height();
 
-    int x = (screenWidth - 810) / 2;
-    int y = (screenHeight - 500) / 2;
+    int x = (screenWidth - 810) / 2; // 810 comes from the width I set the window screen to
+    int y = (screenHeight - 500) / 2; // 500 comes from the height I set the window screen to
 
     dbw.move(x,y);
     lw.move(x,y);
 
+//    open_lw(&lw);
+//    lw.do_function_2(&lw);
     lw.show();
+
     return a.exec();
 }
