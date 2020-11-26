@@ -39,6 +39,7 @@ public:
     QTableWidget *tableWidget_2;
     QLabel *response_message_2;
     ClickableLabel *home_label;
+    QPushButton *pushButton_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -101,6 +102,9 @@ public:
         home_label = new ClickableLabel(centralwidget);
         home_label->setObjectName(QString::fromUtf8("home_label"));
         home_label->setGeometry(QRect(763, 4, 31, 31));
+        pushButton_5 = new QPushButton(centralwidget);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setGeometry(QRect(20, 410, 89, 25));
         DBWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(DBWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -136,6 +140,7 @@ public:
         ___qtablewidgetitem3->setText(QCoreApplication::translate("DBWindow", "Password", nullptr));
         response_message_2->setText(QString());
         home_label->setText(QCoreApplication::translate("DBWindow", "<html><head/><body><p><img src=\":/home.png\"/></p></body></html>", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("DBWindow", "Delete User", nullptr));
     } // retranslateUi
 
 };

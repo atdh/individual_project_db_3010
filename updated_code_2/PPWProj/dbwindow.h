@@ -37,6 +37,8 @@ private slots:
     void HandlePutRes(std::string key, std::string value, Response res);
     void HandleDelRes(Response res);
 
+    void on_pushButton_5_clicked();
+
 private:
     Ui::DBWindow *ui;
     LoginWindow *lw_partner;

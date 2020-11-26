@@ -5,6 +5,7 @@
 #include <QtCore>
 #include <QGridLayout>
 #include <QDesktopWidget>
+#include "logininterface.h"
 
 void open_lw(LoginWindow* lw_input) {
     lw_input->show();
@@ -14,11 +15,17 @@ void open_dbw(DBWindow* dbw_input) {
     dbw_input->show();
 }
 
+std::map<std::string, std::string> LoginInterface::table;
+std::unordered_set<std::string> LoginInterface::admin_set;
+bool LoginInterface::user_is_admin = false;
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     DBWindow dbw;
     LoginWindow lw;
+
+    LoginInterface::ReadFile();
 
     dbw.set_partner(&lw);
     lw.set_partner(&dbw);
