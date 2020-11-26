@@ -36,6 +36,7 @@ void LoginWindow::set_partner(DBWindow *partner) {
 
 void LoginWindow::window_switcher(LoginResp login_resp) {
     qDebug() << "entered the window switcher";
+
     if (login_resp.succ == true) {
         hide();
         do_function_2(dbw_partner);
@@ -50,5 +51,14 @@ void LoginWindow::on_pushButton_login_clicked()
     std::string password = ui->lineEdit_password->text().toLocal8Bit().constData();
     LoginResp lr;
     lr = li->Login(username, password);
+    emit SendLoginResp(lr);
+}
+
+void LoginWindow::on_pushButton_signup_clicked()
+{
+    std::string username = ui->lineEdit_username->text().toLocal8Bit().constData();
+    std::string password = ui->lineEdit_password->text().toLocal8Bit().constData();
+    LoginResp lr;
+    lr = li->WriteFile(username, password);
     emit SendLoginResp(lr);
 }

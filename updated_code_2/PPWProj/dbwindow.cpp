@@ -11,8 +11,8 @@
 #include <fstream>
 #include <sstream>
 #include <cstdio>
-
 #include "loginwindow.h"
+#include "deleteuserdialog.h"
 
 // since the database is a static variable, we instantiate it here
 // made the database static so that it can be accessed more easily (through the class itself)
@@ -287,3 +287,10 @@ void DBWindow::HandleDelRes(Response res)
     }
 }
 
+
+void DBWindow::on_pushButton_5_clicked()
+{
+    DeleteUserDialog* dud = new DeleteUserDialog();
+    dud->setModal(true);
+    dud->exec();
+}

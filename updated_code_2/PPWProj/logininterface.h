@@ -18,17 +18,19 @@ struct LoginResp {
 class LoginInterface
 {
 public:
+    static bool user_is_admin;
     LoginInterface();
     LoginResp Login(std::string user_attempt, std::string password_attempt);
-    void ReadFile();
+    static void ReadFile();
     void SignUp();
-    void WriteFile(std::string write_user, std::string write_password);
+    LoginResp WriteFile(std::string write_user, std::string write_password);
+    static void DeleteUserFromFile(std::string user_name);
+    static std::map<std::string, std::string> table;
+    static std::unordered_set<std::string> admin_set;
 
 private:
     std::string write_password;
     std::string write_user;
-    std::map<std::string, std::string> table;
-    std::unordered_set<std::string> admin_set;
 };
 
 #endif // USER_H

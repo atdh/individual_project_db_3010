@@ -13,6 +13,7 @@ SOURCES += \
     databasebst.cpp \
     dbwindow.cpp \
     deletedialog.cpp \
+    deleteuserdialog.cpp \
     dialogfactory.cpp \
     getdialog.cpp \
     logininterface.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     databasebst.h \
     dbwindow.h \
     deletedialog.h \
+    deleteuserdialog.h \
     dialogfactory.h \
     getdialog.h \
     logininterface.h \
@@ -38,6 +40,7 @@ HEADERS += \
 FORMS += \
     dbwindow.ui \
     deletedialog.ui \
+    deleteuserdialog.ui \
     getdialog.ui \
     loginwindow.ui \
     postdialog.ui \

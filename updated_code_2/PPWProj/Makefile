@@ -56,6 +56,7 @@ SOURCES       = clickablelabel.cpp \
 		databasebst.cpp \
 		dbwindow.cpp \
 		deletedialog.cpp \
+		deleteuserdialog.cpp \
 		dialogfactory.cpp \
 		getdialog.cpp \
 		logininterface.cpp \
@@ -67,6 +68,7 @@ SOURCES       = clickablelabel.cpp \
 		moc_clickablelabel.cpp \
 		moc_dbwindow.cpp \
 		moc_deletedialog.cpp \
+		moc_deleteuserdialog.cpp \
 		moc_getdialog.cpp \
 		moc_loginwindow.cpp \
 		moc_postdialog.cpp \
@@ -75,6 +77,7 @@ OBJECTS       = clickablelabel.o \
 		databasebst.o \
 		dbwindow.o \
 		deletedialog.o \
+		deleteuserdialog.o \
 		dialogfactory.o \
 		getdialog.o \
 		logininterface.o \
@@ -87,6 +90,7 @@ OBJECTS       = clickablelabel.o \
 		moc_clickablelabel.o \
 		moc_dbwindow.o \
 		moc_deletedialog.o \
+		moc_deleteuserdialog.o \
 		moc_getdialog.o \
 		moc_loginwindow.o \
 		moc_postdialog.o \
@@ -274,6 +278,7 @@ DIST          = ../../../../Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		databasebst.h \
 		dbwindow.h \
 		deletedialog.h \
+		deleteuserdialog.h \
 		dialogfactory.h \
 		getdialog.h \
 		logininterface.h \
@@ -284,6 +289,7 @@ DIST          = ../../../../Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		databasebst.cpp \
 		dbwindow.cpp \
 		deletedialog.cpp \
+		deleteuserdialog.cpp \
 		dialogfactory.cpp \
 		getdialog.cpp \
 		logininterface.cpp \
@@ -300,7 +306,7 @@ TARGET        = PPWProj
 first: all
 ####### Build rules
 
-PPWProj: ui_dbwindow.h ui_deletedialog.h ui_getdialog.h ui_loginwindow.h ui_postdialog.h ui_putdialog.h $(OBJECTS)  
+PPWProj: ui_dbwindow.h ui_deletedialog.h ui_deleteuserdialog.h ui_getdialog.h ui_loginwindow.h ui_postdialog.h ui_putdialog.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: PPWProj.pro ../../../../Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf ../../../../Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -682,9 +688,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents qmake_qmake_immediate.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents clickablelabel.h databasebst.h dbwindow.h deletedialog.h dialogfactory.h getdialog.h logininterface.h loginwindow.h mydialog.h postdialog.h putdialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents clickablelabel.cpp databasebst.cpp dbwindow.cpp deletedialog.cpp dialogfactory.cpp getdialog.cpp logininterface.cpp loginwindow.cpp main.cpp mydialog.cpp postdialog.cpp putdialog.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents dbwindow.ui deletedialog.ui getdialog.ui loginwindow.ui postdialog.ui putdialog.ui $(DISTDIR)/
+	$(COPY_FILE) --parents clickablelabel.h databasebst.h dbwindow.h deletedialog.h deleteuserdialog.h dialogfactory.h getdialog.h logininterface.h loginwindow.h mydialog.h postdialog.h putdialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents clickablelabel.cpp databasebst.cpp dbwindow.cpp deletedialog.cpp deleteuserdialog.cpp dialogfactory.cpp getdialog.cpp logininterface.cpp loginwindow.cpp main.cpp mydialog.cpp postdialog.cpp putdialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents dbwindow.ui deletedialog.ui deleteuserdialog.ui getdialog.ui loginwindow.ui postdialog.ui putdialog.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -726,9 +732,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h ../../../../Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_clickablelabel.cpp moc_dbwindow.cpp moc_deletedialog.cpp moc_getdialog.cpp moc_loginwindow.cpp moc_postdialog.cpp moc_putdialog.cpp
+compiler_moc_header_make_all: moc_clickablelabel.cpp moc_dbwindow.cpp moc_deletedialog.cpp moc_deleteuserdialog.cpp moc_getdialog.cpp moc_loginwindow.cpp moc_postdialog.cpp moc_putdialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_clickablelabel.cpp moc_dbwindow.cpp moc_deletedialog.cpp moc_getdialog.cpp moc_loginwindow.cpp moc_postdialog.cpp moc_putdialog.cpp
+	-$(DEL_FILE) moc_clickablelabel.cpp moc_dbwindow.cpp moc_deletedialog.cpp moc_deleteuserdialog.cpp moc_getdialog.cpp moc_loginwindow.cpp moc_postdialog.cpp moc_putdialog.cpp
 moc_clickablelabel.cpp: clickablelabel.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QObject \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
@@ -1068,6 +1074,115 @@ moc_deletedialog.cpp: deletedialog.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
 	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/updated_code_2/PPWProj/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/updated_code_2/PPWProj -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include deletedialog.h -o moc_deletedialog.cpp
+
+moc_deleteuserdialog.cpp: deleteuserdialog.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
+		moc_predefs.h \
+		../../../../Qt/5.15.1/gcc_64/bin/moc
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/updated_code_2/PPWProj/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/updated_code_2/PPWProj -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include deleteuserdialog.h -o moc_deleteuserdialog.cpp
 
 moc_getdialog.cpp: getdialog.h \
 		mydialog.h \
@@ -1524,9 +1639,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_dbwindow.h ui_deletedialog.h ui_getdialog.h ui_loginwindow.h ui_postdialog.h ui_putdialog.h
+compiler_uic_make_all: ui_dbwindow.h ui_deletedialog.h ui_deleteuserdialog.h ui_getdialog.h ui_loginwindow.h ui_postdialog.h ui_putdialog.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_dbwindow.h ui_deletedialog.h ui_getdialog.h ui_loginwindow.h ui_postdialog.h ui_putdialog.h
+	-$(DEL_FILE) ui_dbwindow.h ui_deletedialog.h ui_deleteuserdialog.h ui_getdialog.h ui_loginwindow.h ui_postdialog.h ui_putdialog.h
 ui_dbwindow.h: dbwindow.ui \
 		../../../../Qt/5.15.1/gcc_64/bin/uic \
 		clickablelabel.h \
@@ -1642,6 +1757,10 @@ ui_dbwindow.h: dbwindow.ui \
 ui_deletedialog.h: deletedialog.ui \
 		../../../../Qt/5.15.1/gcc_64/bin/uic
 	/home/bngu/Qt/5.15.1/gcc_64/bin/uic deletedialog.ui -o ui_deletedialog.h
+
+ui_deleteuserdialog.h: deleteuserdialog.ui \
+		../../../../Qt/5.15.1/gcc_64/bin/uic
+	/home/bngu/Qt/5.15.1/gcc_64/bin/uic deleteuserdialog.ui -o ui_deleteuserdialog.h
 
 ui_getdialog.h: getdialog.ui \
 		../../../../Qt/5.15.1/gcc_64/bin/uic
@@ -1973,7 +2092,8 @@ dbwindow.o: dbwindow.cpp dbwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QFileDialog \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qdir.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfileinfo.h
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfileinfo.h \
+		deleteuserdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbwindow.o dbwindow.cpp
 
 deletedialog.o: deletedialog.cpp deletedialog.h \
@@ -2087,6 +2207,115 @@ deletedialog.o: deletedialog.cpp deletedialog.h \
 		databasebst.h \
 		ui_deletedialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o deletedialog.o deletedialog.cpp
+
+deleteuserdialog.o: deleteuserdialog.cpp deleteuserdialog.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_deleteuserdialog.h \
+		logininterface.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o deleteuserdialog.o deleteuserdialog.cpp
 
 dialogfactory.o: dialogfactory.cpp dialogfactory.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
@@ -3199,6 +3428,9 @@ moc_dbwindow.o: moc_dbwindow.cpp
 
 moc_deletedialog.o: moc_deletedialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_deletedialog.o moc_deletedialog.cpp
+
+moc_deleteuserdialog.o: moc_deleteuserdialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_deleteuserdialog.o moc_deleteuserdialog.cpp
 
 moc_getdialog.o: moc_getdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_getdialog.o moc_getdialog.cpp

@@ -32,6 +32,7 @@ public:
     QLineEdit *lineEdit_username;
     QPushButton *pushButton_login;
     QLineEdit *lineEdit_password;
+    QPushButton *pushButton_signup;
     QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -57,10 +58,13 @@ public:
         lineEdit_username->setGeometry(QRect(40, 70, 221, 25));
         pushButton_login = new QPushButton(groupBox);
         pushButton_login->setObjectName(QString::fromUtf8("pushButton_login"));
-        pushButton_login->setGeometry(QRect(90, 230, 120, 21));
+        pushButton_login->setGeometry(QRect(90, 210, 120, 21));
         lineEdit_password = new QLineEdit(groupBox);
         lineEdit_password->setObjectName(QString::fromUtf8("lineEdit_password"));
         lineEdit_password->setGeometry(QRect(40, 160, 221, 25));
+        pushButton_signup = new QPushButton(groupBox);
+        pushButton_signup->setObjectName(QString::fromUtf8("pushButton_signup"));
+        pushButton_signup->setGeometry(QRect(90, 250, 120, 25));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(100, 110, 231, 241));
@@ -85,6 +89,7 @@ public:
         label_username->setText(QCoreApplication::translate("LoginWindow", "Username", nullptr));
         label_password->setText(QCoreApplication::translate("LoginWindow", "Password", nullptr));
         pushButton_login->setText(QCoreApplication::translate("LoginWindow", "Login", nullptr));
+        pushButton_signup->setText(QCoreApplication::translate("LoginWindow", "Sign up", nullptr));
         label->setText(QCoreApplication::translate("LoginWindow", "<html><head/><body><p><img src=\":/person.png\"/></p></body></html>", nullptr));
     } // retranslateUi
 
