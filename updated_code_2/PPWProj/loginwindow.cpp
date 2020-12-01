@@ -57,7 +57,12 @@ void LoginWindow::on_pushButton_login_clicked()
     std::string username = ui->lineEdit_username->text().toLocal8Bit().constData();
     std::string password = ui->lineEdit_password->text().toLocal8Bit().constData();
     LoginResp lr;
+    // for some reason, the dbw_partner becomes null when doing the Login()
+    // method, so just creating a copy of it here so that
+    // I can reassign the dbw_partner
+    DBWindow* copy_partner = dbw_partner;
     lr = li->Login(username, password);
+    dbw_partner = copy_partner;
     emit SendLoginResp(lr);
 }
 

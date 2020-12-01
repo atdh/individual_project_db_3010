@@ -38,7 +38,6 @@ public:
         (*set_ui_func)(dbw_input);
     }
     ~LoginWindow();
-    friend LoginInterface;
 
 private slots:
     void on_pushButton_login_clicked();

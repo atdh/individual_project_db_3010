@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 
@@ -22,6 +23,7 @@ class Ui_PasswordDialog
 public:
     QPushButton *pushButton;
     QTextEdit *textEdit;
+    QLabel *label;
 
     void setupUi(QDialog *PasswordDialog)
     {
@@ -30,10 +32,13 @@ public:
         PasswordDialog->resize(400, 124);
         pushButton = new QPushButton(PasswordDialog);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(150, 80, 89, 25));
+        pushButton->setGeometry(QRect(290, 80, 89, 25));
         textEdit = new QTextEdit(PasswordDialog);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
         textEdit->setGeometry(QRect(20, 30, 360, 30));
+        label = new QLabel(PasswordDialog);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(20, 80, 171, 17));
 
         retranslateUi(PasswordDialog);
         QObject::connect(pushButton, SIGNAL(clicked()), PasswordDialog, SLOT(close()));
@@ -44,7 +49,8 @@ public:
     void retranslateUi(QDialog *PasswordDialog)
     {
         PasswordDialog->setWindowTitle(QCoreApplication::translate("PasswordDialog", "Dialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("PasswordDialog", "PushButton", nullptr));
+        pushButton->setText(QCoreApplication::translate("PasswordDialog", "Submit", nullptr));
+        label->setText(QString());
     } // retranslateUi
 
 };

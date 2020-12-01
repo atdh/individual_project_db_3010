@@ -57,8 +57,6 @@ int main(int argc, char *argv[])
     dbw.move(x,y);
     lw.move(x,y);
 
-//    open_lw(&lw);
-//    lw.do_function_2(&lw);
     lw.show();
 
     return a.exec();
