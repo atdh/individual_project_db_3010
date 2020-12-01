@@ -10,6 +10,7 @@ LoginInterface::LoginInterface()
 //We make sure to keep track of whether the user is admin or not as well
 LoginResp LoginInterface::Login(std::string user_attempt, std::string password_attempt) {
     LoginResp login_resp;
+    password = password_attempt;
     //if it finds correct user name and password user logged in succesfully
     if (table.count(user_attempt) == 1)
     {
@@ -113,8 +114,9 @@ LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_pa
 
     return login_resp;
 }
+
 //deleting users from file. We check if the username that the admin wants to delete exists first and then delete accordingly.
-void LoginInterface::DeleteUserFromFile(std::string user_name) {
+void LoginInterface::DeleteUserFromFile(std::string full_line) {
     std::string deleteline;
     std::string line;
 
@@ -125,7 +127,7 @@ void LoginInterface::DeleteUserFromFile(std::string user_name) {
 
     while (getline(fin,line))
     {
-        if (line.find(user_name) == std::string::npos) {
+        if (line.find(full_line) == std::string::npos) {
             temp << line << std::endl;
         }
     }

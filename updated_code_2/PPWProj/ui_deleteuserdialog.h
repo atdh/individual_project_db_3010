@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 
@@ -22,21 +23,25 @@ class Ui_DeleteUserDialog
 public:
     QPushButton *pushButton;
     QTextEdit *textEdit;
+    QLabel *label;
 
     void setupUi(QDialog *DeleteUserDialog)
     {
         if (DeleteUserDialog->objectName().isEmpty())
             DeleteUserDialog->setObjectName(QString::fromUtf8("DeleteUserDialog"));
-        DeleteUserDialog->resize(400, 124);
+        DeleteUserDialog->resize(400, 128);
         pushButton = new QPushButton(DeleteUserDialog);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(150, 80, 89, 25));
+        pushButton->setGeometry(QRect(290, 80, 89, 25));
         textEdit = new QTextEdit(DeleteUserDialog);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
         textEdit->setGeometry(QRect(20, 30, 360, 30));
+        label = new QLabel(DeleteUserDialog);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(20, 80, 171, 17));
+        QWidget::setTabOrder(textEdit, pushButton);
 
         retranslateUi(DeleteUserDialog);
-        QObject::connect(pushButton, SIGNAL(clicked()), DeleteUserDialog, SLOT(close()));
 
         QMetaObject::connectSlotsByName(DeleteUserDialog);
     } // setupUi
@@ -49,7 +54,8 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">User to delete</p></body></html>", nullptr));
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
+        label->setText(QString());
     } // retranslateUi
 
 };

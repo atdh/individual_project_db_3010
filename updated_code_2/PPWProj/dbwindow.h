@@ -18,6 +18,8 @@ public:
     DBWindow(QWidget *parent = nullptr);
     void set_partner(LoginWindow* partner);
     std::string GetFilePath(std::string file_name);
+    void FillUserTable();
+    void set_ui();
     friend LoginWindow;
     ~DBWindow();
 
@@ -30,14 +32,17 @@ private slots:
 
     void on_pushButton_4_clicked();
 
-    int GetRowEntry(QString key);
+    int GetRowEntry(QString key, int table_num);
 
     void HandleGetRes(Response res);
     void HandlePostRes(std::string key, std::string value, Response res);
     void HandlePutRes(std::string key, std::string value, Response res);
     void HandleDelRes(Response res);
+    void HandleDelUserRes(Response res);
 
     void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
 
 private:
     Ui::DBWindow *ui;

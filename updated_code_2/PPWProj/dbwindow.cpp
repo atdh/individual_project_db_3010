@@ -5,7 +5,6 @@
 #include "postdialog.h"
 #include <QtDebug>
 #include <QFileDialog>
-//#include <filesystem>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -13,6 +12,7 @@
 #include <cstdio>
 #include "loginwindow.h"
 #include "deleteuserdialog.h"
+#include "passworddialog.h"
 
 // since the database is a static variable, we instantiate it here
 // made the database static so that it can be accessed more easily (through the class itself)
@@ -34,21 +34,41 @@ int GetFileSize(std::string file_name) {
     return file_size;
 }
 
-int DBWindow::GetRowEntry(QString key) {
+// giving this function another parameter to help indicate
+// which table we are working with
+int DBWindow::GetRowEntry(QString query, int table_num) {
     // return a list of all matching results
-    // it looks at column 0 (which is the Key column) of the table
+    // it looks at column 0 of the table
     // and looks at each row and creates a list of QModelIndex
     // object that match the given value
-    QModelIndexList results = ui->tableWidget->model()->match(
-        ui->tableWidget->model()->index(0, 0),
-        Qt::DisplayRole,
-        key,
-        -1,
-        Qt::MatchContains
-    );
-    // results should only have one item, which is the QModelIndex
-    // that contains the key
-    return results[0].row();
+    QModelIndexList results;
+
+    if (table_num == 1) {
+        results = ui->tableWidget->model()->match(
+                ui->tableWidget->model()->index(0, 0),
+                Qt::DisplayRole,
+                query, // the query in this case is the key that we want to find
+                -1,
+                Qt::MatchContains
+       );
+    } else if (table_num == 2) {
+        results = ui->tableWidget_2->model()->match(
+                ui->tableWidget->model()->index(0, 0),
+                Qt::DisplayRole,
+                query, // the query in this case is the name of the user we want to find
+                -1,
+                Qt::MatchContains
+       );
+    }
+
+    if (results.length() > 0) {
+        // results should only have one item, which is the QModelIndex
+        // that contains the key
+        return results[0].row();
+    } else {
+        std::cout << "Couldn't find the string" << std::endl;
+        return -1;
+    }
 }
 
 // this is the main dialog upon starting up the application
@@ -142,12 +162,43 @@ void DBWindow::set_partner(LoginWindow *partner) {
         if (lw_partner != 0) {
             disconnect(ui->home_label, SIGNAL(clicked()), this, SLOT(hide()));
             disconnect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
+            disconnect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(reset_line_edits()));
         }
 
         lw_partner = partner;
 
         connect(ui->home_label, SIGNAL(clicked()), this, SLOT(hide()));
         connect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
+        connect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(reset_line_edits()));
+    }
+}
+
+// this fills up the user table
+// we can assume that by this point, the li field of the
+// lw_partner is filled up so we can just use that information
+// in order to fill the ui user table
+void DBWindow::FillUserTable() {
+    for ( auto it = lw_partner->li->table.begin(); it != lw_partner->li->table.end(); ++it  )
+    {
+       std::cout << it->first << '\t' << it->second << std::endl;
+       ui->tableWidget_2->insertRow(ui->tableWidget_2->rowCount());
+       ui->tableWidget_2->setItem (ui->tableWidget_2->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(it->first)));
+       ui->tableWidget_2->setItem (ui->tableWidget_2->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(it->second)));
+    }
+}
+
+// this method gets called when the login window switches over to the database window
+// in order to set visiblity/enability of the delete user button, the toggle user table button, and
+// user table
+void DBWindow::set_ui() {
+    if (lw_partner->li->user_is_admin == true) {
+        ui->pushButton_5->setEnabled(true);
+        ui->pushButton_6->setEnabled(true);
+        ui->tableWidget_2->setVisible(false);
+    } else {
+        ui->pushButton_5->setEnabled(false);
+        ui->pushButton_6->setEnabled(false);
+        ui->tableWidget_2->setVisible(false);
     }
 }
 
@@ -252,7 +303,7 @@ void DBWindow::HandlePutRes(std::string key, std::string value, Response res)
         ui->response_message_1->setText(QString::fromStdString(vec_res_str[0]));
         ui->response_message_2->setText(QString::fromStdString(vec_res_str[1]));
 
-        int row_key = GetRowEntry(res.put_update_key);
+        int row_key = GetRowEntry(res.put_update_key, 1);
 
         ui->tableWidget->item(row_key, 1)->setText(res.put_update_value);
     }
@@ -261,7 +312,6 @@ void DBWindow::HandlePutRes(std::string key, std::string value, Response res)
 // this launches the DELETE request dialog
 void DBWindow::on_pushButton_4_clicked()
 {
-    qDebug() << "In the delete dialog";
     //factory design pattern
     REST_TYPE type = DELETE;
     QDialog* dd = DialogFactory::Create(type);
@@ -281,7 +331,7 @@ void DBWindow::HandleDelRes(Response res)
         ui->response_stat->setStyleSheet(QStringLiteral("QLabel{color: rgb(0, 180, 0);}"));
         ui->response_message_1->setText(res.body_info);
 
-        int row_key = GetRowEntry(res.delete_key);
+        int row_key = GetRowEntry(res.delete_key, 1);
 
         ui->tableWidget->removeRow(row_key);
     } else {
@@ -295,6 +345,27 @@ void DBWindow::HandleDelRes(Response res)
 void DBWindow::on_pushButton_5_clicked()
 {
     DeleteUserDialog* dud = new DeleteUserDialog();
+    connect(dud, SIGNAL(SendDelUserRes(Response)), this, SLOT(HandleDelUserRes(Response)));
     dud->setModal(true);
     dud->exec();
+}
+
+// this is the callback function for when the user(admin) successfully deletes a user
+void DBWindow::HandleDelUserRes(Response res) {
+    if (res.successful == true) {
+        int row_key = GetRowEntry(res.body_info, 2);
+        ui->tableWidget_2->removeRow(row_key);
+    }
+}
+
+// this toggles the user table
+void DBWindow::on_pushButton_6_clicked()
+{
+    PasswordDialog* pd = new PasswordDialog();
+    connect(pd, SIGNAL(SendShowUTRes(Response)), this, SLOT(HandleShowUTRes(Response)));
+    pd->setModal(true);
+    pd->exec();
+
+    bool next_state = !ui->tableWidget_2->isVisible();
+    ui->tableWidget_2->setVisible(next_state);
 }

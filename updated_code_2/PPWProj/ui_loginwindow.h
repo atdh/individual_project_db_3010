@@ -46,13 +46,13 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(410, 80, 300, 300));
+        groupBox->setGeometry(QRect(410, 70, 300, 320));
         label_username = new QLabel(groupBox);
         label_username->setObjectName(QString::fromUtf8("label_username"));
         label_username->setGeometry(QRect(40, 40, 81, 17));
         label_password = new QLabel(groupBox);
         label_password->setObjectName(QString::fromUtf8("label_password"));
-        label_password->setGeometry(QRect(40, 130, 67, 17));
+        label_password->setGeometry(QRect(40, 110, 67, 17));
         lineEdit_username = new QLineEdit(groupBox);
         lineEdit_username->setObjectName(QString::fromUtf8("lineEdit_username"));
         lineEdit_username->setGeometry(QRect(40, 70, 221, 25));
@@ -61,7 +61,7 @@ public:
         pushButton_login->setGeometry(QRect(90, 210, 120, 21));
         lineEdit_password = new QLineEdit(groupBox);
         lineEdit_password->setObjectName(QString::fromUtf8("lineEdit_password"));
-        lineEdit_password->setGeometry(QRect(40, 160, 221, 25));
+        lineEdit_password->setGeometry(QRect(40, 140, 221, 25));
         pushButton_signup = new QPushButton(groupBox);
         pushButton_signup->setObjectName(QString::fromUtf8("pushButton_signup"));
         pushButton_signup->setGeometry(QRect(90, 250, 120, 25));
@@ -76,6 +76,9 @@ public:
         statusbar = new QStatusBar(LoginWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         LoginWindow->setStatusBar(statusbar);
+        QWidget::setTabOrder(lineEdit_username, lineEdit_password);
+        QWidget::setTabOrder(lineEdit_password, pushButton_login);
+        QWidget::setTabOrder(pushButton_login, pushButton_signup);
 
         retranslateUi(LoginWindow);
 

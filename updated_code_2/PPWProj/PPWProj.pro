@@ -20,6 +20,7 @@ SOURCES += \
     loginwindow.cpp \
     main.cpp \
     mydialog.cpp \
+    passworddialog.cpp \
     postdialog.cpp \
     putdialog.cpp
 
@@ -34,6 +35,7 @@ HEADERS += \
     logininterface.h \
     loginwindow.h \
     mydialog.h \
+    passworddialog.h \
     postdialog.h \
     putdialog.h
 
@@ -43,6 +45,7 @@ FORMS += \
     deleteuserdialog.ui \
     getdialog.ui \
     loginwindow.ui \
+    passworddialog.ui \
     postdialog.ui \
     putdialog.ui
 
