@@ -6,8 +6,7 @@
 LoginWindow::LoginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LoginWindow),
-    dbw_partner(0),
-    li(new LoginInterface())
+    dbw_partner(0)
 {
     ui->setupUi(this);
 }
@@ -27,26 +26,29 @@ void LoginWindow::set_partner(DBWindow *partner) {
     if (dbw_partner != partner) {
         if (dbw_partner != 0) {
             disconnect(this, SIGNAL(SendLoginResp(LoginResp)), this, SLOT(window_switcher(LoginResp)));
-//            disconnect(ui->pushButton_login, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
         }
 
         dbw_partner = partner;
 
         connect(this, SIGNAL(SendLoginResp(LoginResp)), this, SLOT(window_switcher(LoginResp)));
-//        connect(ui->pushButton_login, SIGNAL(clicked()), (QObject*)dbw_partner, SLOT(show()));
     }
 }
 
 //Hides window or shows window accordignly for a smooth ui experience.
 void LoginWindow::window_switcher(LoginResp login_resp) {
-    qDebug() << "entered the window switcher";
-
     if (login_resp.succ == true) {
         hide();
-        do_function_2(dbw_partner);
+        do_show_function(dbw_partner);
+        do_fill_function(dbw_partner);
+        do_set_ui_function(dbw_partner);
     } else {
-        std::cout << "didn't work" << std::endl;
+
     }
+}
+
+void LoginWindow::reset_line_edits() {
+    ui->lineEdit_username->setText("");
+    ui->lineEdit_password->setText("");
 }
 
 //ui for login button

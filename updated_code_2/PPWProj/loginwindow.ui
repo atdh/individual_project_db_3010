@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>80</y>
+      <y>70</y>
       <width>300</width>
-      <height>300</height>
+      <height>320</height>
      </rect>
     </property>
     <property name="title">
@@ -43,7 +43,7 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>130</y>
+       <y>110</y>
        <width>67</width>
        <height>17</height>
       </rect>
@@ -79,7 +79,7 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>160</y>
+       <y>140</y>
        <width>221</width>
        <height>25</height>
       </rect>
@@ -125,6 +125,12 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_username</tabstop>
+  <tabstop>lineEdit_password</tabstop>
+  <tabstop>pushButton_login</tabstop>
+  <tabstop>pushButton_signup</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

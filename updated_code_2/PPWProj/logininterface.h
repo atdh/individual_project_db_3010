@@ -19,6 +19,7 @@ class LoginInterface
 {
 public:
     static bool user_is_admin;
+    std::string password;
     LoginInterface();
     LoginResp Login(std::string user_attempt, std::string password_attempt);
     static void ReadFile();
@@ -27,10 +28,6 @@ public:
     static void DeleteUserFromFile(std::string user_name);
     static std::map<std::string, std::string> table;
     static std::unordered_set<std::string> admin_set;
-
-private:
-    std::string write_password;
-    std::string write_user;
 };
 
 #endif // USER_H

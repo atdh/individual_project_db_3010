@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DBWindow_t {
-    QByteArrayData data[17];
-    char stringdata0[228];
+    QByteArrayData data[20];
+    char stringdata0[279];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,24 +40,27 @@ QT_MOC_LITERAL(4, 56, 23), // "on_pushButton_3_clicked"
 QT_MOC_LITERAL(5, 80, 23), // "on_pushButton_4_clicked"
 QT_MOC_LITERAL(6, 104, 11), // "GetRowEntry"
 QT_MOC_LITERAL(7, 116, 3), // "key"
-QT_MOC_LITERAL(8, 120, 12), // "HandleGetRes"
-QT_MOC_LITERAL(9, 133, 8), // "Response"
-QT_MOC_LITERAL(10, 142, 3), // "res"
-QT_MOC_LITERAL(11, 146, 13), // "HandlePostRes"
-QT_MOC_LITERAL(12, 160, 11), // "std::string"
-QT_MOC_LITERAL(13, 172, 5), // "value"
-QT_MOC_LITERAL(14, 178, 12), // "HandlePutRes"
-QT_MOC_LITERAL(15, 191, 12), // "HandleDelRes"
-QT_MOC_LITERAL(16, 204, 23) // "on_pushButton_5_clicked"
+QT_MOC_LITERAL(8, 120, 9), // "table_num"
+QT_MOC_LITERAL(9, 130, 12), // "HandleGetRes"
+QT_MOC_LITERAL(10, 143, 8), // "Response"
+QT_MOC_LITERAL(11, 152, 3), // "res"
+QT_MOC_LITERAL(12, 156, 13), // "HandlePostRes"
+QT_MOC_LITERAL(13, 170, 11), // "std::string"
+QT_MOC_LITERAL(14, 182, 5), // "value"
+QT_MOC_LITERAL(15, 188, 12), // "HandlePutRes"
+QT_MOC_LITERAL(16, 201, 12), // "HandleDelRes"
+QT_MOC_LITERAL(17, 214, 16), // "HandleDelUserRes"
+QT_MOC_LITERAL(18, 231, 23), // "on_pushButton_5_clicked"
+QT_MOC_LITERAL(19, 255, 23) // "on_pushButton_6_clicked"
 
     },
     "DBWindow\0on_pushButton_clicked\0\0"
     "on_pushButton_2_clicked\0on_pushButton_3_clicked\0"
     "on_pushButton_4_clicked\0GetRowEntry\0"
-    "key\0HandleGetRes\0Response\0res\0"
-    "HandlePostRes\0std::string\0value\0"
-    "HandlePutRes\0HandleDelRes\0"
-    "on_pushButton_5_clicked"
+    "key\0table_num\0HandleGetRes\0Response\0"
+    "res\0HandlePostRes\0std::string\0value\0"
+    "HandlePutRes\0HandleDelRes\0HandleDelUserRes\0"
+    "on_pushButton_5_clicked\0on_pushButton_6_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +70,7 @@ static const uint qt_meta_data_DBWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,27 +78,31 @@ static const uint qt_meta_data_DBWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x08 /* Private */,
-       3,    0,   65,    2, 0x08 /* Private */,
-       4,    0,   66,    2, 0x08 /* Private */,
-       5,    0,   67,    2, 0x08 /* Private */,
-       6,    1,   68,    2, 0x08 /* Private */,
-       8,    1,   71,    2, 0x08 /* Private */,
-      11,    3,   74,    2, 0x08 /* Private */,
-      14,    3,   81,    2, 0x08 /* Private */,
-      15,    1,   88,    2, 0x08 /* Private */,
-      16,    0,   91,    2, 0x08 /* Private */,
+       1,    0,   74,    2, 0x08 /* Private */,
+       3,    0,   75,    2, 0x08 /* Private */,
+       4,    0,   76,    2, 0x08 /* Private */,
+       5,    0,   77,    2, 0x08 /* Private */,
+       6,    2,   78,    2, 0x08 /* Private */,
+       9,    1,   83,    2, 0x08 /* Private */,
+      12,    3,   86,    2, 0x08 /* Private */,
+      15,    3,   93,    2, 0x08 /* Private */,
+      16,    1,  100,    2, 0x08 /* Private */,
+      17,    1,  103,    2, 0x08 /* Private */,
+      18,    0,  106,    2, 0x08 /* Private */,
+      19,    0,  107,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Int, QMetaType::QString,    7,
-    QMetaType::Void, 0x80000000 | 9,   10,
-    QMetaType::Void, 0x80000000 | 12, 0x80000000 | 12, 0x80000000 | 9,    7,   13,   10,
-    QMetaType::Void, 0x80000000 | 12, 0x80000000 | 12, 0x80000000 | 9,    7,   13,   10,
-    QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Int, QMetaType::QString, QMetaType::Int,    7,    8,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 13, 0x80000000 | 13, 0x80000000 | 10,    7,   14,   11,
+    QMetaType::Void, 0x80000000 | 13, 0x80000000 | 13, 0x80000000 | 10,    7,   14,   11,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -111,13 +118,15 @@ void DBWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 1: _t->on_pushButton_2_clicked(); break;
         case 2: _t->on_pushButton_3_clicked(); break;
         case 3: _t->on_pushButton_4_clicked(); break;
-        case 4: { int _r = _t->GetRowEntry((*reinterpret_cast< QString(*)>(_a[1])));
+        case 4: { int _r = _t->GetRowEntry((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 5: _t->HandleGetRes((*reinterpret_cast< Response(*)>(_a[1]))); break;
         case 6: _t->HandlePostRes((*reinterpret_cast< std::string(*)>(_a[1])),(*reinterpret_cast< std::string(*)>(_a[2])),(*reinterpret_cast< Response(*)>(_a[3]))); break;
         case 7: _t->HandlePutRes((*reinterpret_cast< std::string(*)>(_a[1])),(*reinterpret_cast< std::string(*)>(_a[2])),(*reinterpret_cast< Response(*)>(_a[3]))); break;
         case 8: _t->HandleDelRes((*reinterpret_cast< Response(*)>(_a[1]))); break;
-        case 9: _t->on_pushButton_5_clicked(); break;
+        case 9: _t->HandleDelUserRes((*reinterpret_cast< Response(*)>(_a[1]))); break;
+        case 10: _t->on_pushButton_5_clicked(); break;
+        case 11: _t->on_pushButton_6_clicked(); break;
         default: ;
         }
     }
@@ -152,13 +161,13 @@ int DBWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 12;
     }
     return _id;
 }

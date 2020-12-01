@@ -2,6 +2,7 @@
 #define DELETEUSERDIALOG_H
 
 #include <QDialog>
+#include "databasebst.h"
 
 namespace Ui {
 class DeleteUserDialog;
@@ -17,6 +18,9 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
+signals:
+    void SendDelUserRes(Response res);
 
 private:
     Ui::DeleteUserDialog *ui;

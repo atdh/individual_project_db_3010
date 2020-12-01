@@ -8,13 +8,22 @@
 #include "logininterface.h"
 
 //this allowed us to help change the window. It's a helper function.
-void open_lw(LoginWindow* lw_input) {
-    lw_input->show();
-}
-
 void open_dbw(DBWindow* dbw_input) {
     dbw_input->show();
 }
+
+// this allows us to call the database window's fill user table
+void fill_user_table(DBWindow* dbw_input) {
+    dbw_input->FillUserTable();
+}
+
+// this allows us to call the database window's set_ui() method
+// which will enable/disable certain ui components
+// depending on whether the user is an admin
+void set_up_ui_user(DBWindow* dbw_input) {
+    dbw_input->set_ui();
+}
+
 //keeps track of all users
 std::map<std::string, std::string> LoginInterface::table;
 //keeps track of which users are admins and which ones are not
@@ -32,7 +41,9 @@ int main(int argc, char *argv[])
     //setting partner ie: login/signupwindow and databasewindow
     dbw.set_partner(&lw);
     lw.set_partner(&dbw);
-    lw.set_function_2(open_dbw);
+    lw.set_show_function(open_dbw);
+    lw.set_fill_ut_function(fill_user_table);
+    lw.set_set_ui_function(set_up_ui_user);
 
     //setting our ui dimension
     dbw.setWindowTitle("My Database");

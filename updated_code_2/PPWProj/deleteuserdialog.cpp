@@ -9,6 +9,7 @@ DeleteUserDialog::DeleteUserDialog(QWidget *parent) :
     ui(new Ui::DeleteUserDialog)
 {
     ui->setupUi(this);
+    ui->textEdit->setPlaceholderText("Enter user");
 }
 
 DeleteUserDialog::~DeleteUserDialog()
@@ -30,14 +31,23 @@ void DeleteUserDialog::on_pushButton_clicked()
         //if it finds the user before it reaches end of table,remove
         if (it != LoginInterface::table.end())
         {
+            std::string full_line = user_to_delete + " " + LoginInterface::table.find(user_to_delete)->second;
             //remove from table
             LoginInterface::table.erase(it);
             //remove from file
-            LoginInterface::DeleteUserFromFile(user_to_delete);
+            LoginInterface::DeleteUserFromFile(full_line);
+            Response res;
+            res.successful = true;
+            res.body_info = QString::fromStdString(user_to_delete);
+            emit SendDelUserRes(res);
+            close();
         } else {
             std::cout << "user doesn't exist" << std::endl;
+            ui->label->setText("User doesn't exist");
+            ui->label->setStyleSheet(QStringLiteral("QLabel{color: rgb(180, 0, 0);}"));
         }
     } else {
         std::cout << "user not allowed to delete" << std::endl;
     }
 }
+

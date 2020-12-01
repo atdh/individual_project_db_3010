@@ -9,6 +9,7 @@ DeleteDialog::DeleteDialog(std::string input_type, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->pushButton->setText("Submit");
+    ui->textEdit->setPlaceholderText("Insert a key");
 }
 
 DeleteDialog::~DeleteDialog()
