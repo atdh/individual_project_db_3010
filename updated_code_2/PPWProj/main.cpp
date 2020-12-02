@@ -24,11 +24,21 @@ void set_up_ui_user(DBWindow* dbw_input) {
     dbw_input->set_ui();
 }
 
+// this allows us to the database window's AddMoreSignup() method
+// which will add users to the user table when more than one person
+// signs up
+void add_new_user(DBWindow* dbw_input) {
+    dbw_input->AddMoreSignup();
+}
+
 //keeps track of all users
 std::map<std::string, std::string> LoginInterface::table;
 //keeps track of which users are admins and which ones are not
 std::unordered_set<std::string> LoginInterface::admin_set;
+
 bool LoginInterface::user_is_admin = false;
+std::string LoginInterface::username = "";
+std::string LoginInterface::password = "";
 
 int main(int argc, char *argv[])
 {
@@ -44,6 +54,7 @@ int main(int argc, char *argv[])
     lw.set_show_function(open_dbw);
     lw.set_fill_ut_function(fill_user_table);
     lw.set_set_ui_function(set_up_ui_user);
+    lw.set_add_user_function(add_new_user);
 
     //setting our ui dimension
     dbw.setWindowTitle("My Database");

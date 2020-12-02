@@ -10,8 +10,8 @@ PostDialog::PostDialog(std::string input_type, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->pushButton->setText("Submit");
-    ui->textEdit->setPlaceholderText("Insert a key");
-    ui->textEdit_2->setPlaceholderText("Insert a value");
+    ui->lineEdit->setPlaceholderText("Insert a key");
+    ui->lineEdit_2->setPlaceholderText("Insert a value");
 }
 
 PostDialog::~PostDialog()
@@ -21,9 +21,9 @@ PostDialog::~PostDialog()
 
 void PostDialog::on_pushButton_clicked()
 {
-    std::string key_str = ui->textEdit->toPlainText().toLocal8Bit().constData();
+    std::string key_str = ui->lineEdit->text().toLocal8Bit().constData();
     set_key(key_str);
-    std::string value_str = ui->textEdit_2->toPlainText().toLocal8Bit().constData();
+    std::string value_str = ui->lineEdit_2->text().toLocal8Bit().constData();
     set_value(value_str);
     //calls appropriate function for writing to the database
     Response r = DoRequest();
@@ -42,7 +42,7 @@ Response PostDialog::DoRequest()
 
     if (temp_node == nullptr) {
         int spot_idx = db->FindFreeSpace();
-        std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
+//        std::cout << "The spot idx is " << std::to_string(spot_idx) << std::endl;
         db->set_root(db->Insert(db->get_root(), hash, get_key_vec(), get_value_vec(), spot_idx * 80));
 
         return Response(true, "Added new key/value to database");

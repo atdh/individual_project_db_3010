@@ -41,14 +41,13 @@ public:
         label->setGeometry(QRect(20, 80, 171, 17));
 
         retranslateUi(PasswordDialog);
-        QObject::connect(pushButton, SIGNAL(clicked()), PasswordDialog, SLOT(close()));
 
         QMetaObject::connectSlotsByName(PasswordDialog);
     } // setupUi
 
     void retranslateUi(QDialog *PasswordDialog)
     {
-        PasswordDialog->setWindowTitle(QCoreApplication::translate("PasswordDialog", "Dialog", nullptr));
+        PasswordDialog->setWindowTitle(QCoreApplication::translate("PasswordDialog", "PasswordDialog", nullptr));
         pushButton->setText(QCoreApplication::translate("PasswordDialog", "Submit", nullptr));
         label->setText(QString());
     } // retranslateUi

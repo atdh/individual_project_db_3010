@@ -1522,6 +1522,7 @@ moc_passworddialog.cpp: passworddialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
+		logininterface.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
 	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/updated_code_2/PPWProj/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/updated_code_2/PPWProj -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include passworddialog.h -o moc_passworddialog.cpp
@@ -2204,50 +2205,6 @@ dbwindow.o: dbwindow.cpp dbwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		logininterface.h \
 		ui_dbwindow.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qheaderview.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvalidator.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QMenuBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenu.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTableWidget \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtablewidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtableview.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
-		clickablelabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QObject \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/QMouseEvent \
 		dialogfactory.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
@@ -2371,28 +2328,7 @@ deletedialog.o: deletedialog.cpp deletedialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		databasebst.h \
-		ui_deletedialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		ui_deletedialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o deletedialog.o deletedialog.cpp
 
 deleteuserdialog.o: deleteuserdialog.cpp deleteuserdialog.h \
@@ -2503,29 +2439,6 @@ deleteuserdialog.o: deleteuserdialog.cpp deleteuserdialog.h \
 		databasebst.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QString \
 		ui_deleteuserdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		logininterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o deleteuserdialog.o deleteuserdialog.cpp
 
@@ -2753,28 +2666,7 @@ getdialog.o: getdialog.cpp getdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		databasebst.h \
-		ui_getdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		ui_getdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o getdialog.o getdialog.cpp
 
 logininterface.o: logininterface.cpp logininterface.h \
@@ -2959,36 +2851,6 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		logininterface.h \
 		ui_loginwindow.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QGroupBox \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qgroupbox.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QMenuBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenu.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QtDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o loginwindow.cpp
 
@@ -3561,30 +3423,8 @@ passworddialog.o: passworddialog.cpp passworddialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_passworddialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		logininterface.h \
+		ui_passworddialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o passworddialog.o passworddialog.cpp
 
 postdialog.o: postdialog.cpp postdialog.h \
@@ -3696,28 +3536,7 @@ postdialog.o: postdialog.cpp postdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QString \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QtDebug \
 		databasebst.h \
-		ui_postdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		ui_postdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o postdialog.o postdialog.cpp
 
 putdialog.o: putdialog.cpp putdialog.h \
@@ -3829,28 +3648,7 @@ putdialog.o: putdialog.cpp putdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QString \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QtDebug \
 		databasebst.h \
-		ui_putdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		ui_putdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o putdialog.o putdialog.cpp
 
 qrc_qmake_qmake_immediate.o: qrc_qmake_qmake_immediate.cpp 
