@@ -1,9 +1,0 @@
-GUI:
-class Button
-methods:
-LoadQt(std::string repo_name, std::string local_name, User curr_user)
-class Page
-Methods
-LoadPage()
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-BRAINSTORM PAGE FOR GUI CLASS
