@@ -10,6 +10,7 @@ LoginInterface::LoginInterface()
 //We make sure to keep track of whether the user is admin or not as well
 LoginResp LoginInterface::Login(std::string user_attempt, std::string password_attempt) {
     LoginResp login_resp;
+    username = user_attempt;
     password = password_attempt;
     //if it finds correct user name and password user logged in succesfully
     if (table.count(user_attempt) == 1)
@@ -20,7 +21,6 @@ LoginResp LoginInterface::Login(std::string user_attempt, std::string password_a
             //if its an admin then I will print options that the admin has
             if (admin_set.find(user_attempt) != admin_set.end())
             {
-                std::cout << "\nHas admin access" << std::endl;
                 login_resp.is_admin = true;
                 this->user_is_admin = login_resp.is_admin;
             } else {
@@ -30,18 +30,19 @@ LoginResp LoginInterface::Login(std::string user_attempt, std::string password_a
 
             return login_resp;
         } else {
-            std::cout << "wrong password" << std::endl;
             login_resp.succ = false;
             login_resp.is_admin = false;
+            login_resp.body_info[0] = "Incorrect password";
             this->user_is_admin = login_resp.is_admin;
             return login_resp;
         }
     }
     else
     {
-        std::cout << "user doesn't exist" << std::endl;
         login_resp.succ = false;
         login_resp.is_admin = false;
+        login_resp.body_info[0] = "User doesn't exist. Try again or";
+        login_resp.body_info[1] = "sign up";
         this->user_is_admin = login_resp.is_admin;
         return login_resp;
     }
@@ -79,12 +80,11 @@ void LoginInterface::ReadFile() {
 }
 //First we check to see if user exists in the table. If the user exists then we show error message
 //and ask to come up with a difft username. If it's a unique user, we append to the end of the file
-//andupdate our table map accordingly
+//and update our table map accordingly
 LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_password)
 {
     std::fstream myfile;
     myfile.open(GetFilePath("authentication.txt"), std::fstream::app);
-
     LoginResp login_resp;
 
     bool unique_user = true;
@@ -93,10 +93,11 @@ LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_pa
     {
         if (it->first == write_user)
         {
-            std::cout << "User exists. Come up with new name" << std::endl;
             unique_user = false;
             login_resp.succ = false;
             login_resp.is_admin = false;
+            login_resp.body_info[0] = "User exists. Enter a new one or";
+            login_resp.body_info[1] = "login";
             myfile.close();
 
             return login_resp;
@@ -104,13 +105,20 @@ LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_pa
     }
 
     if (unique_user == true) {
-        myfile << write_user << " " << write_password << " " << "$";
+        // need to make sure that we add the new user to the table
+        table.insert(std::pair<std::string, std::string>(write_user, write_password));
+        myfile << write_user << " " << write_password << " " << "$\n";
     }
 
     myfile.close();
 
     login_resp.succ = true;
     login_resp.is_admin = false;
+    login_resp.new_user = write_user;
+    login_resp.new_password = write_password;
+
+    username = write_user;
+    password = write_password;
 
     return login_resp;
 }

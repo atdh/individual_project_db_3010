@@ -19,6 +19,7 @@ public:
     void set_partner(LoginWindow* partner);
     std::string GetFilePath(std::string file_name);
     void FillUserTable();
+    void AddMoreSignup();
     void set_ui();
     friend LoginWindow;
     ~DBWindow();
@@ -39,6 +40,7 @@ private slots:
     void HandlePutRes(std::string key, std::string value, Response res);
     void HandleDelRes(Response res);
     void HandleDelUserRes(Response res);
+    void HandleShowUTRes(bool);
 
     void on_pushButton_5_clicked();
 

@@ -12,34 +12,34 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QTextEdit>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_PostDialog
 {
 public:
-    QTextEdit *textEdit;
     QPushButton *pushButton;
-    QTextEdit *textEdit_2;
+    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_2;
 
     void setupUi(QDialog *PostDialog)
     {
         if (PostDialog->objectName().isEmpty())
             PostDialog->setObjectName(QString::fromUtf8("PostDialog"));
         PostDialog->resize(400, 183);
-        textEdit = new QTextEdit(PostDialog);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(20, 30, 360, 30));
         pushButton = new QPushButton(PostDialog);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(150, 130, 89, 25));
-        textEdit_2 = new QTextEdit(PostDialog);
-        textEdit_2->setObjectName(QString::fromUtf8("textEdit_2"));
-        textEdit_2->setGeometry(QRect(20, 80, 360, 30));
-        QWidget::setTabOrder(textEdit, textEdit_2);
-        QWidget::setTabOrder(textEdit_2, pushButton);
+        lineEdit = new QLineEdit(PostDialog);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setGeometry(QRect(20, 30, 360, 30));
+        lineEdit_2 = new QLineEdit(PostDialog);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEdit_2->setGeometry(QRect(20, 80, 360, 30));
+        QWidget::setTabOrder(lineEdit, lineEdit_2);
+        QWidget::setTabOrder(lineEdit_2, pushButton);
 
         retranslateUi(PostDialog);
         QObject::connect(pushButton, SIGNAL(clicked()), PostDialog, SLOT(close()));

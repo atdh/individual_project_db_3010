@@ -110,8 +110,8 @@ DBWindow::DBWindow(QWidget *parent)
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
             std::string key_str = MyDialog::db->ConvertToStr(n->key);
             std::string value_str = MyDialog::db->ConvertToStr(n->value);
-            ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(key_str)));
-            ui->tableWidget->setItem (ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(value_str)));
+            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(key_str)));
+            ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(value_str)));
         }
     }
 
@@ -127,6 +127,14 @@ DBWindow::DBWindow(QWidget *parent)
 
     ui->tableWidget->setColumnWidth(1, 100);
     ui->tableWidget_2->setColumnWidth(1, 100);
+
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+    ui->tableWidget->setSelectionMode(QAbstractItemView::NoSelection);
+
+    ui->tableWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidget_2->setFocusPolicy(Qt::NoFocus);
+    ui->tableWidget_2->setSelectionMode(QAbstractItemView::NoSelection);
 }
 
 // after we close the application, we need to make sure that we save the information
@@ -162,14 +170,16 @@ void DBWindow::set_partner(LoginWindow *partner) {
         if (lw_partner != 0) {
             disconnect(ui->home_label, SIGNAL(clicked()), this, SLOT(hide()));
             disconnect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
-            disconnect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(reset_line_edits()));
+            disconnect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(reset_fields()));
+            disconnect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(default_login_page()));
         }
 
         lw_partner = partner;
 
         connect(ui->home_label, SIGNAL(clicked()), this, SLOT(hide()));
         connect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(show()));
-        connect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(reset_line_edits()));
+        connect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(reset_fields()));
+        connect(ui->home_label, SIGNAL(clicked()), (QObject*)lw_partner, SLOT(default_login_page()));
     }
 }
 
@@ -180,17 +190,32 @@ void DBWindow::set_partner(LoginWindow *partner) {
 void DBWindow::FillUserTable() {
     for ( auto it = lw_partner->li->table.begin(); it != lw_partner->li->table.end(); ++it  )
     {
-       std::cout << it->first << '\t' << it->second << std::endl;
        ui->tableWidget_2->insertRow(ui->tableWidget_2->rowCount());
        ui->tableWidget_2->setItem (ui->tableWidget_2->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(it->first)));
        ui->tableWidget_2->setItem (ui->tableWidget_2->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(it->second)));
     }
 }
 
+// this gets called whenever we do successive sign ups
+// I'm doing it this way so that I don't have to
+// delete the entire table and reinsert every single one
+// including the new user from the sign up
+void DBWindow::AddMoreSignup() {
+    std::string new_user = lw_partner->li->username;
+    std::string new_password = lw_partner->li->password;
+    ui->tableWidget_2->insertRow(ui->tableWidget_2->rowCount());
+    ui->tableWidget_2->setItem (ui->tableWidget_2->rowCount()-1, 0, new QTableWidgetItem(QString::fromStdString(new_user)));
+    ui->tableWidget_2->setItem (ui->tableWidget_2->rowCount()-1, 1, new QTableWidgetItem(QString::fromStdString(new_password)));
+}
+
 // this method gets called when the login window switches over to the database window
 // in order to set visiblity/enability of the delete user button, the toggle user table button, and
-// user table
+// user table based on whether the user is an admin
 void DBWindow::set_ui() {
+    // resetting some of the fields
+    ui->response_stat->setText("");
+    ui->response_message_1->setText("");
+    ui->response_message_2->setText("");
     if (lw_partner->li->user_is_admin == true) {
         ui->pushButton_5->setEnabled(true);
         ui->pushButton_6->setEnabled(true);
@@ -361,11 +386,25 @@ void DBWindow::HandleDelUserRes(Response res) {
 // this toggles the user table
 void DBWindow::on_pushButton_6_clicked()
 {
-    PasswordDialog* pd = new PasswordDialog();
-    connect(pd, SIGNAL(SendShowUTRes(Response)), this, SLOT(HandleShowUTRes(Response)));
-    pd->setModal(true);
-    pd->exec();
+    bool curr_state = ui->tableWidget_2->isVisible();
 
-    bool next_state = !ui->tableWidget_2->isVisible();
-    ui->tableWidget_2->setVisible(next_state);
+    // if the user table is already showing, then we just want to close it
+    // otherwise, we ask the user to enter the password before showing the
+    // user table
+    if (curr_state == true) {
+       ui->tableWidget_2->setVisible(!curr_state);
+    } else {
+        PasswordDialog* pd = new PasswordDialog();
+        connect(pd, SIGNAL(SendShowUTRes(bool)), this, SLOT(HandleShowUTRes(bool)));
+        pd->setModal(true);
+        pd->exec();
+    }
 }
+
+void DBWindow::HandleShowUTRes(bool succ) {
+    if (succ == true) {
+        ui->tableWidget_2->setVisible(true);
+    }
+}
+
+
