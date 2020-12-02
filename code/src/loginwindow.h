@@ -85,6 +85,8 @@ private:
     // to indicate whether we are in sign up mode
     // if we are in sign up mode, we are actually going to add a new user
     bool in_sign_up_mode;
+
+    friend class TestLoginWindow;
 };
 
 #endif // LOGINWINDOW_H

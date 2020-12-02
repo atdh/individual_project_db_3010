@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../../../Qt/5.15.1/gcc_64/include -I../../../../Qt/5.15.1/gcc_64/include/QtWidgets -I../../../../Qt/5.15.1/gcc_64/include/QtGui -I../../../../Qt/5.15.1/gcc_64/include/QtCore -I. -I/usr/include/libdrm -I. -I../../../../Qt/5.15.1/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I. -I../../../../Qt/5.15.1/gcc_64/include -I../../../../Qt/5.15.1/gcc_64/include/QtWidgets -I../../../../Qt/5.15.1/gcc_64/include/QtGui -I../../../../Qt/5.15.1/gcc_64/include/QtCore -I. -I/usr/include/libdrm -I. -I../../../../Qt/5.15.1/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/bngu/Qt/5.15.1/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -257,6 +257,7 @@ DIST          = ../../../../Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/default_pre.prf \
+		../defaults.pri \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/resolve_config.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/default_post.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/qml_debug.prf \
@@ -489,6 +490,7 @@ Makefile: src.pro ../../../../Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf ../.
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/default_pre.prf \
+		../defaults.pri \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/resolve_config.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/default_post.prf \
 		../../../../Qt/5.15.1/gcc_64/mkspecs/features/qml_debug.prf \
@@ -670,6 +672,7 @@ Makefile: src.pro ../../../../Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf ../.
 ../../../../Qt/5.15.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.15.1/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt/5.15.1/gcc_64/mkspecs/features/default_pre.prf:
+../defaults.pri:
 ../../../../Qt/5.15.1/gcc_64/mkspecs/features/resolve_config.prf:
 ../../../../Qt/5.15.1/gcc_64/mkspecs/features/default_post.prf:
 ../../../../Qt/5.15.1/gcc_64/mkspecs/features/qml_debug.prf:
@@ -850,7 +853,7 @@ moc_clickablelabel.cpp: clickablelabel.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include clickablelabel.h -o moc_clickablelabel.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include clickablelabel.h -o moc_clickablelabel.cpp
 
 moc_dbwindow.cpp: dbwindow.h \
 		databasebst.h \
@@ -963,9 +966,10 @@ moc_dbwindow.cpp: dbwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		logininterface.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include dbwindow.h -o moc_dbwindow.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include dbwindow.h -o moc_dbwindow.cpp
 
 moc_deletedialog.cpp: deletedialog.h \
 		mydialog.h \
@@ -1078,7 +1082,7 @@ moc_deletedialog.cpp: deletedialog.h \
 		databasebst.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include deletedialog.h -o moc_deletedialog.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include deletedialog.h -o moc_deletedialog.cpp
 
 moc_deleteuserdialog.cpp: deleteuserdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
@@ -1189,7 +1193,7 @@ moc_deleteuserdialog.cpp: deleteuserdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QString \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include deleteuserdialog.h -o moc_deleteuserdialog.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include deleteuserdialog.h -o moc_deleteuserdialog.cpp
 
 moc_getdialog.cpp: getdialog.h \
 		mydialog.h \
@@ -1302,7 +1306,7 @@ moc_getdialog.cpp: getdialog.h \
 		databasebst.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include getdialog.h -o moc_getdialog.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include getdialog.h -o moc_getdialog.cpp
 
 moc_loginwindow.cpp: loginwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
@@ -1412,9 +1416,10 @@ moc_loginwindow.cpp: loginwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		logininterface.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include loginwindow.h -o moc_loginwindow.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include loginwindow.h -o moc_loginwindow.cpp
 
 moc_passworddialog.cpp: passworddialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
@@ -1522,9 +1527,10 @@ moc_passworddialog.cpp: passworddialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		logininterface.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include passworddialog.h -o moc_passworddialog.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include passworddialog.h -o moc_passworddialog.cpp
 
 moc_postdialog.cpp: postdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
@@ -1637,7 +1643,7 @@ moc_postdialog.cpp: postdialog.h \
 		databasebst.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include postdialog.h -o moc_postdialog.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include postdialog.h -o moc_postdialog.cpp
 
 moc_putdialog.cpp: putdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
@@ -1750,7 +1756,7 @@ moc_putdialog.cpp: putdialog.h \
 		databasebst.h \
 		moc_predefs.h \
 		../../../../Qt/5.15.1/gcc_64/bin/moc
-	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include putdialog.h -o moc_putdialog.cpp
+	/home/bngu/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include /home/bngu/Repos/individual_project_db_3010/code/src/moc_predefs.h -I/home/bngu/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Repos/individual_project_db_3010/code/src -I/home/bngu/Qt/5.15.1/gcc_64/include -I/home/bngu/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/bngu/Qt/5.15.1/gcc_64/include/QtGui -I/home/bngu/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include putdialog.h -o moc_putdialog.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -2203,51 +2209,8 @@ dbwindow.o: dbwindow.cpp dbwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		logininterface.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
 		ui_dbwindow.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qheaderview.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvalidator.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QMenuBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenu.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTableWidget \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtablewidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtableview.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
-		clickablelabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QObject \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/QMouseEvent \
 		dialogfactory.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
@@ -2371,28 +2334,7 @@ deletedialog.o: deletedialog.cpp deletedialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		databasebst.h \
-		ui_deletedialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		ui_deletedialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o deletedialog.o deletedialog.cpp
 
 deleteuserdialog.o: deleteuserdialog.cpp deleteuserdialog.h \
@@ -2503,30 +2445,8 @@ deleteuserdialog.o: deleteuserdialog.cpp deleteuserdialog.h \
 		databasebst.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QString \
 		ui_deleteuserdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		logininterface.h
+		logininterface.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o deleteuserdialog.o deleteuserdialog.cpp
 
 dialogfactory.o: dialogfactory.cpp dialogfactory.h \
@@ -2753,35 +2673,12 @@ getdialog.o: getdialog.cpp getdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		databasebst.h \
-		ui_getdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		ui_getdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o getdialog.o getdialog.cpp
 
 logininterface.o: logininterface.cpp logininterface.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QDir \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qdir.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
@@ -2807,24 +2704,30 @@ logininterface.o: logininterface.cpp logininterface.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QDir \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
@@ -2832,9 +2735,6 @@ logininterface.o: logininterface.cpp logininterface.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
@@ -2958,37 +2858,8 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		logininterface.h \
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
 		ui_loginwindow.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QGroupBox \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qgroupbox.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QMenuBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qmenu.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QtDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o loginwindow.cpp
 
@@ -3210,30 +3081,8 @@ passworddialog.o: passworddialog.cpp passworddialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		logininterface.h \
-		ui_passworddialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h
+		../../../../Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
+		ui_passworddialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o passworddialog.o passworddialog.cpp
 
 postdialog.o: postdialog.cpp postdialog.h \
@@ -3345,26 +3194,7 @@ postdialog.o: postdialog.cpp postdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QString \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QtDebug \
 		databasebst.h \
-		ui_postdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h
+		ui_postdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o postdialog.o postdialog.cpp
 
 putdialog.o: putdialog.cpp putdialog.h \
@@ -3476,26 +3306,7 @@ putdialog.o: putdialog.cpp putdialog.h \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QString \
 		../../../../Qt/5.15.1/gcc_64/include/QtCore/QtDebug \
 		databasebst.h \
-		ui_putdialog.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Qt/5.15.1/gcc_64/include/QtGui/qicon.h
+		ui_putdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o putdialog.o putdialog.cpp
 
 moc_clickablelabel.o: moc_clickablelabel.cpp 

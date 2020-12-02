@@ -10,6 +10,7 @@ LoginInterface::LoginInterface()
 //We make sure to keep track of whether the user is admin or not as well
 LoginResp LoginInterface::Login(std::string user_attempt, std::string password_attempt) {
     LoginResp login_resp;
+    login_resp.adding_new_user = false;
     username = user_attempt;
     password = password_attempt;
     //if it finds correct user name and password user logged in succesfully
@@ -98,6 +99,7 @@ LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_pa
             login_resp.is_admin = false;
             login_resp.body_info[0] = "User exists. Enter a new one or";
             login_resp.body_info[1] = "login";
+            login_resp.adding_new_user = false;
             myfile.close();
 
             return login_resp;
@@ -114,8 +116,9 @@ LoginResp LoginInterface::WriteFile(std::string write_user, std::string write_pa
 
     login_resp.succ = true;
     login_resp.is_admin = false;
-    login_resp.new_user = write_user;
-    login_resp.new_password = write_password;
+    login_resp.body_info[0] = "";
+    login_resp.body_info[1] = "";
+    login_resp.adding_new_user = true;
 
     username = write_user;
     password = write_password;

@@ -48,7 +48,7 @@ void LoginWindow::window_switcher(LoginResp login_resp) {
             // we only want to call the fill function once
             do_fill_function(dbw_partner);
             called_fill = true;
-        } else if (called_fill == true && !login_resp.new_user.empty()) {
+        } else if (called_fill == true && login_resp.adding_new_user == true) {
             // if we already filled the user table and there exists a new_user entry
             // in the login_resp, this must mean that we just did successive sign up
             // so, we want to call
