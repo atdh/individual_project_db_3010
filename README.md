@@ -1,34 +1,37 @@
-****************************************
-UPDATE: 11/17/2020
-
 # individual_project_db_3010
-**NOTE: OUR updated_code directory contains working database, user, and superuser class. That is our working base. The updated_code2 is where we are trying to integrate everything from updated_code into our GUI. Hence, updated_code is our working folder and updated_code2 is our inprogress folder. For this assignment, please run updated_code folder***
+We created a simple key-value store database (implemented using a Binary Search Tree) in C++. Users will be able to do the four REST operations (GET, POST, PUT, and DELETE) on this database while admin users will also be able to delete users. In order to use the database, first they need to either login or sign up using the GUI application (written with the Qt library) and from there, they have buttons to call out their respective REST operations.  
 
-This project, our goal was to have a working user and superuser class which we accomplished. Since they have not all been fully integrated yet, we just want to show user and super user class working. Futhermore, we started integrating the last checkpoint codes to GUI. Our post request is fully functional in GUI. We will have fully integrated all our code to GUI by next checkpoint. 
+## Repo structure  
+In the code folder, it consists of the main project (PPWProj.pro) and three folders (src, app, and tests) that belong to each of their respective sub projects (src.pro, app.pro, and tests.pro). The `<src>` folder contains all of the code for the database and the Qt application code. The `<app>` folder contains the main.cpp file that runs the application. The `<tests>` folder contains the catch.hpp file and the main.cpp file, which is responsible for running the unit tests.  
 
-**How to run it**
-- `cd updated_code` after opening individual_project_db_3010
-- `g++ -o main user.cpp superuser.cpp`
-- `./main`
+**SYSTEM REQUIREMENT:** It can run on linux, windows, mac  
 
-SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
+****************************************
+UPDATE: 12/02/2020
 
+## How to run the application:  
+- First, open the project (PPWProj.pro which is in the code folder) in Qt Creator, configure the project (if need be), and make sure that the PPWProj.pro file looks like this  
+<img src="https://i.imgur.com/Ufz3aja.png" width=400p"/>
+- Then, also check that the file menu of Qt looks like this  
+<img src="https://i.imgur.com/nCHnPDK.png" width=350p"/>
+- After that, press the green triangle in Qt Creator in order to run the application  
+<img src="https://i.imgur.com/ju5T0Hq.png" width=300p"/>
+- A window that looks like the image below should show and you may begin using the application  
+<img src="https://i.imgur.com/eLdKhJz.png" width=450p"/>
 
-*********************************
-Creating a key-value stored based database in C++. Currently, it allows the user to put in key value pairs in a hash map.
-
-For demonstration purposes, upon running the program, the user is asked to put in two key value pairs. Obviously, the hash map can hold significantly more key values pairs, but because we just want a short demonstration of it working, I'm only asking the user for two key value pair inputs. After putting in the two key value pairs, the program displays the contents of the database to verify that it is working.
-UPDATE: 10/23/2020
-**How to run it**
-- `cd updated_code` after opening individual_project_db_3010
-- `make`
-- `./main`
-
-SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
-
+## How to run the unit tests (written with the Catch2 library):  
+- Make sure that the PPWProj.pro file looks like this (NOTE: that the lines to run the app are commented and the lines to run the unit tests are uncommented)  
+<img src="https://i.imgur.com/wqKzt6w.png" width=350p"/>
+- Then, check that the file menu of Qt looks like this  
+<img src="https://i.imgur.com/qK0Ccyk.png" width=350p"/>
+- Press the green triangle in Qt Creator in order to run the unit tests  
+<img src="https://i.imgur.com/ju5T0Hq.png" width=350p"/>
+- In the Application Output, it should show that all of the unit tests passed    
+<img src="https://i.imgur.com/HWoTgKh.png" width=350p"/>
+  
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
-Further Info:
+**Further Info:**
 - We are using a data file (called "data.txt") as a way to store and manipulate the files; we are essentially using the data file as an array to store the entries of data 
 - Whenever we put in a new entry it will contain three fields in this order:
   - the hash value, which is generated from the key value and will be 16 chars long
