@@ -16,7 +16,7 @@ UPDATE: 12/02/2020
 ## How to run unit tests (using the Catch2 framework)  
 - Make sure that the PPWProj.pro file looks like this (**note:** that the lines to run the app are commented out but we uncommented the lines that run the unit tests)  
 <img src="https://i.imgur.com/6FgfGRX.png" width="300">  
-- Also, check if the file menu in Qt Creator looks like this  
+- Also, check if the file menu in Qt Creator looks like this (**note:** that the file menu doesn't have the app folder anymore but we have the tests folder now)   
 <img src="https://i.imgur.com/LOAoiCE.png" width="300">  
 - Then, proceed to run the unit tests by pressing the green triangle in Qt Creator  
 <img src="https://i.imgur.com/EvO7pAz.png" width="220">  
