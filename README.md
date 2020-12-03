@@ -21,7 +21,7 @@ UPDATE: 12/02/2020
 - Then, proceed to run the unit tests by pressing the green triangle in Qt Creator  
 <img src="https://i.imgur.com/EvO7pAz.png" width="220">  
 - In the Application Output, it should show that the unit tests passed   
-<img src="https://i.imgur.com/oDNYo5R.png" width="450">  
+<img src="https://i.imgur.com/oDNYo5R.png" width="550">  
 
 **SYSTEM REQUIREMENT:** It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
