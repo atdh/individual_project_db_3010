@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'clickablelabel.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "clickablelabel.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'clickablelabel.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.15.1. It"
+#error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -44,7 +43,7 @@ QT_MOC_LITERAL(2, 23, 0) // ""
 static const uint qt_meta_data_ClickableLabel[] = {
 
  // content:
-       8,       // revision
+       7,       // revision
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
@@ -66,7 +65,7 @@ static const uint qt_meta_data_ClickableLabel[] = {
 void ClickableLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<ClickableLabel *>(_o);
+        ClickableLabel *_t = static_cast<ClickableLabel *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->clicked(); break;
@@ -75,7 +74,7 @@ void ClickableLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (ClickableLabel::*)();
+            typedef void (ClickableLabel::*_t)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClickableLabel::clicked)) {
                 *result = 0;
                 return;
@@ -85,14 +84,10 @@ void ClickableLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject ClickableLabel::staticMetaObject = { {
-    QMetaObject::SuperData::link<QLabel::staticMetaObject>(),
-    qt_meta_stringdata_ClickableLabel.data,
-    qt_meta_data_ClickableLabel,
-    qt_static_metacall,
-    nullptr,
-    nullptr
-} };
+const QMetaObject ClickableLabel::staticMetaObject = {
+    { &QLabel::staticMetaObject, qt_meta_stringdata_ClickableLabel.data,
+      qt_meta_data_ClickableLabel,  qt_static_metacall, nullptr, nullptr}
+};
 
 
 const QMetaObject *ClickableLabel::metaObject() const

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'postdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.1
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,8 +10,11 @@
 #define UI_POSTDIALOG_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 
@@ -27,16 +30,16 @@ public:
     void setupUi(QDialog *PostDialog)
     {
         if (PostDialog->objectName().isEmpty())
-            PostDialog->setObjectName(QString::fromUtf8("PostDialog"));
+            PostDialog->setObjectName(QStringLiteral("PostDialog"));
         PostDialog->resize(400, 183);
         pushButton = new QPushButton(PostDialog);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(150, 130, 89, 25));
         lineEdit = new QLineEdit(PostDialog);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(20, 30, 360, 30));
         lineEdit_2 = new QLineEdit(PostDialog);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
         lineEdit_2->setGeometry(QRect(20, 80, 360, 30));
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, pushButton);
@@ -49,8 +52,8 @@ public:
 
     void retranslateUi(QDialog *PostDialog)
     {
-        PostDialog->setWindowTitle(QCoreApplication::translate("PostDialog", "PostDialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("PostDialog", "PushButton", nullptr));
+        PostDialog->setWindowTitle(QApplication::translate("PostDialog", "PostDialog", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("PostDialog", "PushButton", Q_NULLPTR));
     } // retranslateUi
 
 };

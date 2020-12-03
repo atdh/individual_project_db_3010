@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'deletedialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.1
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,8 +10,11 @@
 #define UI_DELETEDIALOG_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 
@@ -26,13 +29,13 @@ public:
     void setupUi(QDialog *DeleteDialog)
     {
         if (DeleteDialog->objectName().isEmpty())
-            DeleteDialog->setObjectName(QString::fromUtf8("DeleteDialog"));
+            DeleteDialog->setObjectName(QStringLiteral("DeleteDialog"));
         DeleteDialog->resize(400, 124);
         pushButton = new QPushButton(DeleteDialog);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(150, 80, 89, 25));
         textEdit = new QTextEdit(DeleteDialog);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(20, 30, 360, 30));
 
         retranslateUi(DeleteDialog);
@@ -43,8 +46,8 @@ public:
 
     void retranslateUi(QDialog *DeleteDialog)
     {
-        DeleteDialog->setWindowTitle(QCoreApplication::translate("DeleteDialog", "DeleteDialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("DeleteDialog", "PushButton", nullptr));
+        DeleteDialog->setWindowTitle(QApplication::translate("DeleteDialog", "DeleteDialog", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("DeleteDialog", "PushButton", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -1,4 +1,5 @@
 #define CATCH_CONFIG_MAIN
+//#define private public
 #include "catch.hpp"
 #include <databasebst.h>
 #include <logininterface.h>
@@ -9,6 +10,7 @@ std::unordered_set<std::string> LoginInterface::admin_set;
 bool LoginInterface::user_is_admin = false;
 std::string LoginInterface::username = "";
 std::string LoginInterface::password = "";
+int total_spots = 0;
 
 
 
@@ -217,10 +219,64 @@ TEST_CASE( "Database Functionality", "[db]" ) {
     db.Update(tmp_root,test_val_2);
     REQUIRE(tmp_root->value == test_val_3);
 
+
+
+    assert(2+2 == 3+1);
+
+    REQUIRE(total_spots == 0);
+
+
+    //db.total_spots = 0;
+    //bool LoginInterface::user_is_admin = false;
+
+    //int DatabaseBST :: total_spots = 0;
+
     //find in order successor
 
+    //Node *curr_node = tmp_node;
+    //db.FindInOrdSucc(curr_node);
+    //REQUIRE(curr_node->value==test_val_2);
+
+    //should traverse the tree in order
+
+    //making sure the traversal of tree is done properly
+    db.Inorder(tmp_root);
+    std::cout << tmp_root->hash << std::endl;
+    REQUIRE(tmp_root->value == test_val_3);
+
+    //making sure chars are properly converted to string
+    db.ConvertToStr(test_val_3);
+    std::vector<char> test_val_4{'v', 'a', 'l','2'};
+    REQUIRE(typeid(test_val_2).name() != typeid(total_spots).name());
+    db.ConvertToStr(test_val_2);
+    REQUIRE(typeid(test_val_2).name() == typeid(test_val_3).name());
 
 }
+std::string DatabaseBST::ConvertToStr(std::vector<char> data)
+{
+    std::string s = "";
+    for (int i = 0; i < (int)data.size(); i++)
+    {
+        if (data[i] != '$') {
+            s += data[i];
+        }
+    }
+
+    return s;
+}
+/*
+//helper function to traverse through the tree in order
+void DatabaseBST::Inorder(Node *root)
+{
+    if (!root)
+    {
+        return;
+    }
+    Inorder(root->left);
+    std::cout << root->hash << std::endl;
+    Inorder(root->right);
+}*/
+
 
 TEST_CASE("testing authentication","[auth]"){
     LoginInterface auth;
@@ -231,7 +287,8 @@ TEST_CASE("testing authentication","[auth]"){
     REQUIRE(auth.table.empty());
 
     //login given username and password
-    auth.Login("test1","test2");
+    auth.Login("brian","nguyen");
+    //REQUIRE(auth.table.empty()== false || login_resp.is_admin == true);
 
     //shoudl return false because havent signed up yet
     REQUIRE(login_resp.succ);
@@ -244,3 +301,21 @@ TEST_CASE("testing authentication","[auth]"){
     //REQUIRE(auth.table.find("test1"));
 
 }
+
+
+
+void IncrTotalSpots(){
+    total_spots +=1;
+}
+
+void DecrTotalSpots(){
+    total_spots -=1;
+}
+TEST_CASE("IncrTotalSpots", "[incr]"){
+    REQUIRE(total_spots == 0);
+    IncrTotalSpots();
+    REQUIRE(total_spots > 0);
+    DecrTotalSpots();
+    REQUIRE(total_spots == 0);
+}
+

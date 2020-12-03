@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dbwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.1
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,9 @@
 #define UI_DBWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -47,21 +49,21 @@ public:
     void setupUi(QMainWindow *DBWindow)
     {
         if (DBWindow->objectName().isEmpty())
-            DBWindow->setObjectName(QString::fromUtf8("DBWindow"));
+            DBWindow->setObjectName(QStringLiteral("DBWindow"));
         DBWindow->resize(810, 505);
         centralwidget = new QWidget(DBWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setObjectName(QStringLiteral("centralwidget"));
         pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(30, 40, 181, 111));
         pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(220, 40, 181, 111));
         pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(410, 40, 181, 111));
         pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
         pushButton_4->setGeometry(QRect(600, 40, 181, 111));
         tableWidget = new QTableWidget(centralwidget);
         if (tableWidget->columnCount() < 2)
@@ -70,21 +72,21 @@ public:
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
         tableWidget->setEnabled(true);
         tableWidget->setGeometry(QRect(570, 180, 220, 271));
         tableWidget->setRowCount(0);
         response_stat_title = new QLabel(centralwidget);
-        response_stat_title->setObjectName(QString::fromUtf8("response_stat_title"));
+        response_stat_title->setObjectName(QStringLiteral("response_stat_title"));
         response_stat_title->setGeometry(QRect(20, 180, 121, 17));
         response_stat = new QLabel(centralwidget);
-        response_stat->setObjectName(QString::fromUtf8("response_stat"));
+        response_stat->setObjectName(QStringLiteral("response_stat"));
         response_stat->setGeometry(QRect(20, 200, 111, 21));
         response_message_title = new QLabel(centralwidget);
-        response_message_title->setObjectName(QString::fromUtf8("response_message_title"));
+        response_message_title->setObjectName(QStringLiteral("response_message_title"));
         response_message_title->setGeometry(QRect(20, 240, 141, 17));
         response_message_1 = new QLabel(centralwidget);
-        response_message_1->setObjectName(QString::fromUtf8("response_message_1"));
+        response_message_1->setObjectName(QStringLiteral("response_message_1"));
         response_message_1->setGeometry(QRect(20, 260, 291, 21));
         tableWidget_2 = new QTableWidget(centralwidget);
         if (tableWidget_2->columnCount() < 2)
@@ -93,29 +95,29 @@ public:
         tableWidget_2->setHorizontalHeaderItem(0, __qtablewidgetitem2);
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
         tableWidget_2->setHorizontalHeaderItem(1, __qtablewidgetitem3);
-        tableWidget_2->setObjectName(QString::fromUtf8("tableWidget_2"));
+        tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
         tableWidget_2->setEnabled(true);
         tableWidget_2->setGeometry(QRect(330, 180, 221, 271));
         tableWidget_2->setRowCount(0);
         response_message_2 = new QLabel(centralwidget);
-        response_message_2->setObjectName(QString::fromUtf8("response_message_2"));
+        response_message_2->setObjectName(QStringLiteral("response_message_2"));
         response_message_2->setGeometry(QRect(20, 280, 291, 21));
         home_label = new ClickableLabel(centralwidget);
-        home_label->setObjectName(QString::fromUtf8("home_label"));
+        home_label->setObjectName(QStringLiteral("home_label"));
         home_label->setGeometry(QRect(763, 4, 31, 31));
         pushButton_5 = new QPushButton(centralwidget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setGeometry(QRect(20, 400, 100, 40));
         pushButton_6 = new QPushButton(centralwidget);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
         pushButton_6->setGeometry(QRect(130, 400, 150, 40));
         DBWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(DBWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 810, 22));
         DBWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(DBWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setObjectName(QStringLiteral("statusbar"));
         DBWindow->setStatusBar(statusbar);
 
         retranslateUi(DBWindow);
@@ -125,27 +127,27 @@ public:
 
     void retranslateUi(QMainWindow *DBWindow)
     {
-        DBWindow->setWindowTitle(QCoreApplication::translate("DBWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("DBWindow", "GET", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("DBWindow", "POST", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("DBWindow", "PUT", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("DBWindow", "DELETE", nullptr));
+        DBWindow->setWindowTitle(QApplication::translate("DBWindow", "MainWindow", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("DBWindow", "GET", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("DBWindow", "POST", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("DBWindow", "PUT", Q_NULLPTR));
+        pushButton_4->setText(QApplication::translate("DBWindow", "DELETE", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("DBWindow", "Key", nullptr));
+        ___qtablewidgetitem->setText(QApplication::translate("DBWindow", "Key", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("DBWindow", "Value", nullptr));
-        response_stat_title->setText(QCoreApplication::translate("DBWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Response Status:</span></p></body></html>", nullptr));
+        ___qtablewidgetitem1->setText(QApplication::translate("DBWindow", "Value", Q_NULLPTR));
+        response_stat_title->setText(QApplication::translate("DBWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Response Status:</span></p></body></html>", Q_NULLPTR));
         response_stat->setText(QString());
-        response_message_title->setText(QCoreApplication::translate("DBWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Response Message:</span></p></body></html>", nullptr));
+        response_message_title->setText(QApplication::translate("DBWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Response Message:</span></p></body></html>", Q_NULLPTR));
         response_message_1->setText(QString());
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("DBWindow", "User", nullptr));
+        ___qtablewidgetitem2->setText(QApplication::translate("DBWindow", "User", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("DBWindow", "Password", nullptr));
+        ___qtablewidgetitem3->setText(QApplication::translate("DBWindow", "Password", Q_NULLPTR));
         response_message_2->setText(QString());
-        home_label->setText(QCoreApplication::translate("DBWindow", "<html><head/><body><p><img src=\":/home.png\"/></p></body></html>", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("DBWindow", "Delete User", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("DBWindow", "Toggle User Table", nullptr));
+        home_label->setText(QApplication::translate("DBWindow", "<html><head/><body><p><img src=\":/home.png\"/></p></body></html>", Q_NULLPTR));
+        pushButton_5->setText(QApplication::translate("DBWindow", "Delete User", Q_NULLPTR));
+        pushButton_6->setText(QApplication::translate("DBWindow", "Toggle User Table", Q_NULLPTR));
     } // retranslateUi
 
 };
