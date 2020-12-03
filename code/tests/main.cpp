@@ -2,12 +2,95 @@
 #include "catch.hpp"
 #include <databasebst.h>
 #include <logininterface.h>
+#include <map>
 
 std::map<std::string, std::string> LoginInterface::table;
 std::unordered_set<std::string> LoginInterface::admin_set;
 bool LoginInterface::user_is_admin = false;
 std::string LoginInterface::username = "";
 std::string LoginInterface::password = "";
+
+
+
+
+//search for node
+//delete node
+TEST_CASE("Testing Database insertion", "[db]"){
+    DatabaseBST db2;
+    Node *tmp_root2 = db2.get_root();
+    //If there is no nodes then insert in the root
+    //insert left child
+    //insert right child
+    REQUIRE(tmp_root2 == nullptr);
+    unsigned long hash1 = 10;
+    std::vector<char> key1{'a','t','u','l'};
+    std::vector<char> val1{'d','h','u','n','g','e','l'};
+    int offset1 = 0;
+    tmp_root2 = db2.Insert(tmp_root2, hash1, key1, val1, offset1);
+    //We have one value already added so tmp_roor2 should not be a null ptr cus theres already a root node
+    REQUIRE(tmp_root2 != nullptr);
+    //check to see if there is left and right child. It should both be null
+    REQUIRE(tmp_root2->left == nullptr);
+    REQUIRE(tmp_root2->right == nullptr);
+
+    unsigned long hash2=15;
+    unsigned long old_root_hash = tmp_root2->hash;
+    std::vector<char>old_root_key = tmp_root2->key;
+    std::vector<char>old_root_val = tmp_root2->value;
+    int old_root_offset = tmp_root2->starting;
+
+    std::vector<char>key2{'a','t','u','l','2'};
+    std::vector<char>val2{'d','h','u','n','g','e','l','2'};
+    int offset2 = 1;
+    tmp_root2 = db2.Insert(tmp_root2, hash2, key2, val2, offset2);
+
+    //root shouldnt be changed from the last one
+    REQUIRE(tmp_root2 != nullptr);
+    REQUIRE(tmp_root2->hash == old_root_hash);
+    REQUIRE(tmp_root2->key == old_root_key);
+    REQUIRE(tmp_root2->value == old_root_val);
+    REQUIRE(tmp_root2->starting == old_root_offset);
+
+    // we just inserted a right child of the root (since 15> 10, the root)
+    // so let's check that it's not null
+    REQUIRE(tmp_root2->right != nullptr);
+    //left child should be null
+    REQUIRE(tmp_root2->left == nullptr);
+
+    //now we add to left child
+    unsigned long hash3=12;
+    unsigned long old_root_hash2 = tmp_root2->hash;
+    std::vector<char>old_root_key2 = tmp_root2->key;
+    std::vector<char>old_root_val2 = tmp_root2->value;
+    int old_root_offset2 = tmp_root2->starting;
+
+    //right now it should be0 because we just initialized it
+    REQUIRE(tmp_root2->starting == 0);
+    std::vector<char>key3{'a','t','u','l','2','3'};
+    std::vector<char>val3{'d','h','u','n','g','e','l','2','3'};
+    int offset3 = 2;
+
+    //REQUIRE(tmp_root2->starting == 1);
+
+    REQUIRE(tmp_root2 != nullptr);
+    REQUIRE(tmp_root2->hash == old_root_hash2);
+    REQUIRE(tmp_root2->key == old_root_key2);
+    REQUIRE(tmp_root2->value == old_root_val2);
+    REQUIRE(tmp_root2->starting == old_root_offset2);
+
+    tmp_root2 = db2.Insert(tmp_root2, hash3, key3, val3, offset3);
+
+    REQUIRE(tmp_root2->right != nullptr);
+    //REQUIRE(tmp_root2->left != nullptr);
+
+    // searching for a valid node
+    Node* tmp_node = db2.SearchNode(tmp_root2, hash3);
+    REQUIRE(tmp_node != nullptr);
+    //deleting a node
+    Node *tmp_node2 = db2.Delete(tmp_root2,hash3);
+    REQUIRE(tmp_root2->hash != hash3);
+}
+
 
 TEST_CASE( "Database Functionality", "[db]" ) {
     DatabaseBST db;
@@ -65,4 +148,31 @@ TEST_CASE( "Database Functionality", "[db]" ) {
 
     // we just deleted the root so the new root should be 5 (the left child of the old root)
     REQUIRE(tmp_root->hash == 5);
+}
+
+TEST_CASE("testing authentication","[auth]"){
+
+
+
+    LoginInterface auth;
+    LoginResp login_resp;
+
+    auth.ReadFile();
+    //table should be initially empty
+    REQUIRE(auth.table.empty());
+
+    //login given username and password
+    auth.Login("test1","test2");
+
+    //shoudl return false because havent signed up yet
+    REQUIRE(login_resp.succ);
+    //should not be admin
+    REQUIRE(login_resp.is_admin);
+
+    //REQUIRE (login_resp.body_info[0]=="true");
+
+    auth.DeleteUserFromFile("test1");
+    //REQUIRE(auth.table.find("test1"));
+
+
 }
