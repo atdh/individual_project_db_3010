@@ -2,7 +2,7 @@
 We created a simple key-value store database (implemented using a Binary Search Tree) in C++. Users will be able to do the four REST operations (GET, POST, PUT, and DELETE) on this database while admin users will also be able to delete users. In order to use the database, first they need to either login or sign up using the GUI application (written with the Qt library) and from there, they have buttons to call out their respective REST operations.  
 
 ## Repo structure  
-In the code folder, it consists of the main project (PPWProj.pro) and three folders (src, app, and tests) that belong to each of their respective sub projects (src.pro, app.pro, and tests.pro). The `<src>` folder contains all of the code for the database and the Qt application code. The `<app>` folder contains the main.cpp file that runs the application. The `<tests>` folder contains the catch.hpp file and the main.cpp file, which is responsible for running the unit tests.  
+In the code folder, it consists of the main project (PPWProj.pro) and three folders (src, app, and tests) that belong to each of their respective sub projects (src.pro, app.pro, and tests.pro). The `src` folder contains all of the code for the database and the Qt application code. The `app` folder contains the main.cpp file that runs the application. The `tests` folder contains the catch.hpp file and the main.cpp file, which is responsible for running the unit tests.  
 
 **SYSTEM REQUIREMENT:** It can run on linux, windows, mac  
 
@@ -11,23 +11,23 @@ UPDATE: 12/02/2020
 
 ## How to run the application:  
 - First, open the project (PPWProj.pro which is in the code folder) in Qt Creator, configure the project (if need be), and make sure that the PPWProj.pro file looks like this  
-<img src="https://i.imgur.com/Ufz3aja.png" width=400p"/>
+<img src="https://i.imgur.com/Ufz3aja.png" width=400"/>
 - Then, also check that the file menu of Qt looks like this  
-<img src="https://i.imgur.com/nCHnPDK.png" width=350p"/>
+<img src="https://i.imgur.com/nCHnPDK.png" width=350"/>
 - After that, press the green triangle in Qt Creator in order to run the application  
-<img src="https://i.imgur.com/ju5T0Hq.png" width=300p"/>
+<img src="https://i.imgur.com/ju5T0Hq.png" width=300"/>
 - A window that looks like the image below should show and you may begin using the application  
-<img src="https://i.imgur.com/eLdKhJz.png" width=450p"/>
+<img src="https://i.imgur.com/eLdKhJz.png" width=450"/>
 
 ## How to run the unit tests (written with the Catch2 library):  
 - Make sure that the PPWProj.pro file looks like this (NOTE: that the lines to run the app are commented and the lines to run the unit tests are uncommented)  
-<img src="https://i.imgur.com/wqKzt6w.png" width=350p"/>
+<img src="https://i.imgur.com/wqKzt6w.png" width=350"/>
 - Then, check that the file menu of Qt looks like this  
-<img src="https://i.imgur.com/qK0Ccyk.png" width=350p"/>
+<img src="https://i.imgur.com/qK0Ccyk.png" width=350"/>
 - Press the green triangle in Qt Creator in order to run the unit tests  
-<img src="https://i.imgur.com/ju5T0Hq.png" width=350p"/>
+<img src="https://i.imgur.com/ju5T0Hq.png" width=350"/>
 - In the Application Output, it should show that all of the unit tests passed    
-<img src="https://i.imgur.com/HWoTgKh.png" width=350p"/>
+<img src="https://i.imgur.com/HWoTgKh.png" width=550"/>
   
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
