@@ -11,7 +11,7 @@ UPDATE: 12/02/2020
 - Then, proceed to run the application by pressing the green triangle in Qt Creator
 ![green_triangle](https://imgur.com/a/Z6tU2CA)
 - The following screen should show up and you may now begin using the application
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/Go1Apet" data-context="false" ><a href="//imgur.com/a/Go1Apet"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+![Imgur](https://imgur.com/a/Go1Apet.jpg)
 
 SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
