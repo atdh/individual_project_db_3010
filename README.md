@@ -30,7 +30,7 @@ UPDATED: 12/02/2020
 <img src="https://i.imgur.com/HWoTgKh.png" width="550">  
 
 ## Our Database  
-We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
+We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash (which is used to uniquely identify each entry/node). Upon running the program, the user is given 4 option. 
 
 **Further Info:**
 - We are using a data file (called "data.txt") as a way to store and manipulate the files; we are essentially using the data file as an array to store the entries of data 
