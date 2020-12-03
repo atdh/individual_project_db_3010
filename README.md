@@ -3,7 +3,7 @@ UPDATE: 12/02/2020
 
 # individual_project_db_3010
 
-![some_image]("https://www.hot-dog.org/sites/default/files/pictures/hot-dogs-on-the-grill.jpg")
+![some_image](https://www.hot-dog.org/sites/default/files/pictures/hot-dogs-on-the-grill.jpg)
 
 **How to run it**
 - `cd updated_code` after opening individual_project_db_3010
