@@ -12,21 +12,61 @@ std::string LoginInterface::password = "";
 
 
 
+//Testing updating the data base
+TEST_CASE("Testing Database update", "[db]"){
 
-//search for node
-//delete node
-TEST_CASE("Testing Database insertion", "[db]"){
     DatabaseBST db2;
     Node *tmp_root2 = db2.get_root();
+
     //If there is no nodes then insert in the root
-    //insert left child
-    //insert right child
     REQUIRE(tmp_root2 == nullptr);
     unsigned long hash1 = 10;
     std::vector<char> key1{'a','t','u','l'};
     std::vector<char> val1{'d','h','u','n','g','e','l'};
     int offset1 = 0;
     tmp_root2 = db2.Insert(tmp_root2, hash1, key1, val1, offset1);
+
+    //We have one value already added so tmp_roor2 should not be a null ptr cus theres already a root node
+    REQUIRE(tmp_root2 != nullptr);
+    //check to see if there is left and right child. It should both be null
+    REQUIRE(tmp_root2->left == nullptr);
+    REQUIRE(tmp_root2->right == nullptr);
+
+    unsigned long hash2=15;
+    unsigned long old_root_hash = tmp_root2->hash;
+    std::vector<char>old_root_key = tmp_root2->key;
+    std::vector<char>old_root_val = tmp_root2->value;
+    int old_root_offset = tmp_root2->starting;
+
+    std::vector<char>key2{'a','t','u','l','2'};
+    std::vector<char>val2{'d','h','u','n','g','e','l','2'};
+    int offset2 = 1;
+    tmp_root2 = db2.Insert(tmp_root2, hash2, key2, val2, offset2);
+    //currently I have head and left tree
+    //Now I want to update left tree value with difft value
+    std::vector<char>val3{'d','h','u','n','g','e','l','1','3'};
+
+    //currently tmp_root is point at head
+    REQUIRE(tmp_root2->value == val1);
+    //updating with new value
+    db2.Update(tmp_root2,val3);
+    //should point to val3 now
+    REQUIRE(tmp_root2->value == val3);
+}
+
+
+TEST_CASE("Testing Database insertion,search,delete", "[db]"){
+    DatabaseBST db2;
+    Node *tmp_root2 = db2.get_root();
+
+    //If there is no nodes then insert in the root
+    REQUIRE(tmp_root2 == nullptr);
+    unsigned long hash1 = 10;
+    std::vector<char> key1{'a','t','u','l'};
+    std::vector<char> val1{'d','h','u','n','g','e','l'};
+    int offset1 = 0;
+    tmp_root2 = db2.Insert(tmp_root2, hash1, key1, val1, offset1);
+
     //We have one value already added so tmp_roor2 should not be a null ptr cus theres already a root node
     REQUIRE(tmp_root2 != nullptr);
     //check to see if there is left and right child. It should both be null
@@ -89,9 +129,30 @@ TEST_CASE("Testing Database insertion", "[db]"){
     //deleting a node
     Node *tmp_node2 = db2.Delete(tmp_root2,hash3);
     REQUIRE(tmp_root2->hash != hash3);
+
+    //update
+    /*
+     *void DatabaseBST::Update(struct Node *node, std::vector<char> new_value)
+    */
+
+   //unsigned long hash4=13;//
+    //unsigned long old_root_hash3 = tmp_root2->hash;//
+    std::vector<char>old_root_key3 = tmp_root2->key;
+    std::vector<char>old_root_val3 = tmp_root2->value;
+    //int old_root_offset3 = tmp_root2->starting;//
+
+    //right now it should be0 because we just initialized it
+    //REQUIRE(tmp_root2->starting == 0);
+    std::vector<char>key4{'a','t','u','l','2','8'};
+    std::vector<char>val4{'d','h','u','n','g','e','l','1','3'};
+    //int offset4 = 3;//
+    //REQUIRE(tmp_node2->value == val3);
+    db2.Update(tmp_node2,val4);
+    REQUIRE(tmp_node2->value==val4);
+
 }
 
-
+//testing the entire search,delete,insert,update. Everything works
 TEST_CASE( "Database Functionality", "[db]" ) {
     DatabaseBST db;
     Node *tmp_root = db.get_root();
@@ -148,12 +209,20 @@ TEST_CASE( "Database Functionality", "[db]" ) {
 
     // we just deleted the root so the new root should be 5 (the left child of the old root)
     REQUIRE(tmp_root->hash == 5);
+
+
+    //update
+    std::vector<char> test_val_3{'v', 'a', 'l','2'};
+    REQUIRE(tmp_root->value == test_val_2);
+    db.Update(tmp_root,test_val_2);
+    REQUIRE(tmp_root->value == test_val_3);
+
+    //find in order successor
+
+
 }
 
 TEST_CASE("testing authentication","[auth]"){
-
-
-
     LoginInterface auth;
     LoginResp login_resp;
 
@@ -173,6 +242,5 @@ TEST_CASE("testing authentication","[auth]"){
 
     auth.DeleteUserFromFile("test1");
     //REQUIRE(auth.table.find("test1"));
-
 
 }
