@@ -12,24 +12,26 @@ UPDATE: 12/02/2020
 <img src="https://i.imgur.com/nCHnPDK.png" width="48">
 
 ## How to run the application:  
-- First, open the project (PPWProj.pro which is in the code folder) in Qt Creator, configure the project (if need be), and make sure that the PPWProj.pro file looks like this  
-<img src="https://i.imgur.com/nCHnPDK.png" width=400">
-- Then, also check that the file menu of Qt looks like this  
-<img src="https://i.imgur.com/nCHnPDK.png" width=350">
-- After that, press the green triangle in Qt Creator in order to run the application  
-<img src="https://i.imgur.com/ju5T0Hq.png" width=300">
-- A window that looks like the image below should show and you may begin using the application  
-<img src="https://i.imgur.com/eLdKhJz.png" width=450">
-
+- First, open the project (PPWProj.pro which is in the code folder) in Qt Creator, configure the project (if need be), and make sure that the PPWProj.pro file looks like this   
+<img src="https://i.imgur.com/nCHnPDK.png" width="400">  
+- Then, also check that the file menu of Qt looks like this                                                      
+<img src="https://i.imgur.com/KengrtG.png" width="350">  
+- After that, press the green triangle in Qt Creator in order to run the application                                                   
+<img src="https://i.imgur.com/ju5T0Hq.png" width="200">  
+- A window that looks like the image below should show and you may begin using the application                                                     
+<img src="https://i.imgur.com/eLdKhJz.png" width="450">  
+  
 ## How to run the unit tests (written with the Catch2 library):  
-- Make sure that the PPWProj.pro file looks like this (NOTE: that the lines to run the app are commented and the lines to run the unit tests are uncommented)  
-<img src="https://i.imgur.com/wqKzt6w.png" width=350">
-- Then, check that the file menu of Qt looks like this  
-<img src="https://i.imgur.com/qK0Ccyk.png" width=350">
-- Press the green triangle in Qt Creator in order to run the unit tests  
-<img src="https://i.imgur.com/ju5T0Hq.png" width=350">
-- In the Application Output, it should show that all of the unit tests passed    
-<img src="https://i.imgur.com/HWoTgKh.png" width=550">
+- Make sure that the PPWProj.pro file looks like this (NOTE: that the lines to run the app are commented and the lines to run the unit tests are uncommented)   
+<img src="https://i.imgur.com/wqKzt6w.png" width="400">  
+- Then, check that the file menu of Qt looks like this                                                    
+<img src="https://i.imgur.com/qK0Ccyk.png" width="350">  
+- Press the green triangle in Qt Creator in order to run the unit tests                                                  
+<img src="https://i.imgur.com/ju5T0Hq.png" width="200">  
+- In the Application Output, it should show that all of the unit tests passed                                                     
+<img src="https://i.imgur.com/HWoTgKh.png" width="550">  
+    
+  
   
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
