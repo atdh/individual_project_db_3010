@@ -11,7 +11,7 @@ UPDATE: 12/02/2020
 - Then, proceed to run the application by pressing the green triangle in Qt Creator
 ![green_triangle](https://imgur.com/a/Z6tU2CA)
 - The following screen should show up and you may now begin using the application
-<img src="https://i.imgur.com/0WWfnhV.png" width="200">
+<img src="https://i.imgur.com/0WWfnhV.png" width="450">
 
 SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
