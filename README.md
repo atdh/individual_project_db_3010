@@ -1,30 +1,35 @@
-****************************************
-UPDATE: 12/02/2020
-
 # individual_project_db_3010
+We created a key-value store database (implemented using a Binary Search Tree) in C++. Users will be able to do the four REST operations (GET, POST, PUT, and DELETE) on this database while admin users will also be able to delete users. In order to use the database, first they need to either login or sign up using the GUI application (written with the Qt library) and from there, they will be brought to another window with buttons to call out their respective REST operations.  
 
-## How to run it
-- First, open the project in Qt Creator, configure the project (if need be), and open the PPWProj.pro file. Make sure that it looks like this
-<img src="https://i.imgur.com/ORdmcYk.png" width="300">  
-- Also, check if the file menu in Qt Creator looks like this  
-<img src="https://i.imgur.com/4jqB8HR.png" width="300">  
-- Then, proceed to run the application by pressing the green triangle in Qt Creator  
-<img src="https://i.imgur.com/EvO7pAz.png" width="220">  
-- The following screen should show up and you may now begin using the application  
-<img src="https://i.imgur.com/0WWfnhV.png" width="450">  
+## Repo structure  
+In the code folder, it consists of the main project (PPWProj.pro) and three folders (src, app, and tests) that belong to each of their respective sub projects (src.pro, app.pro, and tests.pro). The `src` folder contains all of the code for the database and the Qt application code. The `app` folder contains the main.cpp file that runs the application. The `tests` folder contains the catch.hpp file and the main.cpp file, which is responsible for running the unit tests.  
 
-## How to run unit tests (using the Catch2 framework)  
-- Make sure that the PPWProj.pro file looks like this (NOTE: that the lines to run the app are commented out but we uncommented the lines that run the unit tests)  
-<img src="https://i.imgur.com/6FgfGRX.png" width="300">  
-- Also, check if the file menu in Qt Creator looks like this (NOTE: that the file menu doesn't have the app folder anymore but we have the tests folder now)   
-<img src="https://i.imgur.com/LOAoiCE.png" width="300">  
-- Then, proceed to run the unit tests by pressing the green triangle in Qt Creator  
-<img src="https://i.imgur.com/EvO7pAz.png" width="220">  
-- In the Application Output, it should show that the unit tests passed   
-<img src="https://i.imgur.com/oDNYo5R.png" width="550">  
+**SYSTEM REQUIREMENT:** It can run on linux, windows, mac  
 
-**SYSTEM REQUIREMENT:** It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
+****************************************
+UPDATED: 12/02/2020
 
+## How to run the application:  
+- First, open the project (PPWProj.pro which is in the code folder) in Qt Creator, configure the project (if need be), and make sure that the PPWProj.pro file looks like this   
+<img src="https://i.imgur.com/nCHnPDK.png" width="400">  
+- Then, also check that the file menu of Qt looks like this                                                      
+<img src="https://i.imgur.com/KengrtG.png" width="350">  
+- After that, press the green triangle in Qt Creator in order to run the application                                                   
+<img src="https://i.imgur.com/ju5T0Hq.png" width="200">  
+- A window that looks like the image below should show and you may begin using the application                                                     
+<img src="https://i.imgur.com/eLdKhJz.png" width="450">  
+  
+## How to run the unit tests (written with the Catch2 library):  
+- Make sure that the PPWProj.pro file looks like this (NOTE: that the lines to run the app are commented and the lines to run the unit tests are uncommented)   
+<img src="https://i.imgur.com/wqKzt6w.png" width="400">  
+- Then, check that the file menu of Qt looks like this                                                    
+<img src="https://i.imgur.com/qK0Ccyk.png" width="350">  
+- Press the green triangle in Qt Creator in order to run the unit tests                                                  
+<img src="https://i.imgur.com/ju5T0Hq.png" width="200">  
+- In the Application Output, it should show that all of the unit tests passed                                                     
+<img src="https://i.imgur.com/HWoTgKh.png" width="550">  
+
+## Our Database  
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
 **Further Info:**

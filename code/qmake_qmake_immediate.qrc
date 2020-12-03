@@ -1,9 +1,0 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource prefix="/">
-<file alias="storage.txt">/home/bngu/Repos/individual_project_db_3010/code/storage.txt</file>
-<file alias="data.txt">/home/bngu/Repos/individual_project_db_3010/code/data.txt</file>
-<file alias="person.png">/home/bngu/Repos/individual_project_db_3010/code/person.png</file>
-<file alias="home.png">/home/bngu/Repos/individual_project_db_3010/code/home.png</file>
-<file alias="authentication.txt">/home/bngu/Repos/individual_project_db_3010/code/authentication.txt</file>
-</qresource>
-</RCC>
