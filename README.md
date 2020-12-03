@@ -13,7 +13,7 @@ UPDATE: 12/02/2020
 
 ## How to run the application:  
 - First, open the project (PPWProj.pro which is in the code folder) in Qt Creator, configure the project (if need be), and make sure that the PPWProj.pro file looks like this  
-<img src="https://i.imgur.com/Ufz3aja.png" width=400">
+<img src="https://i.imgur.com/nCHnPDK.png" width=400">
 - Then, also check that the file menu of Qt looks like this  
 <img src="https://i.imgur.com/nCHnPDK.png" width=350">
 - After that, press the green triangle in Qt Creator in order to run the application  
