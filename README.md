@@ -1,34 +1,33 @@
 ****************************************
-UPDATE: 11/17/2020
+UPDATE: 12/02/2020
 
 # individual_project_db_3010
-**NOTE: OUR updated_code directory contains working database, user, and superuser class. That is our working base. The updated_code2 is where we are trying to integrate everything from updated_code into our GUI. Hence, updated_code is our working folder and updated_code2 is our inprogress folder. For this assignment, please run updated_code folder***
 
-This project, our goal was to have a working user and superuser class which we accomplished. Since they have not all been fully integrated yet, we just want to show user and super user class working. Futhermore, we started integrating the last checkpoint codes to GUI. Our post request is fully functional in GUI. We will have fully integrated all our code to GUI by next checkpoint. 
+## How to run it
+- First, open the project in Qt Creator, configure the project (if need be), and open the PPWProj.pro file. Make sure that it looks like this
+<img src="https://i.imgur.com/ORdmcYk.png" width="300">  
+- Also, check if the file menu in Qt Creator looks like this  
+<img src="https://i.imgur.com/4jqB8HR.png" width="300">  
+- Then, proceed to run the application by pressing the green triangle in Qt Creator  
+<img src="https://i.imgur.com/EvO7pAz.png" width="220">  
+- The following screen should show up and you may now begin using the application  
+<img src="https://i.imgur.com/0WWfnhV.png" width="450">  
 
-**How to run it**
-- `cd updated_code` after opening individual_project_db_3010
-- `g++ -o main user.cpp superuser.cpp`
-- `./main`
+## How to run unit tests (using the Catch2 framework)  
+- Make sure that the PPWProj.pro file looks like this (NOTE: that the lines to run the app are commented out but we uncommented the lines that run the unit tests)  
+<img src="https://i.imgur.com/6FgfGRX.png" width="300">  
+- Also, check if the file menu in Qt Creator looks like this (NOTE: that the file menu doesn't have the app folder anymore but we have the tests folder now)   
+<img src="https://i.imgur.com/LOAoiCE.png" width="300">  
+- Then, proceed to run the unit tests by pressing the green triangle in Qt Creator  
+<img src="https://i.imgur.com/EvO7pAz.png" width="220">  
+- In the Application Output, it should show that the unit tests passed   
+<img src="https://i.imgur.com/oDNYo5R.png" width="550">  
 
-SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
-
-
-*********************************
-Creating a key-value stored based database in C++. Currently, it allows the user to put in key value pairs in a hash map.
-
-For demonstration purposes, upon running the program, the user is asked to put in two key value pairs. Obviously, the hash map can hold significantly more key values pairs, but because we just want a short demonstration of it working, I'm only asking the user for two key value pair inputs. After putting in the two key value pairs, the program displays the contents of the database to verify that it is working.
-UPDATE: 10/23/2020
-**How to run it**
-- `cd updated_code` after opening individual_project_db_3010
-- `make`
-- `./main`
-
-SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
+**SYSTEM REQUIREMENT:** It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
-Further Info:
+**Further Info:**
 - We are using a data file (called "data.txt") as a way to store and manipulate the files; we are essentially using the data file as an array to store the entries of data 
 - Whenever we put in a new entry it will contain three fields in this order:
   - the hash value, which is generated from the key value and will be 16 chars long
