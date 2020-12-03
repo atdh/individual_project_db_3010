@@ -1,5 +1,5 @@
 # individual_project_db_3010
-We created a simple key-value store database (implemented using a Binary Search Tree) in C++. Users will be able to do the four REST operations (GET, POST, PUT, and DELETE) on this database while admin users will also be able to delete users. In order to use the database, first they need to either login or sign up using the GUI application (written with the Qt library) and from there, they have buttons to call out their respective REST operations.  
+We created a key-value store database (implemented using a Binary Search Tree) in C++. Users will be able to do the four REST operations (GET, POST, PUT, and DELETE) on this database while admin users will also be able to delete users. In order to use the database, first they need to either login or sign up using the GUI application (written with the Qt library) and from there, they will be brought to another window with buttons to call out their respective REST operations.  
 
 ## Repo structure  
 In the code folder, it consists of the main project (PPWProj.pro) and three folders (src, app, and tests) that belong to each of their respective sub projects (src.pro, app.pro, and tests.pro). The `src` folder contains all of the code for the database and the Qt application code. The `app` folder contains the main.cpp file that runs the application. The `tests` folder contains the catch.hpp file and the main.cpp file, which is responsible for running the unit tests.  
@@ -30,9 +30,8 @@ UPDATE: 12/02/2020
 <img src="https://i.imgur.com/ju5T0Hq.png" width="200">  
 - In the Application Output, it should show that all of the unit tests passed                                                     
 <img src="https://i.imgur.com/HWoTgKh.png" width="550">  
-    
-  
-  
+
+## Our Database  
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
 **Further Info:**
