@@ -14,7 +14,7 @@ UPDATE: 12/02/2020
 <img src="https://i.imgur.com/0WWfnhV.png" width="450">  
 
 ## How to run unit tests (using the Catch2 framework)  
-- Make sure that the PPWProj.pro file looks like this  
+- Make sure that the PPWProj.pro file looks like this (**note:** that the lines to run the app are commented out but we uncommented the lines that run the unit tests)  
 <img src="https://i.imgur.com/6FgfGRX.png" width="300">  
 - Also, check if the file menu in Qt Creator looks like this  
 <img src="https://i.imgur.com/LOAoiCE.png" width="300">  
