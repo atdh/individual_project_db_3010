@@ -1,10 +1,9 @@
 ****************************************
-UPDATE: 11/17/2020
+UPDATE: 12/02/2020
 
 # individual_project_db_3010
-**NOTE: OUR updated_code directory contains working database, user, and superuser class. That is our working base. The updated_code2 is where we are trying to integrate everything from updated_code into our GUI. Hence, updated_code is our working folder and updated_code2 is our inprogress folder. For this assignment, please run updated_code folder***
 
-This project, our goal was to have a working user and superuser class which we accomplished. Since they have not all been fully integrated yet, we just want to show user and super user class working. Futhermore, we started integrating the last checkpoint codes to GUI. Our post request is fully functional in GUI. We will have fully integrated all our code to GUI by next checkpoint. 
+![some_image]("https://www.hot-dog.org/sites/default/files/pictures/hot-dogs-on-the-grill.jpg")
 
 **How to run it**
 - `cd updated_code` after opening individual_project_db_3010
