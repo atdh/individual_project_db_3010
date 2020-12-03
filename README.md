@@ -5,11 +5,11 @@ UPDATE: 12/02/2020
 
 **How to run it**
 - First, open the project in Qt Creator, configure the project (if need be), and open the PPWProj.pro file. Make sure that it looks like this
-![app_pro_file](https://imgur.com/a/ghp3SL8)
+<img src="https://i.imgur.com/ORdmcYk.png" width="300">
 - Also, check if the file menu in Qt Creator looks like this
-![app_file_menu](https://imgur.com/a/oy5PgtK)
+<img src="https://i.imgur.com/4jqB8HR.png" width="300">
 - Then, proceed to run the application by pressing the green triangle in Qt Creator
-![green_triangle](https://imgur.com/a/Z6tU2CA)
+<img src="https://i.imgur.com/EvO7pAz.png" width="100">
 - The following screen should show up and you may now begin using the application
 <img src="https://i.imgur.com/0WWfnhV.png" width="450">
 
