@@ -9,9 +9,15 @@ UPDATE: 12/02/2020
 - Also, check if the file menu in Qt Creator looks like this
 <img src="https://i.imgur.com/4jqB8HR.png" width="300">
 - Then, proceed to run the application by pressing the green triangle in Qt Creator
-<img src="https://i.imgur.com/EvO7pAz.png" width="100">
+<img src="https://i.imgur.com/EvO7pAz.png" width="220">
 - The following screen should show up and you may now begin using the application
 <img src="https://i.imgur.com/0WWfnhV.png" width="450">
+
+**How to run unit tests (using the Catch2 framework)**
+- Make sure that the PPWProj.pro file looks like this
+<img src="https://i.imgur.com/6FgfGRX.png" width="300">
+- Also, check if the file menu in Qt Creator looks like this
+
 
 SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
