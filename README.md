@@ -3,25 +3,15 @@ UPDATE: 12/02/2020
 
 # individual_project_db_3010
 
-![some_image](https://www.hot-dog.org/sites/default/files/pictures/hot-dogs-on-the-grill.jpg)
-
 **How to run it**
-- `cd updated_code` after opening individual_project_db_3010
-- `g++ -o main user.cpp superuser.cpp`
-- `./main`
-
-SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
-
-
-*********************************
-Creating a key-value stored based database in C++. Currently, it allows the user to put in key value pairs in a hash map.
-
-For demonstration purposes, upon running the program, the user is asked to put in two key value pairs. Obviously, the hash map can hold significantly more key values pairs, but because we just want a short demonstration of it working, I'm only asking the user for two key value pair inputs. After putting in the two key value pairs, the program displays the contents of the database to verify that it is working.
-UPDATE: 10/23/2020
-**How to run it**
-- `cd updated_code` after opening individual_project_db_3010
-- `make`
-- `./main`
+- First, open the project in Qt Creator, configure the project (if need be), and open the PPWProj.pro file. Make sure that it looks like this
+![app_pro_file](https://imgur.com/a/ghp3SL8)
+- Also, check if the file menu in Qt Creator looks like this
+![app_file_menu](https://imgur.com/a/oy5PgtK)
+- Then, proceed to run the application by pressing the green triangle in Qt Creator
+![green_triangle](https://imgur.com/a/Z6tU2CA)
+- The following screen should show up and you may now begin using the application
+![login_screen](https://imgur.com/a/Z6tU2CA)
 
 SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
