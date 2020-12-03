@@ -9,7 +9,7 @@ In the code folder, it consists of the main project (PPWProj.pro) and three fold
 ****************************************
 UPDATE: 12/02/2020
 
-<img src="https://github.com/favicon.ico" width="48">
+<img src="https://i.imgur.com/nCHnPDK.png" width="48">
 
 ## How to run the application:  
 - First, open the project (PPWProj.pro which is in the code folder) in Qt Creator, configure the project (if need be), and make sure that the PPWProj.pro file looks like this  
