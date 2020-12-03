@@ -3,7 +3,7 @@ UPDATE: 12/02/2020
 
 # individual_project_db_3010
 
-##How to run it
+## How to run it
 - First, open the project in Qt Creator, configure the project (if need be), and open the PPWProj.pro file. Make sure that it looks like this
 <img src="https://i.imgur.com/ORdmcYk.png" width="300">  
 - Also, check if the file menu in Qt Creator looks like this  
@@ -13,7 +13,7 @@ UPDATE: 12/02/2020
 - The following screen should show up and you may now begin using the application  
 <img src="https://i.imgur.com/0WWfnhV.png" width="450">  
 
-##How to run unit tests (using the Catch2 framework)  
+## How to run unit tests (using the Catch2 framework)  
 - Make sure that the PPWProj.pro file looks like this  
 <img src="https://i.imgur.com/6FgfGRX.png" width="300">  
 - Also, check if the file menu in Qt Creator looks like this  
@@ -23,11 +23,11 @@ UPDATE: 12/02/2020
 - In the Application Output, it should show that the unit tests passed   
 <img src="https://i.imgur.com/oDNYo5R.png" width="450">  
 
-SYSTEM REQUIREMENT: It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
+**SYSTEM REQUIREMENT:** It can run on linux, windows, mac. It's just a cpp file with no dependencies required to build/run. 
 
 We are using Binary Search Tree as our data structure for inserting, searching, and deleting values. Each node will contain username and password along with hash aka unique id for secure database/ easy and accurate search. Upon running the program, the user is given 4 option. 
 
-Further Info:
+**Further Info:**
 - We are using a data file (called "data.txt") as a way to store and manipulate the files; we are essentially using the data file as an array to store the entries of data 
 - Whenever we put in a new entry it will contain three fields in this order:
   - the hash value, which is generated from the key value and will be 16 chars long
