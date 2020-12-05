@@ -1,11 +1,11 @@
 TEMPLATE = subdirs
 CONFIG+=ordered
 
-#SUBDIRS = \
-#    src \
-#    app
+SUBDIRS = \
+    src \
+    app
 
-#app.depends = src
+app.depends = src
 
 #SUBDIRS = \
 #    src \
@@ -13,11 +13,11 @@ CONFIG+=ordered
 
 #tests.depends = src
 
-SUBDIRS = \
-    src \
-    qt_tests
+#SUBDIRS = \
+#    src \
+#    qt_tests
 
-qt_tests.depends = src
+#qt_tests.depends = src
 
 OTHER_FILES += \
     defaults.pri
