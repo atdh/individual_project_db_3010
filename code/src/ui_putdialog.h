@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'putdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.1
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,8 +10,11 @@
 #define UI_PUTDIALOG_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 
@@ -27,16 +30,16 @@ public:
     void setupUi(QDialog *PutDialog)
     {
         if (PutDialog->objectName().isEmpty())
-            PutDialog->setObjectName(QString::fromUtf8("PutDialog"));
+            PutDialog->setObjectName(QStringLiteral("PutDialog"));
         PutDialog->resize(400, 183);
         pushButton = new QPushButton(PutDialog);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(150, 130, 89, 25));
         lineEdit = new QLineEdit(PutDialog);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(20, 30, 360, 30));
         lineEdit_2 = new QLineEdit(PutDialog);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
         lineEdit_2->setGeometry(QRect(20, 80, 360, 30));
 
         retranslateUi(PutDialog);
@@ -47,8 +50,8 @@ public:
 
     void retranslateUi(QDialog *PutDialog)
     {
-        PutDialog->setWindowTitle(QCoreApplication::translate("PutDialog", "PutDialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("PutDialog", "PushButton", nullptr));
+        PutDialog->setWindowTitle(QApplication::translate("PutDialog", "PutDialog", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("PutDialog", "PushButton", Q_NULLPTR));
     } // retranslateUi
 
 };

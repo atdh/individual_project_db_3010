@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'getdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.1
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,8 +10,11 @@
 #define UI_GETDIALOG_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 
@@ -26,13 +29,13 @@ public:
     void setupUi(QDialog *GetDialog)
     {
         if (GetDialog->objectName().isEmpty())
-            GetDialog->setObjectName(QString::fromUtf8("GetDialog"));
+            GetDialog->setObjectName(QStringLiteral("GetDialog"));
         GetDialog->resize(400, 124);
         textEdit = new QTextEdit(GetDialog);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(20, 30, 360, 30));
         pushButton = new QPushButton(GetDialog);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(150, 80, 89, 25));
 
         retranslateUi(GetDialog);
@@ -43,8 +46,8 @@ public:
 
     void retranslateUi(QDialog *GetDialog)
     {
-        GetDialog->setWindowTitle(QCoreApplication::translate("GetDialog", "GetDialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("GetDialog", "PushButton", nullptr));
+        GetDialog->setWindowTitle(QApplication::translate("GetDialog", "GetDialog", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("GetDialog", "PushButton", Q_NULLPTR));
     } // retranslateUi
 
 };

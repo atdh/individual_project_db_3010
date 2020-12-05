@@ -1,9 +1,9 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource prefix="/">
-<file alias="storage.txt">/home/bngu/Repos/individual_project_db_3010/code/app/storage.txt</file>
-<file alias="data.txt">/home/bngu/Repos/individual_project_db_3010/code/app/data.txt</file>
-<file alias="person.png">/home/bngu/Repos/individual_project_db_3010/code/app/person.png</file>
-<file alias="home.png">/home/bngu/Repos/individual_project_db_3010/code/app/home.png</file>
-<file alias="authentication.txt">/home/bngu/Repos/individual_project_db_3010/code/app/authentication.txt</file>
+<file alias="storage.txt">/home/atul/Documents/ppw_3/individual_project_db_3010/code/app/storage.txt</file>
+<file alias="data.txt">/home/atul/Documents/ppw_3/individual_project_db_3010/code/app/data.txt</file>
+<file alias="person.png">/home/atul/Documents/ppw_3/individual_project_db_3010/code/app/person.png</file>
+<file alias="home.png">/home/atul/Documents/ppw_3/individual_project_db_3010/code/app/home.png</file>
+<file alias="authentication.txt">/home/atul/Documents/ppw_3/individual_project_db_3010/code/app/authentication.txt</file>
 </qresource>
 </RCC>

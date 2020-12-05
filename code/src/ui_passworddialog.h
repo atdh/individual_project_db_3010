@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'passworddialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.1
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,8 +10,11 @@
 #define UI_PASSWORDDIALOG_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
@@ -28,16 +31,16 @@ public:
     void setupUi(QDialog *PasswordDialog)
     {
         if (PasswordDialog->objectName().isEmpty())
-            PasswordDialog->setObjectName(QString::fromUtf8("PasswordDialog"));
+            PasswordDialog->setObjectName(QStringLiteral("PasswordDialog"));
         PasswordDialog->resize(400, 124);
         pushButton = new QPushButton(PasswordDialog);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(290, 80, 89, 25));
         textEdit = new QTextEdit(PasswordDialog);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(20, 30, 360, 30));
         label = new QLabel(PasswordDialog);
-        label->setObjectName(QString::fromUtf8("label"));
+        label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 80, 171, 17));
 
         retranslateUi(PasswordDialog);
@@ -47,8 +50,8 @@ public:
 
     void retranslateUi(QDialog *PasswordDialog)
     {
-        PasswordDialog->setWindowTitle(QCoreApplication::translate("PasswordDialog", "PasswordDialog", nullptr));
-        pushButton->setText(QCoreApplication::translate("PasswordDialog", "Submit", nullptr));
+        PasswordDialog->setWindowTitle(QApplication::translate("PasswordDialog", "PasswordDialog", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("PasswordDialog", "Submit", Q_NULLPTR));
         label->setText(QString());
     } // retranslateUi
 

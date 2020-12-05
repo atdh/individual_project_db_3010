@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'passworddialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "passworddialog.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'passworddialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.15.1. It"
+#error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -46,7 +45,7 @@ QT_MOC_LITERAL(3, 30, 21) // "on_pushButton_clicked"
 static const uint qt_meta_data_PasswordDialog[] = {
 
  // content:
-       8,       // revision
+       7,       // revision
        0,       // classname
        0,    0, // classinfo
        2,   14, // methods
@@ -74,7 +73,7 @@ static const uint qt_meta_data_PasswordDialog[] = {
 void PasswordDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<PasswordDialog *>(_o);
+        PasswordDialog *_t = static_cast<PasswordDialog *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->SendShowUTRes((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -84,7 +83,7 @@ void PasswordDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (PasswordDialog::*)(bool );
+            typedef void (PasswordDialog::*_t)(bool );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PasswordDialog::SendShowUTRes)) {
                 *result = 0;
                 return;
@@ -93,14 +92,10 @@ void PasswordDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject PasswordDialog::staticMetaObject = { {
-    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_PasswordDialog.data,
-    qt_meta_data_PasswordDialog,
-    qt_static_metacall,
-    nullptr,
-    nullptr
-} };
+const QMetaObject PasswordDialog::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_PasswordDialog.data,
+      qt_meta_data_PasswordDialog,  qt_static_metacall, nullptr, nullptr}
+};
 
 
 const QMetaObject *PasswordDialog::metaObject() const
@@ -136,7 +131,7 @@ int PasswordDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void PasswordDialog::SendShowUTRes(bool _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
