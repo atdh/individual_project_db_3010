@@ -26,6 +26,16 @@ GUI and finished product will be done by the final.
 ***There aren't any changes we are planning to do.***  
   
 4. Screenshots/gifs of where we are at:  
-
+Login page  
+<img src="https://i.imgur.com/eLdKhJz.png" width="450">  
+  
+Signup page  
+<img src="https://i.imgur.com/13DKSaa.png" width="450">  
+  
+The database screen using a nonadmin user  
+<img src="https://i.imgur.com/6gQWKDH.png" width="450">  
+  
+The database screen using an admin user  
+<img src="https://i.imgur.com/I1q19gh.png" width="450">  
 
 
