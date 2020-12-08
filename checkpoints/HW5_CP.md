@@ -26,5 +26,24 @@ The database screen using a nonadmin user
   
 The database screen using an admin user  
 <img src="https://i.imgur.com/I1q19gh.png" width="450">  
-
-
+  
+After clicking the GET button, this dialog shows up and let's search for the key "binary"  
+<img src="https://i.imgur.com/23zRO5E.png" width="450">  
+This is the resulting status and message response  
+<img src="https://i.imgur.com/mVtc6Lg.png" width="450">  
+  
+After clicking the POST button, this dialog shows up and let's insert a key "qt" and a value "creator"  
+<img src="https://i.imgur.com/imiS9Tl.png" width="450">  
+This is the resulting status and message response. Notice that the new key and value was added to the table.  
+<img src="https://i.imgur.com/mQDtPZf.png" width="450">  
+  
+After clicking the PUT button, this dialog shows up and let's update the key "data"'s value from "structure" to "base"  
+<img src="https://i.imgur.com/eTu8o2p.png" width="450">  
+This is the resulting status and message response. Notice that key "data" has a new value of "base" in the table  
+<img src="https://i.imgur.com/mOim4he.png" width="450">  
+  
+After clicking the DELETE button, this dialog shows up and let's delete the key "qt"  
+<img src="https://i.imgur.com/bQfP4S3.png" width="450">  
+This is the resulting status and message response. Notice that key "qt" was removed from the table   
+<img src="https://i.imgur.com/rMjjQDt.png" width="450">  
+  
