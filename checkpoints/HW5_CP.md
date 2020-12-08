@@ -1,4 +1,4 @@
-1. What you planned on doing for this homework deadline. (Copy + pasted from your previous document)
+1. What you planned on doing for this homework deadline. (Copy + pasted from your previous document)  
 From the last checkpoint we wrote:  
 ***"For next deadline, we are planning to finish integrate user and superuser class to GUI as well as finish integrating the the database code into the GUI. User can sign up or log in and after doing so, based on the priviledge the user has, they will be able to make get,post,put,and delete requests. Admins will be able to delete users. This will all happen in GUI."***
 
