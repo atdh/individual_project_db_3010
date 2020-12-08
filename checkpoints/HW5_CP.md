@@ -1,6 +1,6 @@
 1. What you planned on doing for this homework deadline. (Copy + pasted from your previous document)
-
-***For next deadline, we are planning to finish integrate user and superuser class to GUI as well as finish integrating the the database code into the GUI. User can sign up or log in and after doing so, based on the priviledge the user has, they will be able to make get,post,put,and delete requests. Admins will be able to delete users. This will all happen in GUI.***
+From the last checkpoint we wrote:  
+***"For next deadline, we are planning to finish integrate user and superuser class to GUI as well as finish integrating the the database code into the GUI. User can sign up or log in and after doing so, based on the priviledge the user has, they will be able to make get,post,put,and delete requests. Admins will be able to delete users. This will all happen in GUI."***
 
 2. What you actually accomplished for this deadline.  
 ***We managed to essentially get all of the GUI fully functional and implemented, which includes working database operations, being able to handle nonadmin and admin users, and working login/signup page. All of these have working UI as well.***  
