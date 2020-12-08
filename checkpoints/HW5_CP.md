@@ -1,17 +1,6 @@
 1. What you planned on doing for this homework deadline. (Copy + pasted from your previous document)
 
-This is copied and pasted from previous document:
-When HW2 is due, we will have a detailed class structure.
-
-When HW3 is due, we will have a working database class.
-
-When HW4 is due, we will have a working user and superuser class.
-
-When HW5 is due, we will have a checkpoint/integration for the above 3 done.
-
-GUI and finished product will be done by the final.
-
-***For this checkpoint, we planned to have the REST api calls fully functional along with their corresponding UI components. Besides this, we also planned to have the login and sign up page completed.***
+***For next deadline, we are planning to finish integrate user and superuser class to GUI as well as finish integrating the the database code into the GUI. User can sign up or log in and after doing so, based on the priviledge the user has, they will be able to make get,post,put,and delete requests. Admins will be able to delete users. This will all happen in GUI.***
 
 2. What you actually accomplished for this deadline.  
 ***We managed to essentially get all of the GUI fully functional and implemented, which includes working database operations, being able to handle nonadmin and admin users, and working login/signup page. All of these have working UI as well.***  
