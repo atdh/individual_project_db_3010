@@ -1,4 +1,4 @@
-# individual_project_db_3010
+# Personal Database
 We created a key-value store database (implemented using a Binary Search Tree) in C++. Users will be able to do the four REST operations (GET, POST, PUT, and DELETE) on this database while admin users will also be able to delete users. In order to use the database, first they need to either login or sign up using the GUI application (written with the Qt library) and from there, they will be brought to another window with buttons to call out their respective REST operations.  
 
 ## Repo structure  
